@@ -2,10 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@src": ["src"],
-      "@desktop": ["src/app/desktop"],
-      "@mobile": ["src/app/mobile"],
-      "@shared": ["src/app/shared"]
+      "src": ["src"],
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

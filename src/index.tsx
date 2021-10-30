@@ -1,7 +1,4 @@
-import { isMobile } from './const';
-import {
-	renderMobileApp,
-	renderDesktopApp,
-} from './utils';
+import ReactDOM from 'react-dom';
+import { App } from './App';
 
-isMobile ? renderMobileApp() : renderDesktopApp();
+ReactDOM.render(<App />, document.querySelector('#root'));
