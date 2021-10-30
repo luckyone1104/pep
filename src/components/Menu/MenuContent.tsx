@@ -3,11 +3,12 @@ import { useHistory } from 'react-router-dom';
 import {
 	Divider,
 	List,
-	ListItem,
+	ListItem, ListItemIcon,
 	ListItemText,
 	Toolbar,
 } from '@mui/material';
 import { listPages } from '../../const';
+import { menuIcons } from './menuIcons';
 
 export const MenuContent: FC = () => {
 	const history = useHistory();
@@ -21,6 +22,9 @@ export const MenuContent: FC = () => {
 					button
 					onClick={() => history.push('/')}
 				>
+					<ListItemIcon>
+						{menuIcons['Dashboard']}
+					</ListItemIcon>
 					<ListItemText primary={'Dashboard'} />
 				</ListItem>
 				<Divider />
@@ -30,6 +34,9 @@ export const MenuContent: FC = () => {
 						button
 						onClick={() => history.push(path)}
 					>
+						<ListItemIcon>
+							{menuIcons[name]}
+						</ListItemIcon>
 						<ListItemText primary={name} />
 					</ListItem>
 				))}
