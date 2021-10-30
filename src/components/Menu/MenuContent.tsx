@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
 	Divider,
 	List,
@@ -12,6 +12,7 @@ import { menuIcons } from './menuIcons';
 
 export const MenuContent: FC = () => {
 	const history = useHistory();
+	const { pathname } = useLocation();
 
 	return (
 		<div>
@@ -21,6 +22,7 @@ export const MenuContent: FC = () => {
 				<ListItem
 					button
 					onClick={() => history.push('/')}
+					selected={pathname === '/'}
 				>
 					<ListItemIcon>
 						{menuIcons['Dashboard']}
@@ -33,6 +35,7 @@ export const MenuContent: FC = () => {
 						key={name}
 						button
 						onClick={() => history.push(path)}
+						selected={pathname === path}
 					>
 						<ListItemIcon>
 							{menuIcons[name]}

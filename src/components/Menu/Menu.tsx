@@ -16,7 +16,6 @@ export const Menu: FC<MenuProps> = (
 		handleDrawerToggle,
 	}
 ) => {
-
 	return (
 		<>
 			<Drawer
