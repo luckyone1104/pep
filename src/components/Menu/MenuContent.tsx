@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import {
 	Divider,
 	List,
-	ListItem, ListItemIcon,
+	ListItem,
+	ListItemIcon,
 	ListItemText,
 	Toolbar,
 } from '@mui/material';
@@ -13,6 +14,10 @@ import { menuIcons } from './menuIcons';
 export const MenuContent: FC = () => {
 	const history = useHistory();
 	const { pathname } = useLocation();
+	const handleLinkButtonClick = ((e: SyntheticEvent, path: string) => {
+		e.preventDefault();
+		history.push(path);
+	});
 
 	return (
 		<div>
@@ -21,7 +26,11 @@ export const MenuContent: FC = () => {
 			<List>
 				<ListItem
 					button
-					onClick={() => history.push('/')}
+					component="a"
+					href="/"
+					onClick={(e: SyntheticEvent) => {
+						handleLinkButtonClick(e, '/');
+					}}
 					selected={pathname === '/'}
 				>
 					<ListItemIcon>
@@ -34,7 +43,11 @@ export const MenuContent: FC = () => {
 					<ListItem
 						key={name}
 						button
-						onClick={() => history.push(path)}
+						component="a"
+						href={path}
+						onClick={(e: SyntheticEvent) => {
+							handleLinkButtonClick(e, path);
+						}}
 						selected={pathname === path}
 					>
 						<ListItemIcon>
