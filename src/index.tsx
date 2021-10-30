@@ -1,8 +1,7 @@
+import { isMobile } from './const';
 import {
-	detectMobile,
 	renderMobileApp,
 	renderDesktopApp,
 } from './utils';
 
-const isMobile = detectMobile();
 isMobile ? renderMobileApp() : renderDesktopApp();
