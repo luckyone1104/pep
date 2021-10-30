@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
       "@desktop": ["src/app/desktop"],
       "@mobile": ["src/app/mobile"],
