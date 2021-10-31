@@ -1,4 +1,4 @@
-import { createContext, useContext, FC, useState, useMemo } from 'react';
+import { createContext, useContext, FC, useState } from 'react';
 import Portal from '@mui/core/Portal';
 import { ProgressBar } from '../../components/ProgressBar';
 
@@ -12,10 +12,10 @@ const TopProgressBarContext = createContext(null as unknown);
 export const TopProgressBarProvider: FC = ({ children }) => {
 	const [showProgress, setShowProgress] = useState(false);
 
-	const value = useMemo(() => ({
+	const value = {
 		start: () => setShowProgress(true),
 		stop: () => setShowProgress(false),
-	}), []);
+	};
 
 	return (
 		<TopProgressBarContext.Provider value={value}>
