@@ -2,29 +2,25 @@ import { FC } from 'react';
 import { Drawer } from '@mui/material';
 import { MenuContent } from './MenuContent';
 import { MENU_WIDTH } from '../Layout/const';
+import { useMobileMenuContext } from '../../providers/AppProviders/MobileMenuProvider';
 
 const container = window !== undefined ? () => window.document.body : undefined;
 
-type MenuProps = {
-	mobileOpen: boolean;
-	handleDrawerToggle: () => void;
-}
-
-export const Menu: FC<MenuProps> = (
-	{
+export const Menu: FC = () => {
+	const {
 		mobileOpen,
-		handleDrawerToggle,
-	}
-) => {
+		handleMenuToggle,
+	} = useMobileMenuContext();
+
 	return (
 		<>
 			<Drawer
 				container={container}
 				variant="temporary"
 				open={mobileOpen}
-				onClose={handleDrawerToggle}
+				onClose={handleMenuToggle}
 				ModalProps={{
-					keepMounted: true, // Better open performance on mobile.
+					keepMounted: true,
 				}}
 				sx={{
 					display: { xs: 'block', sm: 'none' },

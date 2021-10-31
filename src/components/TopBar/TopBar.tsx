@@ -1,17 +1,12 @@
 import { FC } from 'react';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useMobileMenuContext } from '../../providers/AppProviders/MobileMenuProvider';
 import { MENU_WIDTH } from '../Layout/const';
 
-type TopBarProps = {
-	handleDrawerToggle: () => void;
-}
+export const TopBar: FC = () => {
+	const { handleMenuToggle } = useMobileMenuContext();
 
-export const TopBar: FC<TopBarProps> = (
-	{
-		handleDrawerToggle
-	}
-) => {
 	return (
 		<AppBar
 			position="fixed"
@@ -25,7 +20,7 @@ export const TopBar: FC<TopBarProps> = (
 					color="inherit"
 					aria-label="open drawer"
 					edge="start"
-					onClick={handleDrawerToggle}
+					onClick={handleMenuToggle}
 					sx={{ mr: 2, display: { sm: 'none' } }}
 				>
 					<MenuIcon />

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import {
 	Toolbar,
 	Box,
@@ -8,24 +8,15 @@ import { Menu } from '../Menu';
 import { MENU_WIDTH } from './const';
 
 export const AppLayout: FC = ({ children }) => {
-	const [mobileOpen, setMobileOpen] = useState(false);
-
-	const handleDrawerToggle = () => {
-		setMobileOpen(!mobileOpen);
-	};
-
 	return (
 		<Box sx={{ display: 'flex' }}>
-			<TopBar handleDrawerToggle={handleDrawerToggle} />
+			<TopBar />
 			<Box
 				component="nav"
 				sx={{ width: { sm: MENU_WIDTH }, flexShrink: { sm: 0 } }}
 				aria-label="mailbox folders"
 			>
-				<Menu
-					mobileOpen={mobileOpen}
-					handleDrawerToggle={handleDrawerToggle}
-				/>
+				<Menu />
 			</Box>
 			<Box
 				component="main"
