@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import { TopProgressBarProvider } from './TopProgressBarProvider';
 import { MobileMenuProvider } from './MobileMenuProvider';
+import { FilterSidebarProvider } from './FilterSidebarProvider';
 
 export const AppProviders: FC = ({ children }) => {
 	return (
@@ -10,7 +11,9 @@ export const AppProviders: FC = ({ children }) => {
 			<CssBaseline />
 			<TopProgressBarProvider>
 				<MobileMenuProvider>
-					{children}
+					<FilterSidebarProvider>
+						{children}
+					</FilterSidebarProvider>
 				</MobileMenuProvider>
 			</TopProgressBarProvider>
 		</Router>

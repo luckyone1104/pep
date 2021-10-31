@@ -6,6 +6,7 @@ import {
 import { TopBar } from '../TopBar';
 import { Menu } from '../Menu';
 import { MENU_WIDTH } from './const';
+import { FilterSidebar } from '../FilterSidebar';
 
 export const AppLayout: FC = ({ children }) => {
 	return (
@@ -24,6 +25,9 @@ export const AppLayout: FC = ({ children }) => {
 			>
 				<Toolbar />
 				{children}
+			</Box>
+			<Box>
+				<FilterSidebar />
 			</Box>
 		</Box>
 	);
