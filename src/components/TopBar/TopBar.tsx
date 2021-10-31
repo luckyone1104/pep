@@ -18,7 +18,7 @@ export const TopBar: FC = () => {
 			<Toolbar>
 				<IconButton
 					color="inherit"
-					aria-label="open drawer"
+					aria-label="open menu"
 					edge="start"
 					onClick={handleMenuToggle}
 					sx={{ mr: 2, display: { sm: 'none' } }}

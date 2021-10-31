@@ -14,7 +14,7 @@ export const AppLayout: FC = ({ children }) => {
 			<Box
 				component="nav"
 				sx={{ width: { sm: MENU_WIDTH }, flexShrink: { sm: 0 } }}
-				aria-label="mailbox folders"
+				aria-label="navigation menu"
 			>
 				<Menu />
 			</Box>
