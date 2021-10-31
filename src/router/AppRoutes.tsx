@@ -1,10 +1,11 @@
 import { FC, Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { listPages } from '../const';
+import { CircularLoader } from '../components/CircularLoader';
 
 export const AppRoutes: FC = () => {
 	return (
-		<Suspense fallback={<h1>Loading...</h1> /*todo: change fallback*/}>
+		<Suspense fallback={<CircularLoader />}>
 			<Switch>
 				<Route
 					exact
