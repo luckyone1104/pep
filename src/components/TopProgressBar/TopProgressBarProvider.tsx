@@ -1,6 +1,10 @@
-import { createContext, useContext, FC, useState } from 'react';
-import Portal from '@mui/core/Portal';
-import { ProgressBar } from '../../components/ProgressBar';
+import {
+	createContext,
+	useContext,
+	FC,
+	useState,
+} from 'react';
+import { TopProgressBar } from './TopProgressBar';
 
 type TopProgressBarContextValue = {
 	start: () => void;
@@ -19,11 +23,7 @@ export const TopProgressBarProvider: FC = ({ children }) => {
 
 	return (
 		<TopProgressBarContext.Provider value={value}>
-			{showProgress && (
-				<Portal container={document.querySelector('#top-progress-bar-portal')}>
-					<ProgressBar />
-				</Portal>
-			)}
+			{showProgress && <TopProgressBar />}
 			{children}
 		</TopProgressBarContext.Provider>
 	);

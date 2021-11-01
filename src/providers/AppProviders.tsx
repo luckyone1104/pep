@@ -1,20 +1,20 @@
 import { FC } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
-import { TopProgressBarProvider } from './TopProgressBarProvider';
-import { MobileMenuProvider } from './MobileMenuProvider';
-import { FilterSidebarProvider } from './FilterSidebarProvider';
+import { TopProgressBarProvider } from 'src/components/TopProgressBar';
+import { MenuProvider } from 'src/components/Menu';
+import { FilterSidebarProvider } from 'src/components/FilterSidebar';
 
 export const AppProviders: FC = ({ children }) => {
 	return (
 		<Router>
 			<CssBaseline />
 			<TopProgressBarProvider>
-				<MobileMenuProvider>
+				<MenuProvider>
 					<FilterSidebarProvider>
 						{children}
 					</FilterSidebarProvider>
-				</MobileMenuProvider>
+				</MenuProvider>
 			</TopProgressBarProvider>
 		</Router>
 	);

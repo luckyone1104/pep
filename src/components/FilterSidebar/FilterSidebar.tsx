@@ -1,16 +1,22 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Drawer, Toolbar } from '@mui/material';
 import { FILTER_SIDEBAR_WIDTH } from '../Layout/const';
-import { useFilterSidebarContext } from '../../providers/AppProviders/FilterSidebarProvider';
+import { useFilterSidebarContext } from './FilterSidebarProvider';
 
-const container = window !== undefined ? () => window.document.body : undefined;
 
-export const FilterSidebar: FC = () => {
-	const { sidebarOpen, handleSidebarToggle } = useFilterSidebarContext();
+export const FilterSidebar: FC = ({ children }) => {
+	const { setIsSidebarMounted, sidebarOpen, handleSidebarToggle } = useFilterSidebarContext();
+
+	useEffect(() => {
+		setIsSidebarMounted(true);
+
+		return () => {
+			setIsSidebarMounted(false);
+		};
+	});
 
 	return (
 		<Drawer
-			container={container}
 			variant="temporary"
 			anchor="right"
 			open={sidebarOpen}
@@ -23,7 +29,7 @@ export const FilterSidebar: FC = () => {
 			}}
 		>
 			<Toolbar />
-			any
+			{children}
 		</Drawer>
 	);
 };

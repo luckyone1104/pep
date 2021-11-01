@@ -7,7 +7,7 @@ type MobileMenuContextValue = {
 
 const MobileMenuContext = createContext(null as unknown);
 
-export const MobileMenuProvider: FC = ({ children }) => {
+export const MenuProvider: FC = ({ children }) => {
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleMenuToggle = () => {

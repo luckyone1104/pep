@@ -2,9 +2,7 @@ import { FC } from 'react';
 import { Drawer } from '@mui/material';
 import { MenuContent } from './MenuContent';
 import { MENU_WIDTH } from '../Layout/const';
-import { useMobileMenuContext } from '../../providers/AppProviders/MobileMenuProvider';
-
-const container = window !== undefined ? () => window.document.body : undefined;
+import { useMobileMenuContext } from './MenuProvider';
 
 export const Menu: FC = () => {
 	const {
@@ -15,7 +13,6 @@ export const Menu: FC = () => {
 	return (
 		<>
 			<Drawer
-				container={container}
 				variant="temporary"
 				open={mobileOpen}
 				onClose={handleMenuToggle}
