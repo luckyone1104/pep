@@ -2,13 +2,13 @@ import { FC } from 'react';
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { useMobileMenuContext } from '../../providers/AppProviders/MobileMenuProvider';
-import { useFilterSidebarContext } from '../../providers/AppProviders/FilterSidebarProvider';
+import { useMenuContext } from '../Menu/MenuProvider';
+import { useFilterSidebarContext } from '../FilterSidebar/FilterSidebarProvider';
 import { MENU_WIDTH } from '../Layout/const';
 
-export const TopBar: FC = () => {
-	const { handleMenuToggle } = useMobileMenuContext();
-	const { handleSidebarToggle } = useFilterSidebarContext();
+export const Header: FC = () => {
+	const { handleMenuToggle } = useMenuContext();
+	const { isSidebarMounted, handleSidebarToggle } = useFilterSidebarContext();
 
 	return (
 		<AppBar
@@ -40,15 +40,17 @@ export const TopBar: FC = () => {
 					</Typography>
 				</Box>
 
-				<IconButton
-					color="inherit"
-					aria-label="open filter sidebar"
-					edge="start"
-					onClick={handleSidebarToggle}
-					sx={{ }}
-				>
-					<FilterAltIcon />
-				</IconButton>
+				{isSidebarMounted && (
+					<IconButton
+						color="inherit"
+						aria-label="open filter sidebar"
+						edge="start"
+						onClick={handleSidebarToggle}
+						sx={{ }}
+					>
+						<FilterAltIcon />
+					</IconButton>
+				)}
 			</Toolbar>
 		</AppBar>
 	);

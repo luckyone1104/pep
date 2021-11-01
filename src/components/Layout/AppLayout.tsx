@@ -3,15 +3,14 @@ import {
 	Toolbar,
 	Box,
 } from '@mui/material';
-import { TopBar } from '../TopBar';
+import { Header } from '../Header';
 import { Menu } from '../Menu';
 import { MENU_WIDTH } from './const';
-import { FilterSidebar } from '../FilterSidebar';
 
 export const AppLayout: FC = ({ children }) => {
 	return (
 		<Box sx={{ display: 'flex' }}>
-			<TopBar />
+			<Header />
 			<Box
 				component="nav"
 				sx={{ width: { sm: MENU_WIDTH }, flexShrink: { sm: 0 } }}
@@ -25,9 +24,6 @@ export const AppLayout: FC = ({ children }) => {
 			>
 				<Toolbar />
 				{children}
-			</Box>
-			<Box>
-				<FilterSidebar />
 			</Box>
 		</Box>
 	);

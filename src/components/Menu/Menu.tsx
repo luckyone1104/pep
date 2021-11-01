@@ -2,13 +2,13 @@ import { FC } from 'react';
 import { Drawer } from '@mui/material';
 import { MenuContent } from './MenuContent';
 import { MENU_WIDTH } from '../Layout/const';
-import { useMobileMenuContext } from './MenuProvider';
+import { useMenuContext } from './MenuProvider';
 
 export const Menu: FC = () => {
 	const {
 		mobileOpen,
 		handleMenuToggle,
-	} = useMobileMenuContext();
+	} = useMenuContext();
 
 	return (
 		<>

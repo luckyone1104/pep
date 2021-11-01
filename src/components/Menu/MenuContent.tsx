@@ -10,13 +10,16 @@ import {
 } from '@mui/material';
 import { listPages } from '../../const';
 import { menuIcons } from './menuIcons';
+import { useMenuContext } from './MenuProvider';
 
 export const MenuContent: FC = () => {
 	const history = useHistory();
+	const { handleMenuToggle } = useMenuContext();
 	const { pathname } = useLocation();
 	const handleLinkButtonClick = ((e: SyntheticEvent, path: string) => {
 		e.preventDefault();
 		history.push(path);
+		handleMenuToggle();
 	});
 
 	return (

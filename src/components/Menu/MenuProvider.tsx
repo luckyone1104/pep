@@ -1,11 +1,11 @@
 import { createContext, FC, useMemo, useContext, useState } from 'react';
 
-type MobileMenuContextValue = {
+type MenuContextValue = {
 	mobileOpen: boolean;
 	handleMenuToggle: () => void;
 }
 
-const MobileMenuContext = createContext(null as unknown);
+const MenuContext = createContext(null as unknown);
 
 export const MenuProvider: FC = ({ children }) => {
 	const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,10 +20,10 @@ export const MenuProvider: FC = ({ children }) => {
 	}), [handleMenuToggle]);
 
 	return (
-		<MobileMenuContext.Provider value={value}>
+		<MenuContext.Provider value={value}>
 			{children}
-		</MobileMenuContext.Provider>
+		</MenuContext.Provider>
 	);
 };
 
-export const useMobileMenuContext = () => useContext(MobileMenuContext) as MobileMenuContextValue;
+export const useMenuContext = () => useContext(MenuContext) as MenuContextValue;
