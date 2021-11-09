@@ -1,21 +1,23 @@
 import { FC } from 'react';
 import { Drawer } from '@mui/material';
-import { MenuContent } from './MenuContent';
+import { MenuContent } from './components/MenuContent';
 import { MENU_WIDTH } from '../Layout/const';
 import { useMenuContext } from './MenuProvider';
+import { DesktopDrawer } from './components/MenuDesktopDrawer';
 
 export const Menu: FC = () => {
 	const {
-		mobileOpen,
-		handleMenuToggle,
+		isMobileMenuOpened,
+		isDesktopMenuExtended,
+		toggleMobileMenu,
 	} = useMenuContext();
 
 	return (
 		<>
 			<Drawer
 				variant="temporary"
-				open={mobileOpen}
-				onClose={handleMenuToggle}
+				open={isMobileMenuOpened}
+				onClose={toggleMobileMenu}
 				ModalProps={{
 					keepMounted: true,
 				}}
@@ -26,16 +28,15 @@ export const Menu: FC = () => {
 			>
 				<MenuContent />
 			</Drawer>
-			<Drawer
+			<DesktopDrawer
 				variant="permanent"
 				sx={{
 					display: { xs: 'none', sm: 'block' },
-					'& .MuiDrawer-paper': { boxSizing: 'border-box', width: MENU_WIDTH },
 				}}
-				open
+				open={isDesktopMenuExtended}
 			>
 				<MenuContent />
-			</Drawer>
+			</DesktopDrawer>
 		</>
 	);
 };

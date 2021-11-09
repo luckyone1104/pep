@@ -1,26 +1,39 @@
-import { createContext, FC, useMemo, useContext, useState } from 'react';
+import { createContext, FC, useContext, useState } from 'react';
 
 type MenuContextValue = {
-	mobileOpen: boolean;
-	handleMenuToggle: () => void;
+	isMobileMenuOpened: boolean;
+	isDesktopMenuExtended: boolean;
+	toggleMobileMenu: () => void;
+	extendDesktopMenu: () => void;
+	narrowDesktopMenu: () => void;
 }
 
 const MenuContext = createContext(null as unknown);
 
 export const MenuProvider: FC = ({ children }) => {
-	const [mobileOpen, setMobileOpen] = useState(false);
+	const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
+	const [isDesktopMenuExtended, setIsDesktopMenuExtended] = useState(true);
 
-	const handleMenuToggle = () => {
-		setMobileOpen(prev => !prev);
+	const toggleMobileMenu = () => {
+		setIsMobileMenuOpened(prev => !prev);
 	};
 
-	const value = useMemo(() => ({
-		mobileOpen,
-		handleMenuToggle,
-	}), [handleMenuToggle]);
+	const extendDesktopMenu = () => {
+		setIsDesktopMenuExtended(true);
+	};
+
+	const narrowDesktopMenu = () => {
+		setIsDesktopMenuExtended(false);
+	};
 
 	return (
-		<MenuContext.Provider value={value}>
+		<MenuContext.Provider value={{
+			isMobileMenuOpened,
+			isDesktopMenuExtended,
+			toggleMobileMenu,
+			extendDesktopMenu,
+			narrowDesktopMenu,
+		}}>
 			{children}
 		</MenuContext.Provider>
 	);

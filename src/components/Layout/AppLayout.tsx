@@ -13,7 +13,6 @@ export const AppLayout: FC = ({ children }) => {
 			<Header />
 			<Box
 				component="nav"
-				sx={{ width: { sm: MENU_WIDTH }, flexShrink: { sm: 0 } }}
 				aria-label="navigation menu"
 			>
 				<Menu />
