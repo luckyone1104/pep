@@ -1,33 +1,30 @@
 module.exports = {
-	'env': {
+	env: {
 		'browser': true,
 		'es2021': true
 	},
-	'extends': [
+	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
 		'plugin:@typescript-eslint/recommended'
 	],
-	'parser': '@typescript-eslint/parser',
-	'parserOptions': {
+	parser: '@typescript-eslint/parser',
+	parserOptions: {
 		'ecmaFeatures': {
 			'jsx': true
 		},
 		'ecmaVersion': 13,
 		'sourceType': 'module'
 	},
-	'plugins': [
+	plugins: [
 		'react',
+		'react-hooks',
 		'@typescript-eslint'
 	],
-	'rules': {
+	rules: {
 		'indent': [
 			'error',
 			'tab'
-		],
-		'linebreak-style': [
-			'error',
-			'unix'
 		],
 		'quotes': [
 			'error',
@@ -37,6 +34,11 @@ module.exports = {
 			'error',
 			'always'
 		],
-		'react/react-in-jsx-scope': 0
+		'linebreak-style': 0,
+		'react/react-in-jsx-scope': 0,
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'warn',
+		'@typescript-eslint/ban-ts-comment': 0,
+		'@typescript-eslint/no-non-null-assertion': 0,
 	}
 };
