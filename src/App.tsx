@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { AppProviders } from './providers';
-import { AppLayout } from './components/Layout';
+import { AppLayout } from './components/AppLayout';
 import { AppRoutes } from './router';
 
 export const App: FC = () => {
