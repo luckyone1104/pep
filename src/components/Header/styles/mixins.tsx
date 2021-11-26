@@ -1,5 +1,5 @@
 import { CSSObject, Theme } from '@mui/material';
-import { MENU_WIDTH } from '../../Layout/const';
+import { MENU_WIDTH } from '../../AppLayout/const';
 
 export const headerMixin = (theme: Theme): CSSObject => ({
 	transition: theme.transitions.create(['width', 'margin'], {

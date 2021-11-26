@@ -31,7 +31,7 @@ export const HeaderLeftSide: FC = () => {
 				edge="start"
 				onClick={extendDesktopMenu}
 				sx={{
-					mr: 2,
+					mr: 4,
 					display: {
 						xs: 'none',
 						sm: 'inline-flex'
@@ -41,7 +41,11 @@ export const HeaderLeftSide: FC = () => {
 			>
 				<MenuIcon />
 			</IconButton>
-			<Typography variant="h6" noWrap component="div">
+			<Typography
+				variant="h6"
+				noWrap
+				component="div"
+			>
 				PE Platform
 			</Typography>
 		</Box>
