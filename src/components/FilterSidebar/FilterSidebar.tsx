@@ -1,16 +1,30 @@
 import { FC, useEffect } from 'react';
-import {
-	Divider,
-	Drawer,
-	Toolbar,
-	Box
-} from '@mui/material';
-import { FILTER_SIDEBAR_WIDTH } from '../Layout/const';
+import { Drawer, useTheme, } from '@mui/material';
+import { FILTER_SIDEBAR_WIDTH } from '../AppLayout/const';
 import { useFilterSidebarContext } from './FilterSidebarProvider';
-import { FilterSidebarButtons } from './FilterSidebarButtons';
+import { Formik } from 'formik';
+import { FilterSidebarForm } from './FilterSidebarForm';
+import { CustomObject } from '../../types';
+import { ErrorBoundary } from '../ErrorBoundary';
 
-export const FilterSidebar: FC = ({ children }) => {
-	const { setIsSidebarMounted, sidebarOpen, handleSidebarToggle } = useFilterSidebarContext();
+type FilterSidebarProps = {
+	initialValues: CustomObject,
+	onSubmit: (values: CustomObject) => void
+}
+
+export const FilterSidebar: FC<FilterSidebarProps> = (
+	{
+		initialValues,
+		onSubmit,
+		children
+	}
+) => {
+	const theme = useTheme();
+	const {
+		setIsSidebarMounted,
+		sidebarOpen,
+		handleSidebarToggle,
+	} = useFilterSidebarContext();
 
 	useEffect(() => {
 		setIsSidebarMounted(true);
@@ -26,25 +40,31 @@ export const FilterSidebar: FC = ({ children }) => {
 			anchor="right"
 			open={sidebarOpen}
 			onClose={handleSidebarToggle}
+			ModalProps={{
+				keepMounted: true,
+			}}
 			sx={{
+				zIndex: theme.zIndex.drawer + 1,
 				'& .MuiDrawer-paper': {
 					boxSizing: 'border-box',
-					width: FILTER_SIDEBAR_WIDTH,
+					width: {
+						xs: '100%',
+						sm: FILTER_SIDEBAR_WIDTH,
+					},
 					height: '100%',
 				},
 			}}
 		>
-			<Toolbar />
-			<Divider />
-			<Box sx={{
-				height: '100%',
-				overflow: 'scroll',
-				pt: 1,
-				pb: 1,
-			}}>
-				{children}
-			</Box>
-			<FilterSidebarButtons />
+			<ErrorBoundary>
+				<Formik
+					initialValues={initialValues}
+					onSubmit={onSubmit}
+				>
+					<FilterSidebarForm>
+						{children}
+					</FilterSidebarForm>
+				</Formik>
+			</ErrorBoundary>
 		</Drawer>
 	);
 };

@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Drawer } from '@mui/material';
 import { MenuContent } from './components/MenuContent';
-import { MENU_WIDTH } from '../Layout/const';
+import { MENU_WIDTH } from '../AppLayout/const';
 import { useMenuContext } from './MenuProvider';
-import { DesktopDrawer } from './components/MenuDesktopDrawer';
+import { MenuDesktopDrawer } from './components/MenuDesktopDrawer';
 
 export const Menu: FC = () => {
 	const {
@@ -28,7 +28,7 @@ export const Menu: FC = () => {
 			>
 				<MenuContent />
 			</Drawer>
-			<DesktopDrawer
+			<MenuDesktopDrawer
 				variant="permanent"
 				sx={{
 					display: { xs: 'none', sm: 'block' },
@@ -36,7 +36,7 @@ export const Menu: FC = () => {
 				open={isDesktopMenuExtended}
 			>
 				<MenuContent />
-			</DesktopDrawer>
+			</MenuDesktopDrawer>
 		</>
 	);
 };

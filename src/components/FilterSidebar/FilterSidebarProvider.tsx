@@ -1,7 +1,6 @@
 import {
 	createContext,
 	FC,
-	useMemo,
 	useContext,
 	useState,
 } from 'react';
@@ -11,6 +10,8 @@ type FilterSidebarContextValue = {
 	setIsSidebarMounted: (state: boolean) => void;
 	sidebarOpen: boolean;
 	handleSidebarToggle: () => void;
+	openSidebar: () => void;
+	closeSidebar: () => void;
 }
 
 const FilterSidebarContext = createContext(null as unknown);
@@ -23,15 +24,23 @@ export const FilterSidebarProvider: FC = ({ children }) => {
 		setSidebarOpen(prev => !prev);
 	};
 
-	const value = useMemo(() => ({
-		isSidebarMounted,
-		setIsSidebarMounted,
-		sidebarOpen,
-		handleSidebarToggle,
-	}), [handleSidebarToggle]);
+	const openSidebar = () => {
+		setSidebarOpen(true);
+	};
+
+	const closeSidebar = () => {
+		setSidebarOpen(false);
+	};
 
 	return (
-		<FilterSidebarContext.Provider value={value}>
+		<FilterSidebarContext.Provider value={{
+			isSidebarMounted,
+			setIsSidebarMounted,
+			sidebarOpen,
+			handleSidebarToggle,
+			openSidebar,
+			closeSidebar
+		}}>
 			{children}
 		</FilterSidebarContext.Provider>
 	);

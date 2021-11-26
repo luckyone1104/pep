@@ -1,8 +1,8 @@
 import { Drawer, styled } from '@mui/material';
-import { MENU_WIDTH } from '../../Layout/const';
+import { MENU_WIDTH } from '../../AppLayout/const';
 import { extendedMixin, narrowedMixin } from '../styles/desktopDrawerMixins';
 
-export const DesktopDrawer = styled(Drawer, {
+export const MenuDesktopDrawer = styled(Drawer, {
 	shouldForwardProp: (prop) => prop !== 'open'
 })(
 	({ theme, open }) => ({

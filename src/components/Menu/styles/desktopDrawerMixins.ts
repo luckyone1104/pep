@@ -1,5 +1,5 @@
 import { CSSObject, Theme } from '@mui/material';
-import { MENU_WIDTH } from '../../Layout/const';
+import { MENU_WIDTH } from '../../AppLayout/const';
 
 export const extendedMixin = (theme: Theme): CSSObject => ({
 	width: MENU_WIDTH,
