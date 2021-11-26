@@ -10,7 +10,7 @@ export const AppRoutes: FC = () => {
 				<Route
 					exact
 					path="/"
-					component={lazy(() => import('src/pages/dashboard'))}
+					component={lazy(() => import('src/modules/dashboard'))}
 				/>
 				{listPages.map(({ path, component }) => (
 					<Route
@@ -22,7 +22,7 @@ export const AppRoutes: FC = () => {
 				))}
 				<Route
 					path="*"
-					component={lazy(() => import('src/pages/error/notFound'))}
+					component={lazy(() => import('src/modules/error/notFound'))}
 				/>
 			</Switch>
 		</Suspense>
