@@ -7,21 +7,29 @@ import { useField, useFormikContext } from 'formik';
 import { FieldInputProps } from 'formik/dist/types';
 
 type DatePickerFieldProps = {
-	fieldProps: FieldHookConfig<Date>
+	fieldProps: FieldHookConfig<Date>;
+	required?: boolean;
 } & Omit<DatePickerProps<Date>, keyof FieldInputProps<Date> | 'renderInput'>
 	& React.RefAttributes<HTMLDivElement>;
 
 export const DatePickerField: FC<DatePickerFieldProps> = (
 	{
 		fieldProps,
+		required,
 		...props
 	},
 ) => {
-	const [field] = useField(fieldProps);
-	const { setFieldValue } = useFormikContext();
+	const [field, {
+		touched,
+		error,
+	}] = useField(fieldProps);
+	const { setFieldValue, setFieldTouched } = useFormikContext();
 	const handleChange = (value: Date | null) => {
+		setFieldTouched(field.name, true);
 		setFieldValue(field.name, value);
 	};
+	const showValidationError = touched && !!error;
+	// console.log('error', error);
 
 	return (
 		<DatePicker
@@ -29,7 +37,14 @@ export const DatePickerField: FC<DatePickerFieldProps> = (
 			{...props}
 			onChange={handleChange}
 			mask="__.__.____"
-			renderInput={(params) => <TextField {...params} />}
+			renderInput={(params) => (
+				<TextField
+					{...params}
+					error={showValidationError}
+					required={required}
+					helperText={error}
+				/>
+			)}
 		/>
 	);
 };

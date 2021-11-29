@@ -18,7 +18,6 @@ export const TextBoxField: FC<TextBoxFieldProps> = (
 		error,
 		touched,
 	}] = useField(fieldProps);
-
 	const showValidationError = touched && !!error;
 
 	return (
@@ -28,7 +27,6 @@ export const TextBoxField: FC<TextBoxFieldProps> = (
 			error={showValidationError}
 			helperText={showValidationError ? error : null}
 			fullWidth
-			// variant="filled"
 		/>
 	);
 };
