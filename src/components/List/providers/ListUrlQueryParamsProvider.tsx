@@ -1,31 +1,27 @@
 import React, { FC } from 'react';
+import qs from 'qs';
 import { ListUrlQueryParamsContext } from './const';
 import { useHistory, useLocation } from 'react-router-dom';
 import { CustomObject } from '../../../types';
 import { getNormalizedQueryParams } from './utils';
 
 export const ListUrlQueryParamsProvider: FC = ({ children }) => {
-	const { search } = useLocation();
 	const history = useHistory();
-	const queryParamsInstance = new URLSearchParams(search);
-	const urlQueryParams: CustomObject = {};
-	// @ts-ignore
-	for (const [key, value] of queryParamsInstance) {
-		urlQueryParams[key] = value;
-	}
+	const { search } = useLocation();
+	const urlQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
 
 	const setUrlQueryParams = (params: CustomObject) => {
 		const normalizedQueryParams = getNormalizedQueryParams(params);
 
 		history.push({
-			search: new URLSearchParams(normalizedQueryParams).toString(),
+			search: qs.stringify(normalizedQueryParams, { arrayFormat: 'repeat' }),
 		});
 	};
 
 	return (
 		<ListUrlQueryParamsContext.Provider value={{
 			urlQueryParams,
-			setUrlQueryParams
+			setUrlQueryParams,
 		}}>
 			{children}
 		</ListUrlQueryParamsContext.Provider>

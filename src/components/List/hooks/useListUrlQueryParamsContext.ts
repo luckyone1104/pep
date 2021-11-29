@@ -4,7 +4,7 @@ import { CustomObject } from '../../../types';
 import { ListUrlQueryParamsContext } from '../providers/const';
 
 type ListQueryParamsContextType = {
-	urlQueryParams: Record<string, string>;
+	urlQueryParams: CustomObject;
 	setUrlQueryParams: (params: CustomObject) => void;
 }
 
