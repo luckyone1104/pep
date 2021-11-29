@@ -1,37 +1,31 @@
 import React, { FC } from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 type ListHeaderProps = {
 	listTitle: string;
-	buttonTitle?: string;
-	onButtonClick: () => void;
+	rightSide: JSX.Element;
 }
 
 export const ListHeader: FC<ListHeaderProps> = (
 	{
 		listTitle,
-		buttonTitle = 'Add',
-		onButtonClick,
-	}
+		rightSide,
+	},
 ) => {
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				justifyContent: 'space-between',
-				alignItems: 'center',
-			}}
-		>
-			<Typography variant="h4">
+		<Box sx={{
+			display: 'flex',
+			justifyContent: 'space-between',
+		}}>
+			<Typography
+				variant="h5"
+				sx={{
+					fontWeight: 700,
+				}}
+			>
 				{listTitle}
 			</Typography>
-			<Button
-				variant="contained"
-				size="large"
-				onClick={onButtonClick}
-			>
-				{buttonTitle}
-			</Button>
+			{rightSide}
 		</Box>
 	);
 };
