@@ -1,30 +1,34 @@
 import React, { FC } from 'react';
 import { useField } from 'formik';
-import { TextField } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
 import { FieldHookConfig } from 'formik/dist/Field';
-import { TextFieldProps } from '@mui/material/TextField/TextField';
+import { FieldInputProps } from 'formik/dist/types';
 
-type TextBoxFieldProps = Omit<FieldHookConfig<string>, keyof TextFieldProps> & TextFieldProps;
+type TextBoxFieldProps = {
+	fieldProps: FieldHookConfig<string>,
+} & Omit<TextFieldProps, keyof FieldInputProps<string>>;
 
-export const TextBoxField: FC<TextBoxFieldProps> = (props) => {
+export const TextBoxField: FC<TextBoxFieldProps> = (
+	{
+		fieldProps,
+		...props
+	},
+) => {
 	const [field, {
 		error,
-		touched
-	// @ts-ignore
-	}] = useField(props);
+		touched,
+	}] = useField(fieldProps);
 
 	const showValidationError = touched && !!error;
 
 	return (
-		<>
-			<TextField
-				{...field}
-				{...props}
-				error={showValidationError}
-				helperText={error}
-				fullWidth
-				variant="filled"
-			/>
-		</>
+		<TextField
+			{...field}
+			{...props}
+			error={showValidationError}
+			helperText={showValidationError ? error : null}
+			fullWidth
+			// variant="filled"
+		/>
 	);
 };
