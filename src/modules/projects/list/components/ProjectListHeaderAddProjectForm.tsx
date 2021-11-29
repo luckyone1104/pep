@@ -69,10 +69,9 @@ export const ProjectListHeaderAddProjectForm = forwardRef((
 					<SelectField
 						fieldProps={{
 							name: ProjectsListFormField.CoordinatorId,
-							validate: combineValidators(required()),
+							validate: required(),
 						}}
 						label="Coordinator"
-						multiple
 						items={COORDINATORS_MOCK_DATA}
 						required
 					/>

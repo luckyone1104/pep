@@ -1,14 +1,17 @@
 import React, { FC } from 'react';
 import { FilterSidebar } from '../../../../components/FilterSidebar';
-import { ProjectListFilterField, SIDEBAR_FORM_INITIAL_VALUES } from '../const';
+import { COORDINATORS_MOCK_DATA, ProjectListFilterField, SIDEBAR_FORM_INITIAL_VALUES } from '../const';
 import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { useListPaginationParamsContext } from '../../../../components/List/hooks/useListPaginationParamsContext';
 import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/useListUrlQueryParamsContext';
 import { CustomObject } from '../../../../types';
+import { SelectField } from 'src/components/adapters/SelectField';
+import { useFilterInitialValues } from '../../../../hooks/useFilterInitialValues';
 
 export const ProjectListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
+	const initialValues = useFilterInitialValues<typeof SIDEBAR_FORM_INITIAL_VALUES>(SIDEBAR_FORM_INITIAL_VALUES);
 
 	const handleSubmit = (values: CustomObject) => {
 		setPage(0);
@@ -20,7 +23,7 @@ export const ProjectListSidebar: FC = () => {
 
 	return (
 		<FilterSidebar
-			initialValues={SIDEBAR_FORM_INITIAL_VALUES}
+			initialValues={initialValues}
 			onSubmit={handleSubmit}
 		>
 			<TextBoxField
@@ -28,6 +31,14 @@ export const ProjectListSidebar: FC = () => {
 					name: ProjectListFilterField.Search,
 				}}
 				label="Search by project title"
+			/>
+			<SelectField
+				fieldProps={{
+					name: ProjectListFilterField.CoordinatorIds,
+				}}
+				label="Coordinator"
+				items={COORDINATORS_MOCK_DATA}
+				multiple
 			/>
 			{/*todo: add coordinators dropdown*/}
 		</FilterSidebar>

@@ -26,7 +26,7 @@ export const SORT_FIELDS_PAIRS = [
 
 export const SIDEBAR_FORM_INITIAL_VALUES = {
 	[ProjectListFilterField.Search]: '',
-	// [ProjectListFilterField.CoordinatorIds]: []
+	[ProjectListFilterField.CoordinatorIds]: [],
 };
 
 export const COORDINATORS_MOCK_DATA = [
