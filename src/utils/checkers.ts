@@ -14,11 +14,18 @@ export const isEmptyString = (value: string) => {
 	return value.trim().length === 0;
 };
 
-export const isEmpty = (value: unknown)  => {
+export const isEmpty = (value: unknown) => {
 	return (
 		isNullOrUndefined(value) ||
 		((typeof value === 'string') && isEmptyString(value)) ||
-		(Array.isArray(value) && value?.length === 0) ||
-		((value && typeof value === 'object') && Object.keys(value).length === 0)
+		(Array.isArray(value) && value?.length === 0)
 	);
+};
+
+export const isDateType = (value: unknown): value is Date => {
+	return value instanceof Date;
+};
+
+export const isValidDate = (value: Date): boolean => {
+	return !Number.isNaN(Date.parse(value.toString()));
 };
