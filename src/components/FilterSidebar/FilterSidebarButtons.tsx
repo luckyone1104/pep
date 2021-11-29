@@ -3,13 +3,15 @@ import { Box, Button, Divider } from '@mui/material';
 import { useFormikContext } from 'formik';
 import { useFilterSidebarContext } from './FilterSidebarProvider';
 import { CustomObject } from '../../types';
+import { getCleanFormValues } from './utils';
 
 export const FilterSidebarButtons: FC = () => {
 	const { closeSidebar } = useFilterSidebarContext();
-	const { initialValues, resetForm, submitForm } = useFormikContext();
+	const { values, submitForm, setValues } = useFormikContext();
 
 	const handleResetForm = () => {
-		resetForm(initialValues as CustomObject);
+		const cleanValues = getCleanFormValues(values as CustomObject);
+		setValues(cleanValues);
 		submitForm();
 		closeSidebar();
 	};

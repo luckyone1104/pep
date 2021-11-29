@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { Form } from 'formik';
 import Box from '@mui/material/Box';
 import { FilterSidebarButtons } from './FilterSidebarButtons';
-import {Divider, IconButton, Toolbar} from '@mui/material';
+import { Divider, IconButton, Toolbar } from '@mui/material';
 import classes from './styles/form.module.scss';
-import {useFilterSidebarContext} from './FilterSidebarProvider';
+import { useFilterSidebarContext } from './FilterSidebarProvider';
 import CloseIcon from '@mui/icons-material/Close';
 
 export const FilterSidebarForm: FC = ({ children }) => {
@@ -24,7 +24,7 @@ export const FilterSidebarForm: FC = ({ children }) => {
 				}}>
 					<Toolbar sx={{
 						display: 'flex',
-						justifyContent: 'end'
+						justifyContent: 'end',
 					}}>
 						<IconButton
 							onClick={closeSidebar}
@@ -38,6 +38,8 @@ export const FilterSidebarForm: FC = ({ children }) => {
 					<Divider />
 					<Box sx={{
 						p: 2,
+						display: 'flex',
+						flexDirection: 'column',
 						gap: 2,
 					}}>
 						{children}

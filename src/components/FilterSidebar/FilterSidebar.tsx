@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Drawer, useTheme, } from '@mui/material';
+import { Drawer, useTheme } from '@mui/material';
 import { FILTER_SIDEBAR_WIDTH } from '../AppLayout/const';
 import { useFilterSidebarContext } from './FilterSidebarProvider';
 import { Formik } from 'formik';
@@ -16,8 +16,8 @@ export const FilterSidebar: FC<FilterSidebarProps> = (
 	{
 		initialValues,
 		onSubmit,
-		children
-	}
+		children,
+	},
 ) => {
 	const theme = useTheme();
 	const {
@@ -59,6 +59,7 @@ export const FilterSidebar: FC<FilterSidebarProps> = (
 				<Formik
 					initialValues={initialValues}
 					onSubmit={onSubmit}
+					enableReinitialize
 				>
 					<FilterSidebarForm>
 						{children}
