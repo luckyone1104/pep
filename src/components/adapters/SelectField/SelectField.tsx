@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { useField, useFormikContext } from 'formik';
+import { useField } from 'formik';
 import { FieldHookConfig } from 'formik/dist/Field';
 import { SelectItem, SelectValue } from './types';
-import { FormControl, FormHelperText, InputLabel, ListItemText, MenuItem, Select } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
 import { SelectProps } from '@mui/material/Select/Select';
 import { FieldInputProps } from 'formik/dist/types';
 
@@ -25,10 +25,7 @@ export const SelectField: FC<DropdownFieldProps> = (
 		error,
 		touched,
 	}] = useField(fieldProps);
-	const { initialValues } = useFormikContext();
-	const { label, items } = props;
-	// @ts-ignore
-	const defaultValue = initialValues[field.name];
+	const { label, items, multiple } = props;
 	const showValidationError = touched && !!error;
 
 	return (
@@ -36,13 +33,16 @@ export const SelectField: FC<DropdownFieldProps> = (
 			<InputLabel id={label} required={required}>{label}</InputLabel>
 			<Select
 				{...field}
+				{...props}
 				error={showValidationError}
 				labelId={label}
 				label={label}
 			>
-				<MenuItem value={defaultValue}>
-					<ListItemText primary="-" />
-				</MenuItem>
+				{!multiple && (
+					<MenuItem value="">
+						<em>None</em>
+					</MenuItem>
+				)}
 				{items.map(({ id, value }) => (
 					<MenuItem
 						key={id}
