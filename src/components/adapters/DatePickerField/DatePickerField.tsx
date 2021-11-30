@@ -6,10 +6,12 @@ import { DatePickerProps } from '@mui/lab/DatePicker/DatePicker';
 import { useField, useFormikContext } from 'formik';
 import { FieldInputProps } from 'formik/dist/types';
 
+type ExcludedKeysAlias = 'date' | 'openPicker' | 'rawValue' | 'renderInput';
+
 type DatePickerFieldProps = {
 	fieldProps: FieldHookConfig<Date>;
 	required?: boolean;
-} & Omit<DatePickerProps<Date>, keyof FieldInputProps<Date> | 'renderInput'>
+} & Omit<DatePickerProps<Date>, keyof FieldInputProps<Date> | ExcludedKeysAlias>
 	& React.RefAttributes<HTMLDivElement>;
 
 export const DatePickerField: FC<DatePickerFieldProps> = (
@@ -29,7 +31,6 @@ export const DatePickerField: FC<DatePickerFieldProps> = (
 		setFieldValue(field.name, value);
 	};
 	const showValidationError = touched && !!error;
-	// console.log('error', error);
 
 	return (
 		<DatePicker
@@ -43,6 +44,7 @@ export const DatePickerField: FC<DatePickerFieldProps> = (
 					error={showValidationError}
 					required={required}
 					helperText={error}
+					fullWidth
 				/>
 			)}
 		/>
