@@ -1,4 +1,4 @@
-import { ListName } from '../../const/listName';
+import { ModuleName } from '../../const';
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
 import AccountTreeRoundedIcon from '@mui/icons-material/AccountTreeRounded';
 import GroupWorkRoundedIcon from '@mui/icons-material/GroupWorkRounded';
@@ -14,15 +14,15 @@ import AutoAwesomeMotionRoundedIcon from '@mui/icons-material/AutoAwesomeMotionR
 
 export const menuIcons = {
 	'Dashboard': <DashboardCustomizeRoundedIcon />,
-	[ListName.Projects]: <AccountTreeRoundedIcon />,
-	[ListName.Teams]: <GroupWorkRoundedIcon />,
-	[ListName.Users]: <GroupRoundedIcon />,
-	[ListName.Fields]: <TextFieldsRoundedIcon />,
-	[ListName.DeepLinks]: <InsertLinkRoundedIcon />,
-	[ListName.Documents]: <DocumentScannerRoundedIcon />,
-	[ListName.Roles]: <GamepadRoundedIcon />,
-	[ListName.FieldGroups]: <VerticalSplitRoundedIcon />,
-	[ListName.Surveys]: <AssignmentIndRoundedIcon />,
-	[ListName.Forms]: <AssignmentRoundedIcon />,
-	[ListName.FormTemplates]: <AutoAwesomeMotionRoundedIcon />,
+	[ModuleName.Projects]: <AccountTreeRoundedIcon />,
+	[ModuleName.Teams]: <GroupWorkRoundedIcon />,
+	[ModuleName.Users]: <GroupRoundedIcon />,
+	[ModuleName.Fields]: <TextFieldsRoundedIcon />,
+	[ModuleName.DeepLinks]: <InsertLinkRoundedIcon />,
+	[ModuleName.Documents]: <DocumentScannerRoundedIcon />,
+	[ModuleName.Roles]: <GamepadRoundedIcon />,
+	[ModuleName.FieldGroups]: <VerticalSplitRoundedIcon />,
+	[ModuleName.Surveys]: <AssignmentIndRoundedIcon />,
+	[ModuleName.Forms]: <AssignmentRoundedIcon />,
+	[ModuleName.FormTemplates]: <AutoAwesomeMotionRoundedIcon />,
 };

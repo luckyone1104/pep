@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { PROJECTS_LIST_URL, SORT_FIELDS_PAIRS } from './const';
+import { PROJECTS_URL, SORT_FIELDS_PAIRS } from './const';
 import { ProjectsListSidebar } from './components/ProjectsListSidebar';
 import { ProjectsListTable } from './components/ProjectsListTable';
 import { ListProviders } from '../../../components/List/providers';
@@ -10,13 +10,13 @@ import { ProjectListAddProjectModalProvider } from './providers/ProjectListAddPr
 export const ProjectsList: FC = () => {
 	return (
 		<ListProviders
-			url={PROJECTS_LIST_URL}
+			url={PROJECTS_URL}
 			sortFieldsPairs={SORT_FIELDS_PAIRS}
 		>
 			<ListLayout>
 				<ProjectListAddProjectModalProvider>
-					<ProjectsListHeader/>
-					<ProjectsListTable/>
+					<ProjectsListHeader />
+					<ProjectsListTable />
 				</ProjectListAddProjectModalProvider>
 			</ListLayout>
 			<ProjectsListSidebar/>

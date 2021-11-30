@@ -1,4 +1,4 @@
-export enum ListName {
+export enum ModuleName {
 	Projects = 'Projects',
 	Teams = 'Teams',
 	Users = 'Users',

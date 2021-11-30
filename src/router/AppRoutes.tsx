@@ -1,6 +1,6 @@
-import { FC, Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { listPages } from '../const';
+import { FC, lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { detailPages, listPages } from '../const';
 import { CircularLoader } from '../components/CircularLoader';
 
 export const AppRoutes: FC = () => {
@@ -13,6 +13,14 @@ export const AppRoutes: FC = () => {
 					component={lazy(() => import('src/modules/dashboard'))}
 				/>
 				{listPages.map(({ path, component }) => (
+					<Route
+						exact
+						key={path}
+						path={path}
+						component={component}
+					/>
+				))}
+				{detailPages.map(({ path, component }) => (
 					<Route
 						exact
 						key={path}

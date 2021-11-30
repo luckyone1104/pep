@@ -6,8 +6,8 @@ export const PROJECTS_COORDINATORS_QUERY_KEY = 'PROJECTS_COORDINATORS_QUERY_KEY'
 
 export const ProjectListAddProjectModalContext = createContext(null as unknown);
 
-export const PROJECTS_LIST_URL = `${BASE_API_URL}/projects`;
-export const PROJECTS_COORDINATORS_URL = PROJECTS_LIST_URL.concat('/filterCoordinators');
+export const PROJECTS_URL = `${BASE_API_URL}/projects`;
+export const PROJECTS_COORDINATORS_URL = PROJECTS_URL.concat('/filterCoordinators');
 
 export enum ProjectsListFormField {
 	Coordinator = 'coordinator',

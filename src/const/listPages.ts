@@ -1,59 +1,59 @@
 import { lazy } from 'react';
-import { ListName } from './listName';
+import { ModuleName } from './ModuleName';
 
 export const listPages = [
 	{
-		name: ListName.Projects,
+		name: ModuleName.Projects,
 		path: '/projects/list',
 		component: lazy(() => import('src/modules/projects/list')),
 	},
 	{
-		name: ListName.Teams,
+		name: ModuleName.Teams,
 		path: '/teams/list',
 		component: lazy(() => import('src/modules/teams/list')),
 	},
 	{
-		name: ListName.Users,
+		name: ModuleName.Users,
 		path: '/users/list',
 		component: lazy(() => import('src/modules/users/list')),
 	},
 	{
-		name: ListName.Fields,
+		name: ModuleName.Fields,
 		path: '/fields/list',
 		component: lazy(() => import('src/modules/fields/list')),
 	},
 	{
-		name: ListName.DeepLinks,
+		name: ModuleName.DeepLinks,
 		path: '/deeplinks/list',
 		component: lazy(() => import('src/modules/deeplinks/list')),
 	},
 	{
-		name: ListName.Documents,
+		name: ModuleName.Documents,
 		path: '/documents/list',
 		component: lazy(() => import('src/modules/documents/list')),
 	},
 	{
-		name: ListName.Roles,
+		name: ModuleName.Roles,
 		path: '/roles/list',
 		component: lazy(() => import('src/modules/roles/list')),
 	},
 	{
-		name: ListName.FieldGroups,
+		name: ModuleName.FieldGroups,
 		path: '/fieldgroups/list',
 		component: lazy(() => import('src/modules/fieldgroups/list')),
 	},
 	{
-		name: ListName.Surveys,
+		name: ModuleName.Surveys,
 		path: '/surveys/list',
 		component: lazy(() => import('src/modules/surveys/list')),
 	},
 	{
-		name: ListName.Forms,
+		name: ModuleName.Forms,
 		path: '/forms/list',
 		component: lazy(() => import('src/modules/forms/list')),
 	},
 	{
-		name: ListName.FormTemplates,
+		name: ModuleName.FormTemplates,
 		path: '/formtemplates/list',
 		component: lazy(() => import('src/modules/formtemplates/list')),
 	},

@@ -4,6 +4,7 @@ import { menuIcons } from '../menuIcons';
 import { listPages } from '../../../const';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useMenuContext } from '../MenuProvider';
+import { checkIfMenuItemSelected } from './utils';
 
 export const MenuList: FC = () => {
 	const history = useHistory();
@@ -43,7 +44,7 @@ export const MenuList: FC = () => {
 					onClick={(e: SyntheticEvent) => {
 						handleLinkButtonClick(e, path);
 					}}
-					selected={pathname === path}
+					selected={checkIfMenuItemSelected(pathname, name)}
 				>
 					<ListItemIcon>
 						{menuIcons[name]}

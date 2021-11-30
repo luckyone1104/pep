@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-import { PROJECTS_COORDINATORS_URL, PROJECTS_LIST_URL } from './const';
+import { PROJECTS_COORDINATORS_URL, PROJECTS_URL } from './const';
 import { AddProjectMutationData } from './types';
 import { CustomObject } from '../../../types';
 import { MutationFunction } from 'react-query';
@@ -14,5 +14,5 @@ export const fetchCoordinators = async () => {
 }
 
 export const postProject: MutationFunction<CustomObject, AddProjectMutationData> =  (data) => {
-	return axios.post(PROJECTS_LIST_URL, data);
+	return axios.post(PROJECTS_URL, data);
 };
