@@ -1,1 +1,3 @@
-export const BASE_API_URL = 'https://pepwebappqa.azurewebsites.net';
+export { BASE_API_URL } from './const';
+export { get } from './get';
+export { post } from './post';

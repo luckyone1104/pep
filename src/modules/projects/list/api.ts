@@ -1,18 +1,15 @@
-import axios from 'axios';
-import qs from 'qs';
 import { PROJECTS_COORDINATORS_URL, PROJECTS_URL } from './const';
 import { AddProjectMutationData } from './types';
 import { CustomObject } from '../../../types';
 import { MutationFunction } from 'react-query';
+import { get, post } from '../../../api';
 
 export const fetchCoordinators = async () => {
-	const response = await axios.get(PROJECTS_COORDINATORS_URL, {
-		paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' })
-	});
+	const response = await get(PROJECTS_COORDINATORS_URL);
 
 	return response.data;
-}
+};
 
 export const postProject: MutationFunction<CustomObject, AddProjectMutationData> =  (data) => {
-	return axios.post(PROJECTS_URL, data);
+	return post<CustomObject, AddProjectMutationData>(PROJECTS_URL, data);
 };
