@@ -6,13 +6,20 @@ import { CustomObject } from '../../types';
 import { ListNoResultsOverlay } from './components/ListNoResultsOverlay';
 import { ListErrorOverlay } from './components/ListErrorOverlay';
 import { useList } from './hooks/useList';
+import { HandleRowClickFunction } from './types';
 
 export type ListProps = {
 	columns: GridColumns;
 	rows: undefined | CustomObject[];
+	onRowClick?: HandleRowClickFunction;
 }
 
-export const List: FC<ListProps> = (props) => {
+export const List: FC<ListProps> = (
+	{
+		onRowClick,
+		...props
+	}
+) => {
 	const {
 		loading,
 		sortModel,
@@ -24,7 +31,7 @@ export const List: FC<ListProps> = (props) => {
 		take,
 		totalItemsCount,
 		onPageChange,
-		onPageSizeChange
+		onPageSizeChange,
 	} = useList(props);
 
 	return (
@@ -42,6 +49,7 @@ export const List: FC<ListProps> = (props) => {
 			onPageChange={onPageChange}
 			onPageSizeChange={onPageSizeChange}
 			rowCount={totalItemsCount}
+			onRowClick={onRowClick}
 			components={{
 				LoadingOverlay: ListLoadingOverlay,
 				NoResultsOverlay: ListNoResultsOverlay,
