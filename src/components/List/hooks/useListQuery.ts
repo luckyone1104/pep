@@ -1,11 +1,11 @@
 import { useInfiniteQuery } from 'react-query';
 import { UseInfiniteQueryResult } from 'react-query/types/react/types';
 import { useNotificationsContext } from '../../../providers/NotificationsProvider/hooks';
-import { fetchListQueryData } from '../../../api/fetchListQueryData';
 import { ListData } from '../types';
 import { useListPaginationParamsContext } from './useListPaginationParamsContext';
 import { useListUrlQueryParamsContext } from './useListUrlQueryParamsContext';
 import { AxiosError } from 'axios';
+import { fetchListQueryData } from '../api';
 
 export const useListQuery = (url: string): UseInfiniteQueryResult<ListData> => {
 	const { notify } = useNotificationsContext();
