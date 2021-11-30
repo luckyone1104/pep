@@ -1,12 +1,12 @@
 import { useMutation } from 'react-query';
 import { postProject } from '../api';
 import { useNotificationsContext } from '../../../../providers/NotificationsProvider/hooks';
-import { useProjectListAddProjectModalContext } from './useProjectListAddProjectModalContext';
+import { useProjectsListAddProjectModalContext } from './useProjectsListAddProjectModalContext';
 import { useListQueryContext } from '../../../../components/List/hooks/useListQueryContext';
 
 export const useAddProjectMutation = () => {
 	const { notify } = useNotificationsContext();
-	const { handleClose: closeModal } = useProjectListAddProjectModalContext();
+	const { handleClose: closeModal } = useProjectsListAddProjectModalContext();
 	const { refetch } = useListQueryContext();
 
 	return useMutation(postProject, {

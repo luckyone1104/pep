@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { Button } from '@mui/material';
 import { ListHeader } from '../../../../components/ListHeader';
-import { useProjectListAddProjectModalContext } from '../hooks/useProjectListAddProjectModalContext';
+import { useProjectsListAddProjectModalContext } from '../hooks/useProjectsListAddProjectModalContext';
 
-export const ProjectListHeader: FC = () => {
-	const { handleOpen } = useProjectListAddProjectModalContext();
+export const ProjectsListHeader: FC = () => {
+	const { handleOpen } = useProjectsListAddProjectModalContext();
 
 	return (
 		<ListHeader

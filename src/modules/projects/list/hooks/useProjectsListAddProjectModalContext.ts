@@ -7,7 +7,7 @@ type ProjectListAddProjectModalContextType = {
 	handleClose: () => void;
 }
 
-export const useProjectListAddProjectModalContext = () => {
+export const useProjectsListAddProjectModalContext = () => {
 	const context = useContext(ProjectListAddProjectModalContext);
 
 	if (isNull(context)) {

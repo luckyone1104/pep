@@ -17,7 +17,7 @@ export enum ProjectsListFormField {
 	Title = 'title',
 }
 
-export enum ProjectListFilterField {
+export enum ProjectsListFilterField {
 	CoordinatorIds = 'coordinatorIds',
 	TitleSortOrder = 'titleSortOrder',
 	StartDateSortOrder = 'startDateSortOrder',
@@ -26,14 +26,14 @@ export enum ProjectListFilterField {
 }
 
 export const SORT_FIELDS_PAIRS = [
-	[ProjectsListFormField.Title, ProjectListFilterField.TitleSortOrder],
-	[ProjectsListFormField.StartDate, ProjectListFilterField.StartDateSortOrder],
-	[ProjectsListFormField.Coordinator, ProjectListFilterField.CoordinatorSortOrder],
+	[ProjectsListFormField.Title, ProjectsListFilterField.TitleSortOrder],
+	[ProjectsListFormField.StartDate, ProjectsListFilterField.StartDateSortOrder],
+	[ProjectsListFormField.Coordinator, ProjectsListFilterField.CoordinatorSortOrder],
 ];
 
 export const SIDEBAR_FORM_INITIAL_VALUES = {
-	[ProjectListFilterField.Search]: '',
-	[ProjectListFilterField.CoordinatorIds]: [],
+	[ProjectsListFilterField.Search]: '',
+	[ProjectsListFilterField.CoordinatorIds]: [],
 };
 
 export const ADD_PROJECT_FORM_INITIAL_VALUES: AddProjectFormValues = {

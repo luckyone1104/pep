@@ -10,21 +10,21 @@ import { DEFAULT_MAX_DATE, DEFAULT_MIN_DATE } from '../../../../components/adapt
 import { UseMutateFunction } from 'react-query';
 import { AddProjectFormValues, AddProjectMutationData } from '../types';
 import { CustomObject } from '../../../../types';
-import { useProjectListCoordinators } from '../hooks/useProjectListCoordinators';
+import { useProjectsListCoordinators } from '../hooks/useProjectsListCoordinators';
 
 type ProjectListHeaderAddProjectFormProps = {
 	mutate:  UseMutateFunction<CustomObject, unknown, AddProjectMutationData> ;
 	disabled: boolean;
 }
 
-export const ProjectListHeaderAddProjectForm = forwardRef<unknown, ProjectListHeaderAddProjectFormProps>((
+export const ProjectsListHeaderAddProjectForm = forwardRef<unknown, ProjectListHeaderAddProjectFormProps>((
 	{
 		mutate,
 		disabled,
 	},
 	ref,
 ) => {
-	const { data: coordinators, isLoading } = useProjectListCoordinators();
+	const { data: coordinators, isLoading } = useProjectsListCoordinators();
 	const handleSubmit = (values: AddProjectFormValues) => {
 		const submitData: AddProjectMutationData = {
 			...values,
@@ -92,4 +92,4 @@ export const ProjectListHeaderAddProjectForm = forwardRef<unknown, ProjectListHe
 	);
 });
 
-ProjectListHeaderAddProjectForm.displayName = 'ProjectListHeaderAddProjectForm';
+ProjectsListHeaderAddProjectForm.displayName = 'ProjectListHeaderAddProjectForm';

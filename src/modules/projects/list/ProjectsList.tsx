@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { PROJECTS_LIST_URL, SORT_FIELDS_PAIRS } from './const';
-import { ProjectListSidebar } from './components/ProjectListSidebar';
+import { ProjectsListSidebar } from './components/ProjectsListSidebar';
 import { ProjectsListTable } from './components/ProjectsListTable';
 import { ListProviders } from '../../../components/List/providers';
-import { ProjectListHeader } from './components/ProjectListHeader';
+import { ProjectsListHeader } from './components/ProjectsListHeader';
 import { ListLayout } from '../../../components/List';
 import { ProjectListAddProjectModalProvider } from './providers/ProjectListAddProjectModalProvider';
 
@@ -15,11 +15,11 @@ export const ProjectsList: FC = () => {
 		>
 			<ListLayout>
 				<ProjectListAddProjectModalProvider>
-					<ProjectListHeader/>
+					<ProjectsListHeader/>
 					<ProjectsListTable/>
 				</ProjectListAddProjectModalProvider>
 			</ListLayout>
-			<ProjectListSidebar/>
+			<ProjectsListSidebar/>
 		</ListProviders>
 	);
 };

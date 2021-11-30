@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { ProjectListAddProjectModalContext } from '../const';
-import { ProjectListHeaderAddProjectModal } from '../components/ProjectListHeaderAddProjectModal';
+import { ProjectsListHeaderAddProjectModal } from '../components/ProjectsListHeaderAddProjectModal';
 
 export const ProjectListAddProjectModalProvider: FC = ({ children }) => {
 	const [open, setOpen] = React.useState(false);
@@ -13,7 +13,7 @@ export const ProjectListAddProjectModalProvider: FC = ({ children }) => {
 			handleClose
 		}}>
 			{children}
-			<ProjectListHeaderAddProjectModal
+			<ProjectsListHeaderAddProjectModal
 				open={open}
 				onClose={handleClose}
 			/>

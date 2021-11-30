@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { List } from '../../../../components/List';
-import { useProjectListColumns } from '../hooks/useProjectListColumns';
-import { useProjectListRows } from '../hooks/useProjectListRows';
+import { useProjectsListColumns } from '../hooks/useProjectsListColumns';
+import { useProjectsListRows } from '../hooks/useProjectsListRows';
 
 export const ProjectsListTable: FC = () => {
-	const columns = useProjectListColumns();
-	const rows = useProjectListRows();
+	const columns = useProjectsListColumns();
+	const rows = useProjectsListRows();
 
 	return (
 		<List

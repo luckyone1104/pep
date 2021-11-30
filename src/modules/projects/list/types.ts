@@ -1,5 +1,4 @@
-import { ProjectListFilterField, ProjectsListFormField } from './const';
-import { Sort } from '../../../types';
+import { ProjectsListFormField } from './const';
 
 export type ProjectsListDataItem = {
 	[ProjectsListFormField.Coordinator]: string;
@@ -9,13 +8,6 @@ export type ProjectsListDataItem = {
 	[ProjectsListFormField.Title]: string;
 }
 
-export type ProjectListFilterValues = {
-	[ProjectListFilterField.CoordinatorIds]?: number[];
-	[ProjectListFilterField.TitleSortOrder]?: Sort;
-	[ProjectListFilterField.StartDateSortOrder]?: Sort;
-	[ProjectListFilterField.CoordinatorSortOrder]?: Sort;
-	[ProjectListFilterField.Search]?: string;
-}
 export type AddProjectFormValues = {
 	[ProjectsListFormField.Title]: string,
 	[ProjectsListFormField.StartDate]: Date,

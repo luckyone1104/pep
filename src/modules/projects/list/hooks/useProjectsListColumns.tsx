@@ -2,7 +2,7 @@ import { ProjectsListFormField } from '../const';
 import { formatDate } from '../../../../utils/formatDate';
 import { GridColumns } from '@mui/x-data-grid';
 
-export const useProjectListColumns = (): GridColumns => {
+export const useProjectsListColumns = (): GridColumns => {
 	return [
 		{
 			field: ProjectsListFormField.Title,

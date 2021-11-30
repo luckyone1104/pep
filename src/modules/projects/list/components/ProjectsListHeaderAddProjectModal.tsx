@@ -2,7 +2,7 @@ import React, { FC, useRef } from 'react';
 import { SimpleModal } from '../../../../components/SimpleModal';
 import { Button } from '@mui/material';
 import { SimpleModalProps } from '../../../../components/SimpleModal/SimpleModal';
-import { ProjectListHeaderAddProjectForm } from './ProjectListHeaderAddProjectForm';
+import { ProjectsListHeaderAddProjectForm } from './ProjectsListHeaderAddProjectForm';
 import { FormikProps } from 'formik';
 import { AddProjectFormValues } from '../types';
 import { useAddProjectMutation } from '../hooks/useAddProjectMutation';
@@ -10,7 +10,7 @@ import { LoadingButton } from '@mui/lab';
 
 type ProjectListHeaderAddProjectModalProps = Pick<SimpleModalProps, 'open' | 'onClose'>;
 
-export const ProjectListHeaderAddProjectModal: FC<ProjectListHeaderAddProjectModalProps> = (
+export const ProjectsListHeaderAddProjectModal: FC<ProjectListHeaderAddProjectModalProps> = (
 	{
 		open,
 		onClose,
@@ -43,7 +43,7 @@ export const ProjectListHeaderAddProjectModal: FC<ProjectListHeaderAddProjectMod
 				</LoadingButton>,
 			]}
 		>
-			<ProjectListHeaderAddProjectForm
+			<ProjectsListHeaderAddProjectForm
 				ref={formRef}
 				mutate={mutate}
 				disabled={isLoading}
