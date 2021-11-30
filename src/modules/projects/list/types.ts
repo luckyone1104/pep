@@ -9,17 +9,21 @@ export type ProjectsListDataItem = {
 	[ProjectsListFormField.Title]: string;
 }
 
-export type ProjectListData = {
-	totalItemsCount?: number;
-	items: ProjectsListDataItem[];
-}
-
 export type ProjectListFilterValues = {
 	[ProjectListFilterField.CoordinatorIds]?: number[];
 	[ProjectListFilterField.TitleSortOrder]?: Sort;
 	[ProjectListFilterField.StartDateSortOrder]?: Sort;
 	[ProjectListFilterField.CoordinatorSortOrder]?: Sort;
 	[ProjectListFilterField.Search]?: string;
-} //todo: ??
+}
+export type AddProjectFormValues = {
+	[ProjectsListFormField.Title]: string,
+	[ProjectsListFormField.StartDate]: Date,
+	[ProjectsListFormField.CoordinatorId]: '' | number,
+}
 
-
+export type AddProjectMutationData = {
+	[ProjectsListFormField.Title]: string,
+	[ProjectsListFormField.StartDate]: string,
+	[ProjectsListFormField.CoordinatorId]: '' | number,
+}

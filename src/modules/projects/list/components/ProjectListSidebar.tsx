@@ -40,7 +40,6 @@ export const ProjectListSidebar: FC = () => {
 				items={COORDINATORS_MOCK_DATA}
 				multiple
 			/>
-			{/*todo: add coordinators dropdown*/}
 		</FilterSidebar>
 	);
 };

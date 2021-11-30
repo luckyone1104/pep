@@ -3,8 +3,10 @@ import { SimpleModal } from '../../../../components/SimpleModal';
 import { Button } from '@mui/material';
 import { SimpleModalProps } from '../../../../components/SimpleModal/SimpleModal';
 import { ProjectListHeaderAddProjectForm } from './ProjectListHeaderAddProjectForm';
-import { AddProjectFormValues } from '../const';
 import { FormikProps } from 'formik';
+import { AddProjectFormValues } from '../types';
+import { useAddProjectMutation } from '../hooks/useAddProjectMutation';
+import { LoadingButton } from '@mui/lab';
 
 type ProjectListHeaderAddProjectModalProps = Pick<SimpleModalProps, 'open' | 'onClose'>;
 
@@ -15,7 +17,8 @@ export const ProjectListHeaderAddProjectModal: FC<ProjectListHeaderAddProjectMod
 	},
 ) => {
 	const formRef = useRef<FormikProps<AddProjectFormValues>>();
-	const handleFormSubmit = (...args: any[]) => formRef.current?.handleSubmit(...args);
+	const handleFormSubmit = (...args: never[]) => formRef.current?.handleSubmit(...args);
+	const { mutate, isLoading } = useAddProjectMutation();
 
 	return (
 		<SimpleModal
@@ -23,15 +26,28 @@ export const ProjectListHeaderAddProjectModal: FC<ProjectListHeaderAddProjectMod
 			open={open}
 			onClose={onClose}
 			actionButtons={[
-				<Button key="cancel" onClick={onClose}>
+				<Button
+					key="cancel"
+					onClick={onClose}
+					disabled={isLoading}
+				>
 					Cancel
 				</Button>,
-				<Button key="create" onClick={handleFormSubmit}>
+				<LoadingButton
+					key="create"
+					onClick={handleFormSubmit}
+					loading={isLoading}
+					loadingIndicator="Loading..."
+				>
 					Create
-				</Button>,
+				</LoadingButton>,
 			]}
 		>
-			<ProjectListHeaderAddProjectForm ref={formRef} />
+			<ProjectListHeaderAddProjectForm
+				ref={formRef}
+				mutate={mutate}
+				disabled={isLoading}
+			/>
 		</SimpleModal>
 	);
 };

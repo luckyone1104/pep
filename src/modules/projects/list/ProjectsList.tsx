@@ -5,6 +5,7 @@ import { ProjectsListTable } from './components/ProjectsListTable';
 import { ListProviders } from '../../../components/List/providers';
 import { ProjectListHeader } from './components/ProjectListHeader';
 import { ListLayout } from '../../../components/List';
+import { ProjectListAddProjectModalProvider } from './providers/ProjectListAddProjectModalProvider';
 
 export const ProjectsList: FC = () => {
 	return (
@@ -13,8 +14,10 @@ export const ProjectsList: FC = () => {
 			sortFieldsPairs={SORT_FIELDS_PAIRS}
 		>
 			<ListLayout>
-				<ProjectListHeader/>
-				<ProjectsListTable/>
+				<ProjectListAddProjectModalProvider>
+					<ProjectListHeader/>
+					<ProjectsListTable/>
+				</ProjectListAddProjectModalProvider>
 			</ListLayout>
 			<ProjectListSidebar/>
 		</ListProviders>

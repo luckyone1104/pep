@@ -26,6 +26,7 @@ export const useList = (
 		isFetchingNextPage,
 		isFetchingPreviousPage,
 		isPreviousData,
+		isRefetching
 	} = useListQueryContext();
 
 	const queryError = error && new Error(error as string);
@@ -39,7 +40,7 @@ export const useList = (
 
 	const { sortModel, handleSort } = useListSortContext();
 
-	const loading = isLoading || isFetchingNextPage || isFetchingPreviousPage || isPreviousData;
+	const loading = isLoading || isFetchingNextPage || isFetchingPreviousPage || isPreviousData || isRefetching;
 
 	const handlePageChange = useCallback((pageIndex: number) => {
 		setPage(pageIndex);
