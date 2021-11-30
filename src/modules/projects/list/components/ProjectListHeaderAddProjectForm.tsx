@@ -1,7 +1,7 @@
 import React, { forwardRef, Ref } from 'react';
 import { Form, Formik, FormikProps } from 'formik';
 import { TextBoxField } from '../../../../components/adapters/TextBoxField';
-import { ADD_PROJECT_FORM_INITIAL_VALUES, COORDINATORS_MOCK_DATA, ProjectsListFormField, } from '../const';
+import { ADD_PROJECT_FORM_INITIAL_VALUES, ProjectsListFormField, } from '../const';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { Box } from '@mui/material';
 import { DatePickerField } from '../../../../components/adapters/DatePickerField';
@@ -10,6 +10,7 @@ import { DEFAULT_MAX_DATE, DEFAULT_MIN_DATE } from '../../../../components/adapt
 import { UseMutateFunction } from 'react-query';
 import { AddProjectFormValues, AddProjectMutationData } from '../types';
 import { CustomObject } from '../../../../types';
+import { useProjectListCoordinators } from '../hooks/useProjectListCoordinators';
 
 type ProjectListHeaderAddProjectFormProps = {
 	mutate:  UseMutateFunction<CustomObject, unknown, AddProjectMutationData> ;
@@ -23,6 +24,7 @@ export const ProjectListHeaderAddProjectForm = forwardRef<unknown, ProjectListHe
 	},
 	ref,
 ) => {
+	const { data: coordinators, isLoading } = useProjectListCoordinators();
 	const handleSubmit = (values: AddProjectFormValues) => {
 		const submitData: AddProjectMutationData = {
 			...values,
@@ -80,9 +82,9 @@ export const ProjectListHeaderAddProjectForm = forwardRef<unknown, ProjectListHe
 							validate: required(),
 						}}
 						label="Coordinator"
-						items={COORDINATORS_MOCK_DATA}
+						items={coordinators}
 						required
-						disabled={disabled}
+						disabled={isLoading || disabled}
 					/>
 				</Box>
 			</Form>

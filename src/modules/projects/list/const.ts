@@ -2,7 +2,7 @@ import { BASE_API_URL } from '../../../api';
 import { AddProjectFormValues } from './types';
 import { createContext } from 'react';
 
-// export const PROJECTS_COORDINATORS_QUERY_KEY = 'PROJECTS_COORDINATORS_QUERY_KEY';
+export const PROJECTS_COORDINATORS_QUERY_KEY = 'PROJECTS_COORDINATORS_QUERY_KEY';
 
 export const ProjectListAddProjectModalContext = createContext(null as unknown);
 
@@ -35,21 +35,6 @@ export const SIDEBAR_FORM_INITIAL_VALUES = {
 	[ProjectListFilterField.Search]: '',
 	[ProjectListFilterField.CoordinatorIds]: [],
 };
-
-export const COORDINATORS_MOCK_DATA = [
-	{
-		id: 1,
-		value: 'Artur Grugon',
-	},
-	{
-		id: 2,
-		value: 'Kiril Krigan',
-	},
-	{
-		id: 3,
-		value: 'Kristina Lavruk',
-	},
-];
 
 export const ADD_PROJECT_FORM_INITIAL_VALUES: AddProjectFormValues = {
 	[ProjectsListFormField.Title]: '',
