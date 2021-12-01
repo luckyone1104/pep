@@ -6,6 +6,7 @@ import { ListProviders } from '../../../components/List/providers';
 import { ProjectsListHeader } from './components/ProjectsListHeader';
 import { ListLayout } from '../../../components/List';
 import { ProjectListAddProjectModalProvider } from './providers/ProjectListAddProjectModalProvider';
+import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 
 export const ProjectsList: FC = () => {
 	return (
@@ -16,6 +17,7 @@ export const ProjectsList: FC = () => {
 			<ListLayout>
 				<ProjectListAddProjectModalProvider>
 					<ProjectsListHeader />
+					<FilterBreadCrumbs />
 					<ProjectsListTable />
 				</ProjectListAddProjectModalProvider>
 			</ListLayout>
