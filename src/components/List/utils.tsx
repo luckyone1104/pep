@@ -5,7 +5,7 @@ import Skeleton from '@mui/material/Skeleton';
 import { CustomObject } from '../../types';
 import { DEFAULT_EMPTY_ROWS_COUNT } from './const';
 
-const renderCellWIthSkeleton = ({ formattedValue  }: GridRenderCellParams) => {
+export const renderCellWIthSkeleton = ({ formattedValue }: GridRenderCellParams) => {
 	return isEmpty(formattedValue)
 		? (
 			<Typography sx={{ width: '100%' }}>

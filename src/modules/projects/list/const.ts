@@ -1,13 +1,7 @@
-import { BASE_API_URL } from '../../../api';
-import { AddProjectFormValues } from './types';
 import { createContext } from 'react';
-
-export const PROJECTS_COORDINATORS_QUERY_KEY = 'PROJECTS_COORDINATORS_QUERY_KEY';
+import { FilterValues } from './types';
 
 export const ProjectListAddProjectModalContext = createContext(null as unknown);
-
-export const PROJECTS_URL = `${BASE_API_URL}/projects`;
-export const PROJECTS_COORDINATORS_URL = PROJECTS_URL.concat('/filterCoordinators');
 
 export enum ProjectsListFormField {
 	Coordinator = 'coordinator',
@@ -31,13 +25,7 @@ export const SORT_FIELDS_PAIRS = [
 	[ProjectsListFormField.Coordinator, ProjectsListFilterField.CoordinatorSortOrder],
 ];
 
-export const SIDEBAR_FORM_INITIAL_VALUES = {
+export const SIDEBAR_FORM_INITIAL_VALUES: FilterValues = {
 	[ProjectsListFilterField.Search]: '',
 	[ProjectsListFilterField.CoordinatorIds]: [],
-};
-
-export const ADD_PROJECT_FORM_INITIAL_VALUES: AddProjectFormValues = {
-	[ProjectsListFormField.Title]: '',
-	[ProjectsListFormField.StartDate]: new Date(),
-	[ProjectsListFormField.CoordinatorId]: '',
 };

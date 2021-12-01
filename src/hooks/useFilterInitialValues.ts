@@ -1,23 +1,23 @@
-import { useMemo } from 'react';
 import { useListUrlQueryParamsContext } from '../components/List/hooks/useListUrlQueryParamsContext';
 
-type UseFilterInitialValues = <T>(defaultInitialValues: T) => Record<keyof T, unknown>;
+type UseFilterInitialValues = <T>(defaultInitialValues: T) => T;
 
 export const useFilterInitialValues: UseFilterInitialValues = (defaultInitialValues) => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return useMemo(() => {
-		const initialValues = defaultInitialValues;
-
-		Object.entries(urlQueryParams)
-			.forEach(([key, value]) => {
-				if (Object.prototype.hasOwnProperty.call(initialValues, key)) {
+	return Object.entries(urlQueryParams)
+		.reduce((acc, [key, value]) => {
+			if (Object.prototype.hasOwnProperty.call(defaultInitialValues, key)) {
+				// @ts-ignore
+				if (Array.isArray(defaultInitialValues[key]) && !Array.isArray(value)) {
 					// @ts-ignore
-					initialValues[key] = value;
+					acc[key] = [value];
+				} else {
+					// @ts-ignore
+					acc[key] = value;
 				}
-			});
+			}
 
-		return initialValues;
-	}, [urlQueryParams, defaultInitialValues]);
-
+			return acc;
+		}, { ...defaultInitialValues } as typeof defaultInitialValues);
 };

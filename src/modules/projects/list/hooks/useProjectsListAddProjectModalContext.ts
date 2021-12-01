@@ -3,6 +3,7 @@ import { ProjectListAddProjectModalContext } from '../const';
 import { isNull } from '../../../../utils';
 
 type ProjectListAddProjectModalContextType = {
+	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
 }

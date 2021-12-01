@@ -7,13 +7,14 @@ import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/
 import { CustomObject } from '../../../../types';
 import { SelectField } from 'src/components/adapters/SelectField';
 import { useFilterInitialValues } from '../../../../hooks/useFilterInitialValues';
-import { useProjectsListCoordinators } from '../hooks/useProjectsListCoordinators';
+import { useProjectsCoordinators } from '../../common/hooks/useProjectsCoordinators';
+import { FilterValues } from '../types';
 
 export const ProjectsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
-	const initialValues = useFilterInitialValues<typeof SIDEBAR_FORM_INITIAL_VALUES>(SIDEBAR_FORM_INITIAL_VALUES);
-	const { data: coordinators, isLoading } = useProjectsListCoordinators();
+	const initialValues = useFilterInitialValues<FilterValues>(SIDEBAR_FORM_INITIAL_VALUES);
+	const { data: coordinators, isLoading } = useProjectsCoordinators();
 
 	const handleSubmit = (values: CustomObject) => {
 		setPage(0);

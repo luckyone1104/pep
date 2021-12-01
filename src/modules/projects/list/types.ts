@@ -1,4 +1,4 @@
-import { ProjectsListFormField } from './const';
+import { ProjectsListFilterField, ProjectsListFormField } from './const';
 
 export type ProjectsListDataItem = {
 	[ProjectsListFormField.Coordinator]: string;
@@ -8,14 +8,13 @@ export type ProjectsListDataItem = {
 	[ProjectsListFormField.Title]: string;
 }
 
-export type AddProjectFormValues = {
-	[ProjectsListFormField.Title]: string,
-	[ProjectsListFormField.StartDate]: Date,
-	[ProjectsListFormField.CoordinatorId]: '' | number,
-}
-
 export type AddProjectMutationData = {
 	[ProjectsListFormField.Title]: string,
 	[ProjectsListFormField.StartDate]: string,
 	[ProjectsListFormField.CoordinatorId]: '' | number,
+}
+
+export type FilterValues = {
+	[ProjectsListFilterField.Search]: string,
+	[ProjectsListFilterField.CoordinatorIds]: (string | number)[],
 }
