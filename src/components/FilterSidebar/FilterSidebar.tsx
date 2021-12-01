@@ -2,10 +2,11 @@ import { FC, useEffect } from 'react';
 import { Drawer, useTheme } from '@mui/material';
 import { FILTER_SIDEBAR_WIDTH } from '../AppLayout/const';
 import { useFilterSidebarContext } from './FilterSidebarProvider';
-import { Formik } from 'formik';
-import { FilterSidebarForm } from './FilterSidebarForm';
+import { Form, Formik } from 'formik';
+import { FilterSidebarFormLayout } from './FilterSidebarFormLayout';
 import { CustomObject } from '../../types';
 import { ErrorBoundary } from '../ErrorBoundary';
+import classes from './styles/form.module.scss';
 
 type FilterSidebarProps = {
 	initialValues: CustomObject,
@@ -32,7 +33,8 @@ export const FilterSidebar: FC<FilterSidebarProps> = (
 		return () => {
 			setIsSidebarMounted(false);
 		};
-	});
+	}, [setIsSidebarMounted]);
+
 
 	return (
 		<Drawer
@@ -40,9 +42,6 @@ export const FilterSidebar: FC<FilterSidebarProps> = (
 			anchor="right"
 			open={sidebarOpen}
 			onClose={handleSidebarToggle}
-			ModalProps={{
-				keepMounted: true,
-			}}
 			sx={{
 				zIndex: theme.zIndex.drawer + 1,
 				'& .MuiDrawer-paper': {
@@ -55,17 +54,19 @@ export const FilterSidebar: FC<FilterSidebarProps> = (
 				},
 			}}
 		>
-			<ErrorBoundary>
-				<Formik
-					initialValues={initialValues}
-					onSubmit={onSubmit}
-					enableReinitialize
-				>
-					<FilterSidebarForm>
-						{children}
-					</FilterSidebarForm>
-				</Formik>
-			</ErrorBoundary>
+			<Formik
+				initialValues={initialValues}
+				onSubmit={onSubmit}
+				enableReinitialize
+			>
+				<Form className={classes.form}>
+					<FilterSidebarFormLayout>
+						<ErrorBoundary>
+							{children}
+						</ErrorBoundary>
+					</FilterSidebarFormLayout>
+				</Form>
+			</Formik>
 		</Drawer>
 	);
 };
