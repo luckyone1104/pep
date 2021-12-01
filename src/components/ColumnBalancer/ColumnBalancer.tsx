@@ -1,7 +1,7 @@
 import React, { FC, useLayoutEffect, useRef, useState } from 'react';
+import debounce from 'lodash/debounce';
 import { useIsMountedRef } from '../../hooks/useIsMountedRef';
 import { isNull } from '../../utils';
-import { debounce } from '../../utils/debounce';
 import { Box } from '@mui/material';
 import { balancer } from './utils';
 
@@ -37,7 +37,7 @@ export const ColumnBalancer: FC<ColumnBalancerProps> = (
 					setColumnsCount(newColumnsCount);
 				}
 			});
-		}));
+		}, 100));
 
 		if (!isNull(columnsBalancerRef.current)) {
 			resizeObserver.observe(columnsBalancerRef.current);
