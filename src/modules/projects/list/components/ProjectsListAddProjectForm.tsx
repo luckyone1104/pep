@@ -36,7 +36,7 @@ export const ProjectsListAddProjectForm: FC = () => {
 						>
 							Cancel
 						</Button>
-						<Box sx={{ m: 1, position: 'relative' }}>
+						<Box sx={{ position: 'relative' }}>
 							<Button
 								type="submit"
 								disabled={isLoading}
@@ -56,7 +56,6 @@ export const ProjectsListAddProjectForm: FC = () => {
 								/>
 							)}
 						</Box>
-
 					</SimpleModalButtonsLayout>
 				</Box>
 			</Form>
