@@ -4,6 +4,7 @@ import { useListSortContext } from './useListSortContext';
 import { useListPaginationParamsContext } from './useListPaginationParamsContext';
 import { useListQueryContext } from './useListQueryContext';
 import { ListProps } from '../List';
+import { isUndefined } from '../../../utils';
 
 export const useList = (
 	{
@@ -22,6 +23,7 @@ export const useList = (
 		data,
 		fetchNextPage,
 		error,
+		isSuccess,
 		isLoading,
 		isFetchingNextPage,
 		isFetchingPreviousPage,
@@ -56,6 +58,12 @@ export const useList = (
 			fetchNextPage();
 		}
 	}, [data?.pages.length, fetchNextPage, page]);
+
+	useEffect(() => {
+		if (isSuccess && isUndefined(rows)) {
+			throw new Error('Could not load list rows');
+		}
+	}, [rows, isSuccess]);
 
 	return {
 		page,

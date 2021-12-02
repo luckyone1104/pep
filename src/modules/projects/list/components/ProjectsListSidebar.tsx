@@ -1,22 +1,21 @@
 import React, { FC } from 'react';
 import { FilterSidebar } from '../../../../components/FilterSidebar';
-import { ProjectsListQueryParam, SIDEBAR_FORM_INITIAL_VALUES } from '../const';
+import { ProjectsListQueryParam } from '../const';
 import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { useListPaginationParamsContext } from '../../../../components/List/hooks/useListPaginationParamsContext';
 import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/useListUrlQueryParamsContext';
-import { CustomObject } from '../../../../types';
 import { SelectField } from 'src/components/adapters/SelectField';
-import { useFilterInitialValues } from '../../../../hooks/useFilterInitialValues';
 import { useProjectsCoordinators } from '../../common/hooks/useProjectsCoordinators';
 import { ProjectListSidebarFilterValues } from '../types';
+import { useProjectsFilterInitialValues } from '../hooks/useProjectsFilterInitialValues';
 
 export const ProjectsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
-	const initialValues = useFilterInitialValues<ProjectListSidebarFilterValues>(SIDEBAR_FORM_INITIAL_VALUES);
+	const initialValues = useProjectsFilterInitialValues();
 	const { data: coordinators, isLoading } = useProjectsCoordinators();
 
-	const handleSubmit = (values: CustomObject) => {
+	const handleSubmit = (values: ProjectListSidebarFilterValues) => {
 		setPage(0);
 		setUrlQueryParams({
 			...urlQueryParams,

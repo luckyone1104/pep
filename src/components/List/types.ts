@@ -2,6 +2,7 @@ import { UseInfiniteQueryResult } from 'react-query/types/react/types';
 import { CustomObject } from '../../types';
 import { GridCallbackDetails, GridRowParams, MuiEvent } from '@mui/x-data-grid';
 import * as React$1 from 'react';
+import { ListSortContextType } from './hooks/useListSortContext';
 
 export type ListData<ListItem = CustomObject> = {
 	totalItemsCount?: number;
@@ -11,3 +12,6 @@ export type ListData<ListItem = CustomObject> = {
 export type ListQueryContextType<ListItemType> = UseInfiniteQueryResult<ListData<ListItemType>>;
 
 export type HandleRowClickFunction = (params: GridRowParams, event: MuiEvent<React$1.SyntheticEvent>, details: GridCallbackDetails) => void;
+export type GetFormattedColumnsOptions = {
+	sortFields: Pick<ListSortContextType, 'sortFields'>;
+}

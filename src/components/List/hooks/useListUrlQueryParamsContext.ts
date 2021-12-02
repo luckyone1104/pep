@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import { isNull } from '../../../utils';
-import { CustomObject } from '../../../types';
 import { ListUrlQueryParamsContext } from '../providers/const';
+import { CustomObject } from '../../../types';
+
+type UrlQueryParam = Record<string, string | string[]>
 
 type ListQueryParamsContextType = {
-	urlQueryParams: CustomObject;
+	urlQueryParams: UrlQueryParam;
 	setUrlQueryParams: (params: CustomObject) => void;
 }
 

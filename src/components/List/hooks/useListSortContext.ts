@@ -3,7 +3,7 @@ import { isNull } from '../../../utils';
 import { GridSortModel } from '@mui/x-data-grid';
 import { ListSortContext } from '../providers/const';
 
-type ListSortContextType = {
+export type ListSortContextType = {
 	sortModel: GridSortModel;
 	handleSort: (model: GridSortModel) => void;
 }

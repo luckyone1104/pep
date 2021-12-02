@@ -1,4 +1,7 @@
 import { FormTemplatesSidebarFilterValues } from './types';
+import { createContext } from 'react';
+
+export const AddFormTemplateModalContext = createContext(null as unknown);
 
 export enum FormTemplatesDataField {
 	Id = 'id',

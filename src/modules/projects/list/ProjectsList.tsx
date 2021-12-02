@@ -15,13 +15,13 @@ export const ProjectsList: FC = () => {
 			url={PROJECTS_URL}
 			sortFieldsPairs={SORT_FIELDS_PAIRS}
 		>
-			<ListLayout>
-				<ProjectsListAddProjectModalProvider>
+			<ProjectsListAddProjectModalProvider>
+				<ListLayout>
 					<ProjectsListHeader />
 					<FilterBreadCrumbs />
 					<ProjectsListTable />
-				</ProjectsListAddProjectModalProvider>
-			</ListLayout>
+				</ListLayout>
+			</ProjectsListAddProjectModalProvider>
 			<ProjectsListSidebar />
 		</ListProviders>
 	);

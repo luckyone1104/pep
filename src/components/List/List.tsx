@@ -7,6 +7,7 @@ import { ListNoResultsOverlay } from './components/ListNoResultsOverlay';
 import { ListErrorOverlay } from './components/ListErrorOverlay';
 import { useList } from './hooks/useList';
 import { HandleRowClickFunction } from './types';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 export type ListProps = {
 	columns: GridColumns;
@@ -14,7 +15,7 @@ export type ListProps = {
 	onRowClick?: HandleRowClickFunction;
 }
 
-export const List: FC<ListProps> = (
+const ListInner: FC<ListProps> = (
 	{
 		onRowClick,
 		...props
@@ -56,6 +57,15 @@ export const List: FC<ListProps> = (
 				ErrorOverlay: ListErrorOverlay,
 			}}
 		/>
-
 	);
 };
+
+const ListWithErrorBoundary: FC<ListProps> = (props) => {
+	return (
+		<ErrorBoundary message="Could not load list data!">
+			<ListInner {...props} />
+		</ErrorBoundary>
+	);
+};
+
+export { ListWithErrorBoundary as List } ;

@@ -26,6 +26,8 @@ export const isDateType = (value: unknown): value is Date => {
 	return value instanceof Date;
 };
 
-export const isValidDate = (value: Date): boolean => {
+export const isValidDate = (value: Date | string): boolean => {
+	value = value.toString();
+
 	return !Number.isNaN(Date.parse(value.toString()));
 };

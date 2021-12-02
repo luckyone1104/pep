@@ -3,11 +3,9 @@ import { Take } from './providers/const';
 
 export const DEFAULT_EMPTY_ROWS_COUNT = 5;
 
-const options = Object.values(Take).filter(value => typeof value === 'number');
-
 export const DEFAULT_LIST_PROPS: Partial<GridComponentProps> = {
 	autoHeight: true,
-	rowsPerPageOptions: options as number[],
+	rowsPerPageOptions: [Take.Small, Take.Medium, Take.Large],
 	pagination: true,
 	disableSelectionOnClick: true,
 	disableColumnMenu: true,

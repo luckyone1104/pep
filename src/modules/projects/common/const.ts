@@ -3,7 +3,6 @@ import { BASE_API_URL } from '../../../api';
 
 export const PROJECTS_URL = `${BASE_API_URL}/projects`;
 export const PROJECTS_COORDINATORS_URL = PROJECTS_URL.concat('/filterCoordinators');
-export const PROJECTS_COORDINATORS_QUERY_KEY = 'PROJECTS_COORDINATORS_QUERY_KEY';
 
 export enum ProjectFormField {
 	CoordinatorId = 'coordinatorId',
