@@ -3,11 +3,11 @@ import { Form, Formik } from 'formik';
 import { useDetailQueryContext } from '../../../../components/Detail/hooks/useDetailQueryContext';
 import { ProjectsDetailData } from '../types';
 import { isUndefined } from '../../../../utils';
-import { ProjectFormFields } from '../../common/components/ProjectFormFields';
+import { ProjectsFormFields } from '../../common/components/ProjectsFormFields';
 import { SkeletonFields } from '../../../../components/SkeletonFields';
 import { PROJECT_FORM_DEFAULT_VALUES, ProjectFormField } from '../../common/const';
 import { ProjectFormValues } from '../../common/types';
-import { ProjectDetailFormButtons } from './ProjectDetailFormButtons';
+import { ProjectsDetailFormButtons } from './ProjectsDetailFormButtons';
 import { formatProjectSubmitValues } from '../../common/utils';
 import { useUpdateProjectDataMutation } from '../hooks/useUpdateProjectDataMutation';
 import { useParams } from 'react-router-dom';
@@ -46,9 +46,9 @@ export const ProjectsDetailForm: FC = () => {
 					<SkeletonFields fieldsCount={3} />
 				)}
 				{isSuccess && (
-					<ProjectFormFields />
+					<ProjectsFormFields />
 				)}
-				<ProjectDetailFormButtons isLoading={isMutationPending} />
+				<ProjectsDetailFormButtons isLoading={isMutationPending || isProjectDataLoading} />
 			</Form>
 		</Formik>
 	);

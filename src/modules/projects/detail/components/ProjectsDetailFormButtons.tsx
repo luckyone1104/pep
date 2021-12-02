@@ -3,11 +3,11 @@ import { Box, Button, CircularProgress } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { useFormikContext } from 'formik';
 
-type ProjectDetailFormButtonsProps = {
+type ProjectsDetailFormButtonsProps = {
 	isLoading: boolean;
 }
 
-export const ProjectDetailFormButtons: FC<ProjectDetailFormButtonsProps> = (
+export const ProjectsDetailFormButtons: FC<ProjectsDetailFormButtonsProps> = (
 	{
 		isLoading
 	}

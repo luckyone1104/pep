@@ -8,11 +8,11 @@ import { ProjectFormField } from '../const';
 import { useProjectsCoordinators } from '../hooks/useProjectsCoordinators';
 import { ColumnBalancer } from '../../../../components/ColumnBalancer';
 
-type ProjectFormFieldsProps = {
+type ProjectsFormFieldsProps = {
 	disabled?: boolean
 }
 
-export const ProjectFormFields: FC<ProjectFormFieldsProps> = (
+export const ProjectsFormFields: FC<ProjectsFormFieldsProps> = (
 	{
 		disabled
 	}

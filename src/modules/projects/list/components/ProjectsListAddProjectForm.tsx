@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Form, Formik } from 'formik';
 import { AddProjectMutationData } from '../types';
-import { ProjectFormFields } from '../../common/components/ProjectFormFields';
+import { ProjectsFormFields } from '../../common/components/ProjectsFormFields';
 import { Box, Button, CircularProgress } from '@mui/material';
 import { SimpleModalButtonsLayout } from '../../../../components/SimpleModal';
 import { useAddProjectMutation } from '../hooks/useAddProjectMutation';
@@ -27,7 +27,7 @@ export const ProjectsListAddProjectForm: FC = () => {
 			validateOnBlur
 		>
 			<Form>
-				<ProjectFormFields />
+				<ProjectsFormFields />
 				<Box sx={{ pt: 2 }}>
 					<SimpleModalButtonsLayout>
 						<Button

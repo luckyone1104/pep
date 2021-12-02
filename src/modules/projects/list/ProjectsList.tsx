@@ -6,7 +6,7 @@ import { ListProviders } from '../../../components/List/providers';
 import { PROJECTS_URL } from '../common/const';
 import { ProjectsListHeader } from './components/ProjectsListHeader';
 import { ListLayout } from '../../../components/List';
-import { ProjectListAddProjectModalProvider } from './providers/ProjectListAddProjectModalProvider';
+import { ProjectsListAddProjectModalProvider } from './providers/ProjectsListAddProjectModalProvider';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 
 export const ProjectsList: FC = () => {
@@ -16,11 +16,11 @@ export const ProjectsList: FC = () => {
 			sortFieldsPairs={SORT_FIELDS_PAIRS}
 		>
 			<ListLayout>
-				<ProjectListAddProjectModalProvider>
+				<ProjectsListAddProjectModalProvider>
 					<ProjectsListHeader />
 					<FilterBreadCrumbs />
 					<ProjectsListTable />
-				</ProjectListAddProjectModalProvider>
+				</ProjectsListAddProjectModalProvider>
 			</ListLayout>
 			<ProjectsListSidebar />
 		</ListProviders>
