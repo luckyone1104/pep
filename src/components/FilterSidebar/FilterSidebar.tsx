@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { Drawer, useTheme } from '@mui/material';
 import { FILTER_SIDEBAR_WIDTH } from '../AppLayout/const';
 import { useFilterSidebarContext } from './FilterSidebarProvider';
@@ -8,12 +8,15 @@ import { CustomObject } from '../../types';
 import { ErrorBoundary } from '../ErrorBoundary';
 import classes from './styles/form.module.scss';
 
-type FilterSidebarProps = {
-	initialValues: CustomObject,
-	onSubmit: (values: CustomObject) => void
+type FilterSidebarProps<T> = {
+	initialValues: T,
+	onSubmit: (values: T) => void,
 }
+type FilterSidebarComponent = <T extends CustomObject = CustomObject>(
+	props: PropsWithChildren<FilterSidebarProps<T>>
+) => JSX.Element;
 
-export const FilterSidebar: FC<FilterSidebarProps> = (
+export const FilterSidebar: FilterSidebarComponent = (
 	{
 		initialValues,
 		onSubmit,
