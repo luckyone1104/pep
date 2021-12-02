@@ -1,17 +1,17 @@
-import { ProjectsListFormField } from '../const';
+import { ProjectsListDataField } from '../const';
 import { formatDate } from '../../../../utils/formatDate';
 import { GridColumns } from '@mui/x-data-grid';
 
 export const useProjectsListColumns = (): GridColumns => {
 	return [
 		{
-			field: ProjectsListFormField.Title,
+			field: ProjectsListDataField.Title,
 			headerName: 'Title',
 			minWidth: 200,
 			flex: 1,
 		},
 		{
-			field: ProjectsListFormField.StartDate,
+			field: ProjectsListDataField.StartDate,
 			headerName: 'Start date',
 			minWidth: 120,
 			flex: 1,
@@ -23,7 +23,7 @@ export const useProjectsListColumns = (): GridColumns => {
 
 		},
 		{
-			field: ProjectsListFormField.Coordinator,
+			field: ProjectsListDataField.Coordinator,
 			headerName: 'Coordinator',
 			minWidth: 200,
 			flex: 1,

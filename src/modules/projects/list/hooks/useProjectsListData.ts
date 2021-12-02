@@ -1,6 +1,6 @@
 import { useListQueryContext } from '../../../../components/List/hooks/useListQueryContext';
-import { ProjectsListDataItem } from '../types';
+import { ProjectsListData } from '../types';
 
 export const useProjectsListData = () => {
-	return useListQueryContext<ProjectsListDataItem>();
+	return useListQueryContext<ProjectsListData>();
 };

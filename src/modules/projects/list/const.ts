@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import { FilterValues } from './types';
+import { ProjectListSidebarFilterValues } from './types';
 
 export const ProjectListAddProjectModalContext = createContext(null as unknown);
 
-export enum ProjectsListFormField {
+export enum ProjectsListDataField {
 	Coordinator = 'coordinator',
 	CoordinatorId = 'coordinatorId',
 	Id = 'id',
@@ -11,7 +11,7 @@ export enum ProjectsListFormField {
 	Title = 'title',
 }
 
-export enum ProjectsListFilterField {
+export enum ProjectsListQueryParam {
 	CoordinatorIds = 'coordinatorIds',
 	TitleSortOrder = 'titleSortOrder',
 	StartDateSortOrder = 'startDateSortOrder',
@@ -20,12 +20,12 @@ export enum ProjectsListFilterField {
 }
 
 export const SORT_FIELDS_PAIRS = [
-	[ProjectsListFormField.Title, ProjectsListFilterField.TitleSortOrder],
-	[ProjectsListFormField.StartDate, ProjectsListFilterField.StartDateSortOrder],
-	[ProjectsListFormField.Coordinator, ProjectsListFilterField.CoordinatorSortOrder],
+	[ProjectsListDataField.Title, ProjectsListQueryParam.TitleSortOrder],
+	[ProjectsListDataField.StartDate, ProjectsListQueryParam.StartDateSortOrder],
+	[ProjectsListDataField.Coordinator, ProjectsListQueryParam.CoordinatorSortOrder],
 ];
 
-export const SIDEBAR_FORM_INITIAL_VALUES: FilterValues = {
-	[ProjectsListFilterField.Search]: '',
-	[ProjectsListFilterField.CoordinatorIds]: [],
+export const SIDEBAR_FORM_INITIAL_VALUES: ProjectListSidebarFilterValues = {
+	[ProjectsListQueryParam.Search]: '',
+	[ProjectsListQueryParam.CoordinatorIds]: [],
 };
