@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 
 type ListHeaderProps = {
 	listTitle: string;
-	rightSide: JSX.Element;
+	rightSide?: JSX.Element;
 }
 
 export const ListHeader: FC<ListHeaderProps> = (
