@@ -9,7 +9,7 @@
   ],
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
+    "start": "parcel --no-cache --log-level=verbose",
     "build": "parcel build"
   },
   "devDependencies": {
