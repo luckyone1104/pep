@@ -1,6 +1,6 @@
 import { GridColumns } from '@mui/x-data-grid';
 import { FORMATTED_NAME_FIELD, UsersListDataField } from '../const';
-import { isValidDate } from '../../../../utils';
+import { isUndefined, isValidDate } from '../../../../utils';
 
 export const useUsersListColumns = (): GridColumns => {
 	return [
@@ -10,6 +10,10 @@ export const useUsersListColumns = (): GridColumns => {
 			minWidth: 240,
 			flex: 1,
 			valueGetter: (params) => {
+				if (isUndefined(params.row.firstName) || isUndefined(params.row.lastName)) {
+					return;
+				}
+				
 				return `${params.row.firstName} ${params.row.lastName}`;
 			}
 		},
@@ -18,24 +22,28 @@ export const useUsersListColumns = (): GridColumns => {
 			headerName: 'Email',
 			minWidth: 240,
 			flex: 1,
+			hideSortIcons: true,
 		},
 		{
 			field: UsersListDataField.TeamName,
 			headerName: 'Team',
 			minWidth: 140,
 			flex: 1,
+			hideSortIcons: true,
 		},
 		{
 			field: UsersListDataField.RoleName,
 			headerName: 'Role',
 			minWidth: 160,
 			flex: 1,
+			hideSortIcons: true,
 		},
 		{
 			field: UsersListDataField.LevelName,
 			headerName: 'Level',
 			minWidth: 140,
 			flex: 1,
+			hideSortIcons: true,
 		},
 		{
 			field: UsersListDataField.PreviousPEDate,
@@ -68,6 +76,7 @@ export const useUsersListColumns = (): GridColumns => {
 			headerName: 'State',
 			minWidth: 140,
 			flex: 1,
+			hideSortIcons: true,
 		},
 	];
 };
