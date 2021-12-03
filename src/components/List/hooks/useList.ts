@@ -68,7 +68,9 @@ export const useList = (
 	}, [rows, isSuccess]);
 
 	useEffect(() => {
-		const firstPageRowsCount = data?.pages[0]?.items.length;
+		//@ts-ignore
+		const firstPageRowsCountWithOldModel = data?.pages[0]?.length; //todo: deprecate when all lists will be updated
+		const firstPageRowsCount = data?.pages[0]?.items?.length || firstPageRowsCountWithOldModel;
 
 		if (!firstPageRowsCount || firstPageRowsCount === 0) {
 			return;

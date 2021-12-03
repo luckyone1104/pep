@@ -10,6 +10,10 @@ export const isNullOrUndefined = (value: unknown): value is null | undefined => 
 	return isNull(value) || isUndefined(value);
 };
 
+export const isBoolean = (value: unknown): value is boolean => {
+	return typeof value === 'boolean';
+};
+
 export const isEmptyString = (value: string) => {
 	return value.trim().length === 0;
 };

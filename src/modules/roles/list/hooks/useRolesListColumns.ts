@@ -1,5 +1,6 @@
 import { GridColumns } from '@mui/x-data-grid';
 import { RolesListDataField } from '../const';
+import { isBoolean } from '../../../../utils';
 
 export const useRolesListColumns = (): GridColumns => {
 	return [
@@ -15,6 +16,10 @@ export const useRolesListColumns = (): GridColumns => {
 			minWidth: 140,
 			flex: 1,
 			valueFormatter: (({ value }) => {
+				if (!isBoolean(value)) {
+					return;
+				}
+
 				return value ? 'Yes' : 'No';
 			})
 		},

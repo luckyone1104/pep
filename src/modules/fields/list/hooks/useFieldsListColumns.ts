@@ -1,5 +1,6 @@
 import { GridColumns } from '@mui/x-data-grid';
 import { FieldsListDataField } from '../const';
+import { isBoolean } from '../../../../utils';
 
 export const useFieldsListColumns = (): GridColumns => {
 	return [
@@ -30,6 +31,10 @@ export const useFieldsListColumns = (): GridColumns => {
 			flex: 1,
 			hideSortIcons: true,
 			valueFormatter: (({ value }) => {
+				if (!isBoolean(value)) {
+					return;
+				}
+
 				return value ? 'Yes' : 'No';
 			})
 		},
