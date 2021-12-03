@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { getColumnsWithSkeletons, getEmptyRows } from '../utils';
+import { getColumnsWithSkeletons, getEmptyRows, getRowsCountObjFromLocalStorage } from '../utils';
 import { useListSortContext } from './useListSortContext';
 import { useListPaginationParamsContext } from './useListPaginationParamsContext';
 import { useListQueryContext } from './useListQueryContext';
 import { ListProps } from '../List';
 import { isUndefined } from '../../../utils';
+import { LOCAL_STORAGE_LIST_ROWS_KEY } from '../const';
+import { getActiveModuleNameFromUrl } from '../../../utils/getActiveModuleNameFromUrl';
 
 export const useList = (
 	{
@@ -37,8 +39,8 @@ export const useList = (
 		return getColumnsWithSkeletons(columns);
 	}, [columns]);
 	const rowsWithSkeletons = useMemo(() => {
-		return getEmptyRows(columns, take);
-	}, [columns, take]);
+		return getEmptyRows(columns);
+	}, [columns]);
 
 	const { sortModel, handleSort } = useListSortContext();
 
@@ -64,6 +66,22 @@ export const useList = (
 			throw new Error('Could not load list rows');
 		}
 	}, [rows, isSuccess]);
+
+	useEffect(() => {
+		const firstPageRowsCount = data?.pages[0]?.items.length;
+
+		if (!firstPageRowsCount || firstPageRowsCount === 0) {
+			return;
+		}
+
+		const rowsCountObj = getRowsCountObjFromLocalStorage() || {};
+		const activeModuleName = getActiveModuleNameFromUrl();
+
+		window.localStorage.setItem(LOCAL_STORAGE_LIST_ROWS_KEY, JSON.stringify({
+			...rowsCountObj,
+			[activeModuleName]: firstPageRowsCount
+		}));
+	}, [data?.pages]);
 
 	return {
 		page,

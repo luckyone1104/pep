@@ -23,7 +23,7 @@ export const SkeletonListTable: FC = () => {
 			disableColumnMenu
 			hideFooter
 			columns={columns}
-			rows={getEmptyRows(columns, 3)}
+			rows={getEmptyRows(columns)}
 		/>
 	);
 };

@@ -13,3 +13,4 @@ export const DEFAULT_LIST_PROPS: Partial<GridComponentProps> = {
 	paginationMode: 'server',
 };
 
+export const LOCAL_STORAGE_LIST_ROWS_KEY = 'LOCAL_STORAGE_LIST_ROWS_KEY';

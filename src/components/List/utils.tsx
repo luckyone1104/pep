@@ -1,9 +1,10 @@
 import { GridColumns, GridRenderCellParams } from '@mui/x-data-grid';
-import { isEmpty } from '../../utils';
+import { isEmpty, isNull } from '../../utils';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import { CustomObject } from '../../types';
-import { DEFAULT_EMPTY_ROWS_COUNT } from './const';
+import { DEFAULT_EMPTY_ROWS_COUNT, LOCAL_STORAGE_LIST_ROWS_KEY } from './const';
+import { getActiveModuleNameFromUrl } from '../../utils/getActiveModuleNameFromUrl';
 
 export const renderCellWIthSkeleton = ({ formattedValue }: GridRenderCellParams) => {
 	return isEmpty(formattedValue)
@@ -24,9 +25,31 @@ export const getColumnsWithSkeletons = (columns: GridColumns) => {
 	}, [] as GridColumns);
 };
 
-export const getEmptyRows = (columns: GridColumns, take: number) => {
+export const getRowsCountObjFromLocalStorage = () => {
+	const localStorageItem = window.localStorage.getItem(LOCAL_STORAGE_LIST_ROWS_KEY);
+
+	if (isNull(localStorageItem)) {
+		return {};
+	}
+
+	return JSON.parse(localStorageItem) || {};
+};
+
+const getListRowsCountFromLocalStorage = () => {
+	const activeModuleName = getActiveModuleNameFromUrl();
+
+	if (activeModuleName === '') {
+		return null;
+	}
+
+	const rowsCountObj = getRowsCountObjFromLocalStorage();
+
+	return rowsCountObj[activeModuleName];
+};
+
+export const getEmptyRows = (columns: GridColumns) => {
 	const fields = columns.map(({ field }) => field);
-	const emptyRowsCount = Math.min(DEFAULT_EMPTY_ROWS_COUNT, take);
+	const emptyRowsCount = getListRowsCountFromLocalStorage() || DEFAULT_EMPTY_ROWS_COUNT;
 
 	return Array(emptyRowsCount)
 		.fill(null)

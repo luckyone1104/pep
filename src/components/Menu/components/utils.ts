@@ -1,13 +1,9 @@
-import { isUndefined } from '../../../utils';
+import { getActiveModuleNameFromUrl } from '../../../utils/getActiveModuleNameFromUrl';
 
 export const checkIfMenuItemSelected = (pathname: string, name: string) => {
-	const moduleFromUrl = pathname.split('/')[1]?.toLowerCase();
+	const moduleFromUrl = getActiveModuleNameFromUrl();
+	const joinedAndLowerCaseModuleName = name.split(' ').join('').toLowerCase();
 
-	if (isUndefined(moduleFromUrl)) {
-		return false;
-	}
-
-	const joinedAndLoweredModuleName = name.split(' ').join('').toLowerCase();
-
-	return moduleFromUrl === joinedAndLoweredModuleName;
+	return moduleFromUrl === joinedAndLowerCaseModuleName;
 };
+
