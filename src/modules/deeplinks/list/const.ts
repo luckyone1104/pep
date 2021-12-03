@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import { DeeplinksListFilterValues } from './types';
 
 export const AddDeeplinkModalContext = createContext(null as unknown);
 
@@ -25,7 +26,7 @@ export const SORT_FIELD_PAIRS = [
 	[DeeplinksListDataField.ExpiresAt, DeeplinksListQueryParam.OrderExpiresAt]
 ];
 
-export const DEEPLINKS_FILTER_INITIAL_VALUES = {
+export const DEEPLINKS_FILTER_INITIAL_VALUES: DeeplinksListFilterValues = {
 	[DeeplinksListQueryParam.Search]: '',
 	[DeeplinksListQueryParam.SentToId]: '',
 	[DeeplinksListQueryParam.ExpiresAtFrom]: new Date(),

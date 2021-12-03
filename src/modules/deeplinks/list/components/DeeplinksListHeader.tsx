@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useAddDeeplinkModalContext } from '../hooks/useAddDeeplinkModalContext';
 import { ListHeader } from '../../../../components/ListHeader';
 import { ModuleName } from '../../../../const';
