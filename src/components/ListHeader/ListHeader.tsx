@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Box, Typography } from '@mui/material';
 
 type ListHeaderProps = {
-	listTitle: string;
+	listTitle: string | JSX.Element;
 	rightSide?: JSX.Element;
 }
 
@@ -16,6 +16,7 @@ export const ListHeader: FC<ListHeaderProps> = (
 		<Box sx={{
 			display: 'flex',
 			justifyContent: 'space-between',
+			minHeight: '36px',
 		}}>
 			<Typography
 				variant="h5"

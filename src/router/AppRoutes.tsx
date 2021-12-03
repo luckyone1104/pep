@@ -1,11 +1,11 @@
 import { FC, lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { detailPages, listPages } from '../const';
-import { ListSkeleton } from '../components/ListSkeleton';
+import { SkeletonList } from '../components/SkeletonList';
 
 export const AppRoutes: FC = () => {
 	return (
-		<Suspense fallback={<ListSkeleton />}>
+		<Suspense fallback={<SkeletonList />}>
 			<Switch>
 				<Route
 					exact
