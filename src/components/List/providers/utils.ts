@@ -1,5 +1,6 @@
 import { CustomObject } from '../../../types';
 import { isEmptyString } from '../../../utils';
+import { Take } from './const';
 
 export const parseSortValue = (value: 'asc' | 'desc'): 1 | 2 => {
 	return value === 'asc'
@@ -42,4 +43,14 @@ export const getNormalizedQueryParams = (filterData: CustomObject) => {
 				[key]: value
 			};
 		}, {});
+};
+
+export const getTakeFromLocalStorage = () => {
+	const take = Number(window.localStorage.getItem('take'));
+
+	if (!Take[take]) {
+		return Take.Small;
+	}
+
+	return take;
 };
