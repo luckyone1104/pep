@@ -23,13 +23,13 @@ export enum DeeplinksListQueryParam {
 
 export const SORT_FIELD_PAIRS = [
 	[DeeplinksListDataField.SentTo, DeeplinksListQueryParam.OrderSentTo],
-	[DeeplinksListDataField.ExpiresAt, DeeplinksListQueryParam.OrderExpiresAt]
+	[DeeplinksListDataField.ExpiresAt, DeeplinksListQueryParam.OrderExpiresAt],
 ];
 
 export const DEEPLINKS_FILTER_INITIAL_VALUES: DeeplinksListFilterValues = {
 	[DeeplinksListQueryParam.Search]: '',
 	[DeeplinksListQueryParam.SentToId]: '',
-	[DeeplinksListQueryParam.ExpiresAtFrom]: new Date(),
-	[DeeplinksListQueryParam.ExpiresAtTo]: new Date(),
+	[DeeplinksListQueryParam.ExpiresAtFrom]: '',
+	[DeeplinksListQueryParam.ExpiresAtTo]: '',
 	[DeeplinksListQueryParam.StateIds]: [],
 };

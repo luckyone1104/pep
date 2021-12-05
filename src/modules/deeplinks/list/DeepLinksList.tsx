@@ -7,6 +7,7 @@ import { ListLayout } from '../../../components/List';
 import { DeeplinksListHeader } from './components/DeeplinksListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { DeeplinksListTable } from './components/DeeplinksListTable';
+import { DeeplinksListSidebar } from './components/DeeplinksListSidebar';
 
 export const DeepLinksList: FC = () => {
 
@@ -22,6 +23,7 @@ export const DeepLinksList: FC = () => {
 					<DeeplinksListTable />
 				</ListLayout>
 			</AddDeeplinkModalProvider>
+			<DeeplinksListSidebar />
 		</ListProviders>
 	);
 };

@@ -11,7 +11,7 @@ export type DeeplinksListData = {
 export type DeeplinksListFilterValues = {
 	[DeeplinksListQueryParam.Search]: string,
 	[DeeplinksListQueryParam.SentToId]: string | number,
-	[DeeplinksListQueryParam.ExpiresAtFrom]: Date,
-	[DeeplinksListQueryParam.ExpiresAtTo]: Date,
+	[DeeplinksListQueryParam.ExpiresAtFrom]: '' | Date,
+	[DeeplinksListQueryParam.ExpiresAtTo]: '' | Date,
 	[DeeplinksListQueryParam.StateIds]: number[],
 }
