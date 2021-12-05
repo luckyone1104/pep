@@ -1,6 +1,7 @@
 import { GridColumns } from '@mui/x-data-grid';
+import { format } from 'date-fns';
 import { DocumentsListDataField, FORMATTED_NAME_FIELD } from '../const';
-import { isUndefined, isValidDate } from '../../../../utils';
+import { isEmpty, isUndefined } from '../../../../utils';
 
 export const useDocumentsListColumns = (): GridColumns => {
 	return [
@@ -15,7 +16,7 @@ export const useDocumentsListColumns = (): GridColumns => {
 				}
 
 				return `${params.row.firstName} ${params.row.lastName}`;
-			}
+			},
 		},
 		{
 			field: DocumentsListDataField.DocumentTypeName,
@@ -29,11 +30,11 @@ export const useDocumentsListColumns = (): GridColumns => {
 			minWidth: 200,
 			flex: 1,
 			valueFormatter: (({ value }) => {
-				const date = new Date(value as string);
-
-				if (isValidDate(date)) {
-					return date.toLocaleString('ru').slice(0, 10);
+				if (isEmpty(value)) {
+					return;
 				}
+
+				return format(new Date(value as string), 'dd.MM.yyyy');
 			}),
 			hideSortIcons: true,
 		},

@@ -1,6 +1,7 @@
 import { GridColumns } from '@mui/x-data-grid';
+import { format } from 'date-fns';
 import { FORMATTED_NAME_FIELD, UsersListDataField } from '../const';
-import { isUndefined, isValidDate } from '../../../../utils';
+import { isEmpty, isUndefined } from '../../../../utils';
 
 export const useUsersListColumns = (): GridColumns => {
 	return [
@@ -13,9 +14,9 @@ export const useUsersListColumns = (): GridColumns => {
 				if (isUndefined(params.row.firstName) || isUndefined(params.row.lastName)) {
 					return;
 				}
-				
+
 				return `${params.row.firstName} ${params.row.lastName}`;
-			}
+			},
 		},
 		{
 			field: UsersListDataField.Email,
@@ -51,11 +52,11 @@ export const useUsersListColumns = (): GridColumns => {
 			minWidth: 140,
 			flex: 1,
 			valueFormatter: (({ value }) => {
-				const date = new Date(value as string);
-
-				if (isValidDate(date)) {
-					return date.toLocaleString('ru').slice(0, 10);
+				if (isEmpty(value)) {
+					return;
 				}
+
+				return format(new Date(value as string), 'dd.MM.yyyy');
 			}),
 		},
 		{
@@ -64,11 +65,11 @@ export const useUsersListColumns = (): GridColumns => {
 			minWidth: 140,
 			flex: 1,
 			valueFormatter: (({ value }) => {
-				const date = new Date(value as string);
-
-				if (isValidDate(date)) {
-					return date.toLocaleString('ru').slice(0, 10);
+				if (isEmpty(value)) {
+					return;
 				}
+
+				return format(new Date(value as string), 'dd.MM.yyyy');
 			}),
 		},
 		{

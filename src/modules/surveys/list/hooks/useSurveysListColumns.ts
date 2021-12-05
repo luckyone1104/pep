@@ -1,6 +1,7 @@
 import { GridColumns } from '@mui/x-data-grid';
+import { format } from 'date-fns';
 import { SurveysListDataField } from '../const';
-import { isValidDate } from '../../../../utils';
+import { isEmpty } from '../../../../utils';
 
 export const useSurveysListColumns = (): GridColumns => {
 	return [
@@ -30,11 +31,11 @@ export const useSurveysListColumns = (): GridColumns => {
 			flex: 1,
 			hideSortIcons: true,
 			valueFormatter: (({ value }) => {
-				const date = new Date(value as string);
-
-				if (isValidDate(date)) {
-					return date.toLocaleString('ru').slice(0, 10);
+				if (isEmpty(value)) {
+					return;
 				}
+
+				return format(new Date(value as string), 'dd.MM.yyyy');
 			}),
 		},
 		{

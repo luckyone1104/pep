@@ -1,6 +1,7 @@
 import { GridColumns } from '@mui/x-data-grid';
+import { format } from 'date-fns';
 import { FormsDataField } from '../const';
-import { isValidDate } from '../../../../utils';
+import { isEmpty } from '../../../../utils';
 
 export const useFormsColumns = (): GridColumns => {
 	return [
@@ -30,11 +31,11 @@ export const useFormsColumns = (): GridColumns => {
 			flex: 1,
 			hideSortIcons: true,
 			valueFormatter: (({ value }) => {
-				const date = new Date(value as string);
-
-				if (isValidDate(date)) {
-					return date.toLocaleString('ru').slice(0, 10);
+				if (isEmpty(value)) {
+					return;
 				}
+
+				return format(new Date(value as string), 'dd.MM.yyyy');
 			}),
 		},
 		{
@@ -43,6 +44,6 @@ export const useFormsColumns = (): GridColumns => {
 			minWidth: 140,
 			flex: 1,
 			hideSortIcons: true,
-		}
+		},
 	];
 };

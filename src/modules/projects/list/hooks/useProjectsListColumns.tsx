@@ -1,7 +1,7 @@
 import { ProjectsListDataField } from '../const';
-import { formatDate } from '../../../../utils/formatDate';
+import { format } from 'date-fns';
 import { GridColumns } from '@mui/x-data-grid';
-import { isValidDate } from '../../../../utils';
+import { isEmpty } from '../../../../utils';
 
 export const useProjectsListColumns = (): GridColumns => {
 	return [
@@ -17,11 +17,11 @@ export const useProjectsListColumns = (): GridColumns => {
 			minWidth: 120,
 			flex: 1,
 			valueFormatter: (({ value }) => {
-				const date = new Date(value as string);
-
-				if (isValidDate(date)) {
-					return formatDate(date);
+				if (isEmpty(value)) {
+					return;
 				}
+
+				return format(new Date(value as string), 'dd.MM.yyyy');
 			}),
 
 		},
