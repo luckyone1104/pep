@@ -10,6 +10,7 @@ type DropdownFieldProps = {
 	fieldProps: FieldHookConfig<SelectValue>;
 	required?: boolean;
 	isLoading?: boolean;
+	customError?: false | string;
 } & Omit<SelectProps, keyof Omit<FieldInputProps<SelectValue>, 'multiple'> | 'label'> & {
 	label?: string;
 	items: SelectItem[];
@@ -20,6 +21,7 @@ export const SelectField: FC<DropdownFieldProps> = (
 		fieldProps,
 		required,
 		isLoading,
+		customError,
 		...props
 	},
 ) => {
@@ -28,22 +30,24 @@ export const SelectField: FC<DropdownFieldProps> = (
 		touched,
 	}] = useField(fieldProps);
 	const { label, items, multiple, disabled } = props;
-	const showValidationError = touched && !!error;
+	const hasValidationError = touched && !!error;
+	const hasCustomError = !!customError;
+	const isDisabled = isLoading || hasCustomError || disabled;
+	const hasError = hasValidationError || hasCustomError;
 
 	return (
 		<FormControl
 			fullWidth
-			error={showValidationError}
+			error={hasError}
 			sx={{ position: 'relative' }}
 		>
 			<InputLabel id={label} required={required}>{label}</InputLabel>
 			<Select
 				{...field}
 				{...props}
-				error={showValidationError}
 				labelId={label}
 				label={label}
-				disabled={isLoading || disabled}
+				disabled={isDisabled}
 			>
 				{!multiple && (
 					<MenuItem value="">
@@ -59,8 +63,11 @@ export const SelectField: FC<DropdownFieldProps> = (
 					</MenuItem>
 				))}
 			</Select>
-			{showValidationError && (
+			{hasValidationError && (
 				<FormHelperText>{error}</FormHelperText>
+			)}
+			{hasCustomError && (
+				<FormHelperText>{customError}</FormHelperText>
 			)}
 			{isLoading && (
 				<CircularProgress
