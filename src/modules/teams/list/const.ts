@@ -21,9 +21,9 @@ export enum TeamsListQueryParam {
 }
 
 export const SORT_FIELD_PAIRS = [
-	[TeamsListDataField.Title, TeamsListQueryParam.OrderByProjectTitle],
+	[TeamsListDataField.Title, TeamsListQueryParam.OrderByTeamTitle],
 	[TeamsListDataField.ProjectTitle, TeamsListQueryParam.OrderByProjectTitle],
-	[TeamsListDataField.Size, TeamsListQueryParam.OrderByTeamSize]
+	[TeamsListDataField.Size, TeamsListQueryParam.OrderByTeamSize],
 ];
 
 export const TEAMS_FILTER_INITIAL_VALUES: TeamsListFilterValues = {

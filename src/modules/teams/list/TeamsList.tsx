@@ -7,6 +7,7 @@ import { ListLayout } from '../../../components/List';
 import { TeamsListHeader } from './components/TeamsListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { TeamsListTable } from './components/TeamsListTable';
+import { TeamsListSidebar } from './components/TeamsListSidebar';
 
 export const TeamsList: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const TeamsList: FC = () => {
 					<TeamsListTable />
 				</ListLayout>
 			</AddTeamModalProvider>
+			<TeamsListSidebar />
 		</ListProviders>
 
 	);
