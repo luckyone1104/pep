@@ -3,7 +3,9 @@ import { ROLES_DROPDOWN_ITEMS_URL } from '../const';
 import { getRolesDropdownItems } from '../api';
 
 export const useRolesDropdownItems = () => {
-	const query = useQuery(ROLES_DROPDOWN_ITEMS_URL, getRolesDropdownItems);
+	const query = useQuery(ROLES_DROPDOWN_ITEMS_URL, getRolesDropdownItems, {
+		refetchOnMount: false,
+	});
 
 	return {
 		...query,

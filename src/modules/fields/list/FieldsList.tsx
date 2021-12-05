@@ -7,6 +7,7 @@ import { ListLayout } from '../../../components/List';
 import { FieldsListHeader } from './components/FieldsListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { FieldsListTable } from './components/FieldsListTable';
+import { FieldsListSidebar } from './components/FieldsListSidebar';
 
 export const FieldsList: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const FieldsList: FC = () => {
 					<FieldsListTable />
 				</ListLayout>
 			</AddFieldModalProvider>
+			<FieldsListSidebar />
 		</ListProviders>
 	);
 };
