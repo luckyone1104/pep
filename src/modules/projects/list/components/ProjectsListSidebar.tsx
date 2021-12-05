@@ -41,7 +41,7 @@ export const ProjectsListSidebar: FC = () => {
 				label="Coordinator"
 				items={coordinators}
 				multiple
-				disabled={isLoading}
+				isLoading={isLoading}
 			/>
 		</FilterSidebar>
 	);
