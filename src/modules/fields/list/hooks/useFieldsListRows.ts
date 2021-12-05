@@ -5,6 +5,5 @@ export const useFieldsListRows = () => {
 	const { data } = useFieldsListData();
 	const { page } = useListPaginationParamsContext();
 
-	return data?.pages[page];
-	// return data?.pages[page]?.items;
+	return data?.pages[page]?.items;
 };
