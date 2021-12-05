@@ -7,6 +7,7 @@ import { ListLayout } from '../../../components/List';
 import { UsersListHeader } from './components/UsersListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { UsersListTable } from './components/UsersListTable';
+import { UsersListSidebar } from './components/UsersListSidebar';
 
 export const UsersList: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const UsersList: FC = () => {
 					<UsersListTable />
 				</ListLayout>
 			</AddUserModalProvider>
+			<UsersListSidebar />
 		</ListProviders>
 	);
 };

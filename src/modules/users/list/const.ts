@@ -38,5 +38,5 @@ export const SORT_FIELD_PAIRS = [
 export const USERS_FILTER_INITIAL_VALUES: UsersListFilterValues = {
 	[UsersListQueryParam.Search]: '',
 	[UsersListQueryParam.RoleIds]: [],
-	[UsersListQueryParam.UserNextPESortOrder]: new Date(),
+	[UsersListQueryParam.NextPEDate]: '',
 };
