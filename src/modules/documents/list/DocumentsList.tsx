@@ -7,6 +7,7 @@ import { ListLayout } from '../../../components/List';
 import { DocumentsListHeader } from './components/DocumentsListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { DocumentsListTable } from './components/DocumentsListTable';
+import { DocumentsListSidebar } from './components/DocumentsListSidebar';
 
 export const DocumentsList: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const DocumentsList: FC = () => {
 					<DocumentsListTable />
 				</ListLayout>
 			</AddDocumentModalProvider>
+			<DocumentsListSidebar />
 		</ListProviders>
 
 	);

@@ -1,23 +1,23 @@
 import React, { FC } from 'react';
 import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/useListUrlQueryParamsContext';
 import { useListPaginationParamsContext } from '../../../../components/List/hooks/useListPaginationParamsContext';
-import { useUsersListFilterInitialValues } from '../hooks/useUsersListFilterInitialValues';
+import { useDocumentsListFilterInitialValues } from '../hooks/useDocumentsListFilterInitialValues';
+import { DocumentsListFilterValues } from '../types';
+import { formatFormValues } from '../utils';
 import { FilterSidebar } from '../../../../components/FilterSidebar';
-import { UsersListFilterValues } from '../types';
+import { DocumentsListQueryParam } from '../const';
 import { TextBoxField } from '../../../../components/adapters/TextBoxField';
-import { UsersListQueryParam } from '../const';
-import { useRolesDropdownItems } from '../../common/hooks/useRolesDropdownItems';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { DatePickerField } from '../../../../components/adapters/DatePickerField';
-import { formatFormValues } from '../utils';
+import { useDocumentsTypes } from '../../common/hooks/useDocumentsTypes';
 
-export const UsersListSidebar: FC = () => {
+export const DocumentsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
-	const initialValues = useUsersListFilterInitialValues();
-	const { data: roles, isLoading: isRolesQueryLoading } = useRolesDropdownItems();
+	const initialValues = useDocumentsListFilterInitialValues();
+	const { data: typeIds, isLoading: isTypeIdsQueryLoading } = useDocumentsTypes();
 
-	const handleSubmit = (values: UsersListFilterValues) => {
+	const handleSubmit = (values: DocumentsListFilterValues) => {
 		const formattedValues = formatFormValues(values);
 
 		setPage(0);
@@ -34,24 +34,32 @@ export const UsersListSidebar: FC = () => {
 		>
 			<TextBoxField
 				fieldProps={{
-					name: UsersListQueryParam.Search,
+					name: DocumentsListQueryParam.Search
 				}}
-				label="Search by email or name"
+				label="Search by file name"
 			/>
 			<SelectField
 				fieldProps={{
-					name: UsersListQueryParam.RoleIds,
+					name: DocumentsListQueryParam.UserIds
 				}}
-				label="Role"
-				items={roles}
+				items={[]/*add endpoint for users*/}
+				label="User"
 				multiple
-				isLoading={isRolesQueryLoading}
+			/>
+			<SelectField
+				fieldProps={{
+					name: DocumentsListQueryParam.TypeIds
+				}}
+				items={typeIds}
+				label="Document type"
+				multiple
+				isLoading={isTypeIdsQueryLoading}
 			/>
 			<DatePickerField
 				fieldProps={{
-					name: UsersListQueryParam.NextPEDate,
+					name: DocumentsListQueryParam.ValidTo,
 				}}
-				label="Next PE date to"
+				label="Expires until"
 			/>
 		</FilterSidebar>
 	);

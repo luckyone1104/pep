@@ -13,5 +13,5 @@ export type DocumentsListFilterValues = {
 	[DocumentsListQueryParam.Search]: string,
 	[DocumentsListQueryParam.UserIds]: number[],
 	[DocumentsListQueryParam.TypeIds]: number[],
-	[DocumentsListQueryParam.ValidTo]: Date,
+	[DocumentsListQueryParam.ValidTo]: '' | Date,
 }
