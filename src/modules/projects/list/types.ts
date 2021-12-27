@@ -16,5 +16,5 @@ export type AddProjectMutationData = {
 
 export type ProjectListSidebarFilterValues = {
 	[ProjectsListQueryParam.Search]: string,
-	[ProjectsListQueryParam.CoordinatorIds]: '' | number[],
+	[ProjectsListQueryParam.CoordinatorIds]: number[],
 }
