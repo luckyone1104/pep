@@ -7,6 +7,7 @@ import { RolesListHeader } from './components/RolesListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { RolesListTable } from './components/RolesListTable';
 import { AddRoleModalProvider } from './providers/AddRoleModalProvider';
+import { RolesListSidebar } from './components/RolesListSidebar';
 
 export const RolesList: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const RolesList: FC = () => {
 					<RolesListTable />
 				</ListLayout>
 			</AddRoleModalProvider>
+			<RolesListSidebar />
 		</ListProviders>
 
 	);

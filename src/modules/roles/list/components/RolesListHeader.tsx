@@ -9,7 +9,7 @@ export const RolesListHeader: FC = () => {
 
 	return (
 		<ListHeader
-			listTitle={ModuleName.DeepLinks}
+			listTitle={ModuleName.Roles}
 			rightSide={
 				<Button
 					variant="outlined"
