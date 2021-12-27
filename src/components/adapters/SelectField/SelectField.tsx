@@ -34,6 +34,7 @@ export const SelectField: FC<DropdownFieldProps> = (
 	const hasCustomError = !!customError;
 	const isDisabled = isLoading || hasCustomError || disabled;
 	const hasError = hasValidationError || hasCustomError;
+	const isMultipleEmpty = multiple && items.length === 0;
 
 	return (
 		<FormControl
@@ -52,6 +53,11 @@ export const SelectField: FC<DropdownFieldProps> = (
 				{!multiple && (
 					<MenuItem value="">
 						<em>None</em>
+					</MenuItem>
+				)}
+				{isMultipleEmpty && (
+					<MenuItem disabled>
+						<em>No items available</em>
 					</MenuItem>
 				)}
 				{items.map(({ id, value }) => (
