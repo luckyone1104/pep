@@ -9,11 +9,26 @@ import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { SurveysListQueryParam } from '../const';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { DatePickerField } from '../../../../components/adapters/DatePickerField';
+import { useSurveysStates } from '../../common/hooks/useSurveysStates';
+import { ErrorMessage } from '../../../../const/errors';
+import { useSurveysAssignees } from '../../common/hooks/useSurveysAssignees';
+import { useSurveysSupervisors } from '../../common/hooks/useSurveysSupervisors';
 
 export const SurveysListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useSurveysListFilterInitialValues();
+	const { data: states, isLoading: isStatesQueryLoading, error: statesQueryError } = useSurveysStates();
+	const { data: assignees, isLoading: isAssigneesLoading, error: assigneesQueryError } = useSurveysAssignees();
+	const {
+		data: supervisors,
+		isLoading: isSupervisorsQueryLoading,
+		error: supervisorsQueryError,
+	} = useSurveysSupervisors();
+
+	const statesSelectFieldError = statesQueryError ? ErrorMessage.CouldNotLoadItems : null;
+	const assigneesSelectFieldError = assigneesQueryError ? ErrorMessage.CouldNotLoadItems : null;
+	const supervisorsSelectFieldError = supervisorsQueryError ? ErrorMessage.CouldNotLoadItems : null;
 
 	const handleSubmit = (values: SurveysListSidebarFilterValues) => {
 		const formattedValues = formatFormValues(values);
@@ -32,43 +47,49 @@ export const SurveysListSidebar: FC = () => {
 		>
 			<TextBoxField
 				fieldProps={{
-					name: SurveysListQueryParam.Search
+					name: SurveysListQueryParam.Search,
 				}}
 				label="Search by Form name or Assignee"
 			/>
 			<SelectField
 				fieldProps={{
-					name: SurveysListQueryParam.StateIds
+					name: SurveysListQueryParam.StateIds,
 				}}
-				items={[]/*todo: add*/}
+				items={states}
+				isLoading={isStatesQueryLoading}
 				multiple
 				label="State"
+				customError={statesSelectFieldError}
 			/>
 			<SelectField
 				fieldProps={{
-					name: SurveysListQueryParam.AssigneeIds
+					name: SurveysListQueryParam.AssigneeIds,
 				}}
-				items={[]/*todo: add*/}
+				items={assignees}
+				isLoading={isAssigneesLoading}
 				multiple
 				label="Assignee"
+				customError={assigneesSelectFieldError}
 			/>
 			<SelectField
 				fieldProps={{
-					name: SurveysListQueryParam.SupervisorIds
+					name: SurveysListQueryParam.SupervisorIds,
 				}}
-				items={[]/*todo: add*/}
+				items={supervisors}
 				multiple
+				isLoading={isSupervisorsQueryLoading}
 				label="Supervisor"
+				customError={supervisorsSelectFieldError}
 			/>
 			<DatePickerField
 				fieldProps={{
-					name: SurveysListQueryParam.AppointmentDateFrom
+					name: SurveysListQueryParam.AppointmentDateFrom,
 				}}
 				label="Appointment date from"
 			/>
 			<DatePickerField
 				fieldProps={{
-					name: SurveysListQueryParam.AppointmentDateTo
+					name: SurveysListQueryParam.AppointmentDateTo,
 				}}
 				label="Appointment date from"
 			/>

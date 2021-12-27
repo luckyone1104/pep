@@ -7,27 +7,22 @@ export const useSurveysListFilterInitialValues = () => {
 
 	return Object.entries(urlQueryParams)
 		.reduce((acc, [key, value]) => {
-			if (key === SurveysListQueryParam.StateIds) {
-				acc[key] = parseMultiSelectFieldInitialValue(value);
-			}
-
-			if (key === SurveysListQueryParam.AssigneeIds) {
-				acc[key] = parseMultiSelectFieldInitialValue(value);
-			}
-
-			if (key === SurveysListQueryParam.SupervisorIds) {
-				acc[key] = parseMultiSelectFieldInitialValue(value);
-			}
-
 			if (key === SurveysListQueryParam.Search) {
 				acc[key] = value as string;
 			}
 
-			if (key === SurveysListQueryParam.AppointmentDateFrom) {
-				acc[key] = new Date(value as string);
+			if (
+				key === SurveysListQueryParam.StateIds ||
+				key === SurveysListQueryParam.AssigneeIds ||
+				key === SurveysListQueryParam.SupervisorIds
+			) {
+				acc[key] = parseMultiSelectFieldInitialValue(value);
 			}
 
-			if (key === SurveysListQueryParam.AppointmentDateTo) {
+			if (
+				key === SurveysListQueryParam.AppointmentDateFrom ||
+				key === SurveysListQueryParam.AppointmentDateTo
+			) {
 				acc[key] = new Date(value as string);
 			}
 

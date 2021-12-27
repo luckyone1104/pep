@@ -15,6 +15,6 @@ export type UsersListData = {
 
 export type UsersListFilterValues = {
 	[UsersListQueryParam.Search]: string,
-	[UsersListQueryParam.RoleIds]: (string | number)[],
+	[UsersListQueryParam.RoleIds]: number[],
 	[UsersListQueryParam.NextPEDate]: '' | Date,
 }

@@ -8,16 +8,16 @@ import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { useFormTemplatesStatuses } from '../../common/hooks/useFormTemplateStatuses';
 import { useFormTemplatesFilterInitialValues } from '../hooks/useFormTemplatesFilterInitialValues';
+import { ErrorMessage } from '../../../../const/errors';
 
 export const FormTemplatesSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useFormTemplatesFilterInitialValues();
-	const { data: statuses, isLoading } = useFormTemplatesStatuses();
+	const { data: statuses, isLoading, error } = useFormTemplatesStatuses();
+	const statusesSelectFieldError = !error ? null : ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: FormTemplatesSidebarFilterValues) => {
-		console.log('values', values);
-
 		setPage(0);
 		setUrlQueryParams({
 			...urlQueryParams,
@@ -32,18 +32,19 @@ export const FormTemplatesSidebar: FC = () => {
 		>
 			<TextBoxField
 				fieldProps={{
-					name: FormTemplatesQueryParam.Search
+					name: FormTemplatesQueryParam.Search,
 				}}
 				label="Search by name"
 			/>
 			<SelectField
 				fieldProps={{
-					name: FormTemplatesQueryParam.StatusIds
+					name: FormTemplatesQueryParam.StatusIds,
 				}}
 				label="Status"
 				items={statuses}
 				multiple
 				disabled={isLoading}
+				customError={statusesSelectFieldError}
 			/>
 		</FilterSidebar>
 	);

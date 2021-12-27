@@ -7,28 +7,26 @@ export const useFormsListFilterInitialValues = () => {
 
 	return Object.entries(urlQueryParams)
 		.reduce((acc, [key, value]) => {
-			if (key === FormsListQueryParam.StateId) {
-				acc[key] = value as string;
-			}
-
-			if (key === FormsListQueryParam.AssigneeIds) {
-				acc[key] = parseMultiSelectFieldInitialValue(value);
-			}
-
-			if (key === FormsListQueryParam.ReviewersIds) {
-				acc[key] = parseMultiSelectFieldInitialValue(value);
-			}
-
-			if (key === FormsListQueryParam.AppointmentDateFrom) {
-				acc[key] = new Date(value as string);
-			}
-
-			if (key === FormsListQueryParam.AppointmentDateTo) {
-				acc[key] = new Date(value as string);
-			}
-
 			if (key === FormsListQueryParam.Search) {
 				acc[key] = value as string;
+			}
+
+			if (key === FormsListQueryParam.StateId) {
+				acc[key] = +value;
+			}
+
+			if (
+				key === FormsListQueryParam.AssigneeIds ||
+				key === FormsListQueryParam.ReviewersIds
+			) {
+				acc[key] = parseMultiSelectFieldInitialValue(value);
+			}
+
+			if (
+				key === FormsListQueryParam.AppointmentDateFrom ||
+				key === FormsListQueryParam.AppointmentDateTo
+			) {
+				acc[key] = new Date(value as string);
 			}
 
 			return acc;

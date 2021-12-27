@@ -12,6 +12,6 @@ export type FieldsListData = {
 
 export type FieldsListFilterValues = {
 	[FieldsListQueryParam.Search]: string,
-	[FieldsListQueryParam.TypeIds]: (string | number)[],
-	[FieldsListQueryParam.AssesmentGroupIds]: (string | number)[],
+	[FieldsListQueryParam.TypeIds]: number[],
+	[FieldsListQueryParam.AssesmentGroupIds]: number[],
 }

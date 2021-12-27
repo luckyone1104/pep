@@ -16,9 +16,9 @@ export type SurveysListData = {
 
 export type SurveysListSidebarFilterValues = {
 	[SurveysListQueryParam.Search]: string;
-	[SurveysListQueryParam.StateIds]: (string | number)[];
-	[SurveysListQueryParam.AssigneeIds]: (string | number)[];
-	[SurveysListQueryParam.SupervisorIds]: (string | number)[];
+	[SurveysListQueryParam.StateIds]: number[];
+	[SurveysListQueryParam.AssigneeIds]: number[];
+	[SurveysListQueryParam.SupervisorIds]: number[];
 	[SurveysListQueryParam.AppointmentDateFrom]: '' | Date;
 	[SurveysListQueryParam.AppointmentDateTo]: '' | Date;
 }

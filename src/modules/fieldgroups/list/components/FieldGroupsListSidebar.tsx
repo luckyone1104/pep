@@ -7,6 +7,7 @@ import { FilterSidebar } from '../../../../components/FilterSidebar';
 import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { FieldGroupListQueryParam } from '../const';
 import { SelectField } from '../../../../components/adapters/SelectField';
+import { BOOLEAN_SELECT_ITEMS } from '../../../../components/adapters/SelectField/const';
 
 export const FieldGroupsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
@@ -28,28 +29,30 @@ export const FieldGroupsListSidebar: FC = () => {
 		>
 			<TextBoxField
 				fieldProps={{
-					name: FieldGroupListQueryParam.Search
+					name: FieldGroupListQueryParam.Search,
 				}}
 				label="Search by title"
 			/>
 			<SelectField
 				fieldProps={{
-					name: FieldGroupListQueryParam.IsNotEmpty
+					name: FieldGroupListQueryParam.IsNotEmpty,
 				}}
-				items={[]/*todo: add*/}
+				items={BOOLEAN_SELECT_ITEMS}
 				label="Only not empty"
 			/>
 			<TextBoxField
 				fieldProps={{
-					name: FieldGroupListQueryParam.CountFrom
+					name: FieldGroupListQueryParam.CountFrom,
 				}}
 				label="Count from"
+				//todo: add validation
 			/>
 			<TextBoxField
 				fieldProps={{
-					name: FieldGroupListQueryParam.CountTo
+					name: FieldGroupListQueryParam.CountTo,
 				}}
 				label="Count to"
+				//todo: add validation
 			/>
 		</FilterSidebar>
 	);

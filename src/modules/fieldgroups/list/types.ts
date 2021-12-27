@@ -8,7 +8,7 @@ export type FieldGroupsListData = {
 
 export type FieldGroupsListFilterValues = {
 	[FieldGroupListQueryParam.Search]: string,
-	[FieldGroupListQueryParam.IsNotEmpty]: null | boolean,
-	[FieldGroupListQueryParam.CountFrom]: string | number,
-	[FieldGroupListQueryParam.CountTo]: string | number,
+	[FieldGroupListQueryParam.IsNotEmpty]: '' | 0 | 1,
+	[FieldGroupListQueryParam.CountFrom]: string,
+	[FieldGroupListQueryParam.CountTo]: string,
 }

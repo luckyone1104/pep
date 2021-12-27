@@ -8,13 +8,14 @@ import { SelectField } from 'src/components/adapters/SelectField';
 import { useProjectsCoordinators } from '../../common/hooks/useProjectsCoordinators';
 import { ProjectListSidebarFilterValues } from '../types';
 import { useProjectsFilterInitialValues } from '../hooks/useProjectsFilterInitialValues';
+import { ErrorMessage } from '../../../../const/errors';
 
 export const ProjectsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useProjectsFilterInitialValues();
 	const { data: coordinators, isLoading, error } = useProjectsCoordinators();
-	const coordinatorsSelectError = !error ? null : 'Could not load dropdown items';
+	const coordinatorsSelectFieldError = !error ? null : ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: ProjectListSidebarFilterValues) => {
 		setPage(0);
@@ -43,7 +44,7 @@ export const ProjectsListSidebar: FC = () => {
 				items={coordinators}
 				multiple
 				isLoading={isLoading}
-				customError={coordinatorsSelectError}
+				customError={coordinatorsSelectFieldError}
 			/>
 		</FilterSidebar>
 	);

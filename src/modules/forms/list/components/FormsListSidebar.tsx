@@ -9,11 +9,21 @@ import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { FormsListQueryParam } from '../const';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { DatePickerField } from '../../../../components/adapters/DatePickerField';
+import { useFormsStates } from '../../common/hooks/useFormsStates';
+import { ErrorMessage } from '../../../../const/errors';
+import { useFormsAssignees } from '../../common/hooks/useFormsAssignees';
+import { useFormsReviewers } from '../../common/hooks/useFormsReviewers';
 
 export const FormsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useFormsListFilterInitialValues();
+	const { data: states, isLoading: isStatesQueryLoading, error: statesQueryError } = useFormsStates();
+	const { data: assignees, isLoading: isAssigneesQueryLoading, error: assigneesQueryError } = useFormsAssignees();
+	const { data: reviewers, isLoading: isReviewersQueryLoading, error: reviewersQueryError } = useFormsReviewers();
+	const statesSelectFieldError = !statesQueryError ? null : ErrorMessage.CouldNotLoadItems;
+	const assigneesSelectFieldError = !assigneesQueryError ? null : ErrorMessage.CouldNotLoadItems;
+	const reviewersSelectFieldError = !reviewersQueryError ? null : ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: FormsSidebarFilterValues) => {
 		const formattedValues = formatFormValues(values);
@@ -38,36 +48,42 @@ export const FormsListSidebar: FC = () => {
 			/>
 			<SelectField
 				fieldProps={{
-					name: FormsListQueryParam.StateId
+					name: FormsListQueryParam.StateId,
 				}}
 				label="State"
-				items={[]/*todo: add*/}
+				items={states}
+				isLoading={isStatesQueryLoading}
+				customError={statesSelectFieldError}
 			/>
 			<SelectField
 				fieldProps={{
-					name: FormsListQueryParam.AssigneeIds
+					name: FormsListQueryParam.AssigneeIds,
 				}}
 				label="Assignee"
-				items={[]/*todo: add*/}
+				items={assignees}
 				multiple
+				isLoading={isAssigneesQueryLoading}
+				customError={assigneesSelectFieldError}
 			/>
 			<SelectField
 				fieldProps={{
-					name: FormsListQueryParam.ReviewersIds
+					name: FormsListQueryParam.ReviewersIds,
 				}}
 				label="Reviewer"
-				items={[]/*todo: add*/}
+				items={reviewers}
 				multiple
+				isLoading={isReviewersQueryLoading}
+				customError={reviewersSelectFieldError}
 			/>
 			<DatePickerField
 				fieldProps={{
-					name: FormsListQueryParam.AppointmentDateFrom
+					name: FormsListQueryParam.AppointmentDateFrom,
 				}}
 				label="Appointment date from"
 			/>
 			<DatePickerField
 				fieldProps={{
-					name: FormsListQueryParam.AppointmentDateTo
+					name: FormsListQueryParam.AppointmentDateTo,
 				}}
 				label="Appointment date to"
 			/>

@@ -9,6 +9,7 @@ import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { FieldsListQueryParam } from '../const';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { useAssessmentGroups } from '../../common/hooks/useAssessmentGroups';
+import { ErrorMessage } from '../../../../const/errors';
 
 export const FieldsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
@@ -20,6 +21,9 @@ export const FieldsListSidebar: FC = () => {
 		isLoading: isGroupsQueryLoading,
 		error: assessmentGroupsQueryError,
 	} = useAssessmentGroups();
+	const typesSelectFieldError = !fieldsQueryError ? null : ErrorMessage.CouldNotLoadItems;
+	const assessmentGroupsSelectFieldError = !assessmentGroupsQueryError
+		? null : ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: FieldsListFilterValues) => {
 		setPage(0);
@@ -48,7 +52,7 @@ export const FieldsListSidebar: FC = () => {
 				items={types}
 				multiple
 				isLoading={isTypesQueryLoading}
-				customError={!!fieldsQueryError && 'Could not load field types'}
+				customError={typesSelectFieldError}
 			/>
 			<SelectField
 				fieldProps={{
@@ -58,7 +62,7 @@ export const FieldsListSidebar: FC = () => {
 				items={assessmentGroups}
 				multiple
 				isLoading={isGroupsQueryLoading}
-				customError={!!assessmentGroupsQueryError && 'Could not load assessment groups'}
+				customError={assessmentGroupsSelectFieldError}
 			/>
 		</FilterSidebar>
 	);

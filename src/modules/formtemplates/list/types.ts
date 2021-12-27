@@ -2,7 +2,7 @@ import {
 	AddFormTemplateMutationField,
 	FormTemplatesDataField,
 	FormTemplatesFieldRequestModelField,
-	FormTemplatesQueryParam
+	FormTemplatesQueryParam,
 } from './const';
 
 export type FormTemplatesListData = {
@@ -25,6 +25,6 @@ export type AddFormTemplateMutationData = {
 }
 
 export type FormTemplatesSidebarFilterValues = {
-	[FormTemplatesQueryParam.StatusIds]: (string | number)[];
+	[FormTemplatesQueryParam.StatusIds]: number[];
 	[FormTemplatesQueryParam.Search]: string;
 }

@@ -11,6 +11,7 @@ import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { DeeplinksListQueryParam } from '../const';
 import { SelectField } from 'src/components/adapters/SelectField';
 import { DatePickerField } from '../../../../components/adapters/DatePickerField';
+import { ErrorMessage } from '../../../../const/errors';
 
 const formatValues = (values: DeeplinksListFilterValues) => {
 	const expiresAtFromDate = values[DeeplinksListQueryParam.ExpiresAtFrom];
@@ -27,8 +28,10 @@ export const DeeplinksListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useDeeplinksFilterInitialValues();
-	const { data: states, isLoading: isStatesQueryLoading, error: statesQueryError } = useDeeplinksStates();
 	const { data: users, isLoading: isUsersQueryLoading, error: usersQueryError } = useDeeplinksUsers();
+	const { data: states, isLoading: isStatesQueryLoading, error: statesQueryError } = useDeeplinksStates();
+	const usersSelectFieldError = !usersQueryError ? null : ErrorMessage.CouldNotLoadItems;
+	const statesSelectFieldError = !statesQueryError ? null : ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: DeeplinksListFilterValues) => {
 		setPage(0);
@@ -56,7 +59,7 @@ export const DeeplinksListSidebar: FC = () => {
 				label="Sent to"
 				items={users}
 				isLoading={isUsersQueryLoading}
-				customError={!!usersQueryError && 'Could not load deeplinks users'}
+				customError={usersSelectFieldError}
 			/>
 			<DatePickerField
 				fieldProps={{
@@ -78,7 +81,7 @@ export const DeeplinksListSidebar: FC = () => {
 				label="State"
 				multiple
 				isLoading={isStatesQueryLoading}
-				customError={!!statesQueryError && 'Could not load deeplinks states'}
+				customError={statesSelectFieldError}
 			/>
 		</FilterSidebar>
 	);
