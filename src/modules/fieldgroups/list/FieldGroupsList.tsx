@@ -7,6 +7,7 @@ import { ListLayout } from '../../../components/List';
 import { FieldGroupsListHeader } from './components/FieldGroupsListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { FieldGroupsListTable } from './components/FieldGroupsListTable';
+import { FieldGroupsListSidebar } from './components/FieldGroupsListSidebar';
 
 export const FieldGroupsList: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const FieldGroupsList: FC = () => {
 					<FieldGroupsListTable />
 				</ListLayout>
 			</AddFieldGroupModalProvider>
+			<FieldGroupsListSidebar />
 		</ListProviders>
 	);
 };
