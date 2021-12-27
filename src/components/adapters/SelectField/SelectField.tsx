@@ -21,6 +21,7 @@ export const SelectField: FC<DropdownFieldProps> = (
 		label,
 		items,
 		disabled,
+		multiple
 	},
 ) => {
 	const [{
@@ -61,6 +62,7 @@ export const SelectField: FC<DropdownFieldProps> = (
 			isLoading={isLoading}
 			required={required}
 			disabled={isDisabled}
+			multiple={multiple}
 		/>
 	);
 };
