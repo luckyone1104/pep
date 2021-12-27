@@ -27,5 +27,5 @@ export const SORT_FIELDS_PAIRS = [
 
 export const SIDEBAR_FORM_INITIAL_VALUES: ProjectListSidebarFilterValues = {
 	[ProjectsListQueryParam.Search]: '',
-	[ProjectsListQueryParam.CoordinatorIds]: [],
+	[ProjectsListQueryParam.CoordinatorIds]: '',
 };
