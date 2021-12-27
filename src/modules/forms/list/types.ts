@@ -15,9 +15,9 @@ export type FormsListData = {
 
 export type FormsSidebarFilterValues = {
 	[FormsListQueryParam.Search]: string;
-	[FormsListQueryParam.StateId]: '' | number;
-	[FormsListQueryParam.AssigneeIds]: number[];
-	[FormsListQueryParam.ReviewersIds]: number[];
+	[FormsListQueryParam.StateId]: string | number;
+	[FormsListQueryParam.AssigneeIds]: (string | number)[];
+	[FormsListQueryParam.ReviewersIds]: (string | number)[];
 	[FormsListQueryParam.AppointmentDateFrom]: Date;
 	[FormsListQueryParam.AppointmentDateTo]: Date;
 }

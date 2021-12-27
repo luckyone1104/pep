@@ -6,6 +6,7 @@ import { ListLayout } from '../../../components/List';
 import { FormsHeader } from './components/FormsHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { FormsTable } from './components/FormsTable';
+import { FormsListSidebar } from './components/FormsListSidebar';
 
 export const FormsList: FC = () => {
 	return (
@@ -18,6 +19,7 @@ export const FormsList: FC = () => {
 				<FilterBreadCrumbs />
 				<FormsTable />
 			</ListLayout>
+			<FormsListSidebar />
 		</ListProviders>
 	);
 };
