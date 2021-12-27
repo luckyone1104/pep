@@ -14,6 +14,7 @@ export const TeamsListSidebar: FC = () => {
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useTeamsListFilterInitialValues();
 	const { data: projects, isLoading, error } = useProjectsDropdownItems();
+	const projectsSelectError = !error ? null : 'Could not load dropdown items';
 
 	const handleSubmit = (values: TeamsListFilterValues) => {
 		setPage(0);
@@ -42,7 +43,7 @@ export const TeamsListSidebar: FC = () => {
 				items={projects}
 				multiple
 				isLoading={isLoading}
-				customError={!!error && 'Could not load dropdown items'}
+				customError={projectsSelectError}
 			/>
 		</FilterSidebar>
 	);

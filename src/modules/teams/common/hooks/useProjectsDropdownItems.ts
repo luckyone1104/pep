@@ -8,7 +8,7 @@ export const useProjectsDropdownItems = () => {
 	const query = useQuery(PROJECTS_DROPDOWN_ITEMS_URL, getProjectsDropdownItems, {
 		refetchOnMount: false,
 		onError: () => {
-			notify('Could not load dropdown items', 'error');
+			notify('Could not load projects', 'error');
 		},
 	});
 

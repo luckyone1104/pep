@@ -14,7 +14,7 @@ export const ProjectsListSidebar: FC = () => {
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useProjectsFilterInitialValues();
 	const { data: coordinators, isLoading, error } = useProjectsCoordinators();
-	const customError = !error ? null : 'Could not load dropdown items';
+	const coordinatorsSelectError = !error ? null : 'Could not load dropdown items';
 
 	const handleSubmit = (values: ProjectListSidebarFilterValues) => {
 		setPage(0);
@@ -43,7 +43,7 @@ export const ProjectsListSidebar: FC = () => {
 				items={coordinators}
 				multiple
 				isLoading={isLoading}
-				customError={customError}
+				customError={coordinatorsSelectError}
 			/>
 		</FilterSidebar>
 	);
