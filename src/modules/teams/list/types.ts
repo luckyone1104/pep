@@ -11,5 +11,5 @@ export type TeamsListData = {
 
 export type TeamsListFilterValues = {
 	[TeamsListQueryParam.Search]: string,
-	[TeamsListQueryParam.ProjectIds]: (string | number)[],
+	[TeamsListQueryParam.ProjectIds]: number[],
 }
