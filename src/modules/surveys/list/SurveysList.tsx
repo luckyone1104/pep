@@ -7,6 +7,7 @@ import { ListLayout } from '../../../components/List';
 import { SurveysListHeader } from './components/SurveysListHeader';
 import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 import { SurveysListTable } from './components/SurveysListTable';
+import { SurveysListSidebar } from './components/SurveysListSidebar';
 
 export const SurveysList: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const SurveysList: FC = () => {
 					<SurveysListTable />
 				</ListLayout>
 			</AddSurveyModalProvider>
+			<SurveysListSidebar />
 		</ListProviders>
 	);
 };

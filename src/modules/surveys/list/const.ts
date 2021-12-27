@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import { SurveysListSidebarFilterValues } from './types';
 
 export const AddSurveyModalContext = createContext(null as unknown);
 
@@ -41,7 +42,7 @@ export const SORT_FIELD_PAIRS = [
 	[SurveysListDataField.Assignee, SurveysListQueryParam.AssigneeSortOrder],
 ];
 
-export const SURVEYS_LIST_FILTER_INITIAL_VALUES = {
+export const SURVEYS_LIST_FILTER_INITIAL_VALUES: SurveysListSidebarFilterValues = {
 	[SurveysListQueryParam.Search]: '',
 	[SurveysListQueryParam.StateIds]: [],
 	[SurveysListQueryParam.AssigneeIds]: [],
