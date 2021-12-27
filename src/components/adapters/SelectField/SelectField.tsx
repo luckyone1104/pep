@@ -1,19 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { useField } from 'formik';
 import { FieldHookConfig } from 'formik/dist/Field';
-import { SelectItem, SelectValue } from './types';
-import { CircularProgress, FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
-import { SelectProps } from '@mui/material/Select/Select';
+import { SelectFormValue } from './types';
 import { FieldInputProps } from 'formik/dist/types';
+import { Select } from '../../Select';
+import { isNullOrUndefined } from '../../../utils';
+import { SelectProps } from '../../Select/Select';
 
-type DropdownFieldProps = {
-	fieldProps: FieldHookConfig<SelectValue>;
-	required?: boolean;
-	isLoading?: boolean;
-	customError?: false | string;
-} & Omit<SelectProps, keyof Omit<FieldInputProps<SelectValue>, 'multiple'> | 'label'> & {
-	label?: string;
-	items: SelectItem[];
+type DropdownFieldProps = Omit<SelectProps, keyof Omit<FieldInputProps<SelectFormValue>, 'multiple'>> & {
+	fieldProps: FieldHookConfig<SelectFormValue>;
+	customError?: string | null;
 };
 
 export const SelectField: FC<DropdownFieldProps> = (
@@ -22,71 +18,49 @@ export const SelectField: FC<DropdownFieldProps> = (
 		required,
 		isLoading,
 		customError,
-		...props
+		label,
+		items,
+		disabled,
 	},
 ) => {
-	const [field, {
+	const [{
+		name,
+		onBlur,
+		onChange,
+		value
+	}, {
 		error,
 		touched,
 	}] = useField(fieldProps);
-	const { label, items, multiple, disabled } = props;
 	const hasValidationError = touched && !!error;
-	const hasCustomError = !!customError;
-	const isDisabled = isLoading || hasCustomError || disabled;
-	const hasError = hasValidationError || hasCustomError;
-	const isMultipleEmpty = multiple && items.length === 0;
+	const isDisabled = isLoading || Boolean(customError) || disabled;
+
+	const errors = useMemo(() => {
+		const _errors = [];
+
+		if (hasValidationError) {
+			_errors.push(error);
+		}
+
+		if (!isNullOrUndefined(customError)) {
+			_errors.push(customError);
+		}
+
+		return _errors;
+	}, [customError, error, hasValidationError]);
 
 	return (
-		<FormControl
-			fullWidth
-			error={hasError}
-			sx={{ position: 'relative' }}
-		>
-			<InputLabel id={label} required={required}>{label}</InputLabel>
-			<Select
-				{...field}
-				{...props}
-				labelId={label}
-				label={label}
-				disabled={isDisabled}
-			>
-				{!multiple && (
-					<MenuItem value="">
-						<em>None</em>
-					</MenuItem>
-				)}
-				{isMultipleEmpty && (
-					<MenuItem disabled>
-						<em>No items available</em>
-					</MenuItem>
-				)}
-				{items.map(({ id, value }) => (
-					<MenuItem
-						key={id}
-						value={id}
-					>
-						{value}
-					</MenuItem>
-				))}
-			</Select>
-			{hasValidationError && (
-				<FormHelperText>{error}</FormHelperText>
-			)}
-			{hasCustomError && (
-				<FormHelperText>{customError}</FormHelperText>
-			)}
-			{isLoading && (
-				<CircularProgress
-					size={24}
-					sx={{
-						position: 'absolute',
-						top: '50%',
-						left: '50%',
-						marginTop: '-12px',
-						marginLeft: '-12px',
-					}}
-				/>
-			)}
-		</FormControl>
+		<Select
+			name={name}
+			onBlur={onBlur}
+			onChange={onChange}
+			value={value}
+			items={items}
+			label={label}
+			errors={errors}
+			isLoading={isLoading}
+			required={required}
+			disabled={isDisabled}
+		/>
 	);
 };

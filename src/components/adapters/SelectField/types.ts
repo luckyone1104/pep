@@ -1,6 +1,1 @@
-export type SelectValue = string | number | unknown[];
-
-export type SelectItem = {
-	id: number;
-	value: string;
-}
+export type SelectFormValue = string | number | unknown[];
