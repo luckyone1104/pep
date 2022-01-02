@@ -5,12 +5,12 @@ import { Alert, AlertColor } from '@mui/material';
 
 export const NotificationsProvider: FC = ({ children }) => {
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-	const notify = (message: string, variant: AlertColor = 'info',) => {
+	const notify = (message: string, variant: AlertColor = 'info') => {
 		enqueueSnackbar(message, {
 			variant,
 			anchorOrigin: {
 				vertical: 'bottom',
-				horizontal: 'right'
+				horizontal: 'right',
 			},
 			content: (key, message) => (
 				<Alert

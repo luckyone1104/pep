@@ -11,10 +11,7 @@ import { RolesListSidebar } from './components/RolesListSidebar';
 
 export const RolesList: FC = () => {
 	return (
-		<ListProviders
-			url={ROLES_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={ROLES_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<AddRoleModalProvider>
 				<ListLayout>
 					<RolesListHeader />
@@ -24,6 +21,5 @@ export const RolesList: FC = () => {
 			</AddRoleModalProvider>
 			<RolesListSidebar />
 		</ListProviders>
-
 	);
 };

@@ -5,8 +5,8 @@ import { parseMultiSelectFieldInitialValue } from '../../../../components/adapte
 export const useFieldsListFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (
 				key === FieldsListQueryParam.TypeIds ||
 				key === FieldsListQueryParam.AssesmentGroupIds
@@ -19,5 +19,7 @@ export const useFieldsListFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...FIELD_FILTER_INITIAL_VALUES });
+		},
+		{ ...FIELD_FILTER_INITIAL_VALUES }
+	);
 };

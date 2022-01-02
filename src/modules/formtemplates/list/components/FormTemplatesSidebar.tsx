@@ -11,11 +11,14 @@ import { useFormTemplatesFilterInitialValues } from '../hooks/useFormTemplatesFi
 import { ErrorMessage } from '../../../../const/errors';
 
 export const FormTemplatesSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useFormTemplatesFilterInitialValues();
 	const { data: statuses, isLoading, error } = useFormTemplatesStatuses();
-	const statusesSelectFieldError = !error ? null : ErrorMessage.CouldNotLoadItems;
+	const statusesSelectFieldError = !error
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: FormTemplatesSidebarFilterValues) => {
 		setPage(0);
@@ -26,10 +29,7 @@ export const FormTemplatesSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: FormTemplatesQueryParam.Search,

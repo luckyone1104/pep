@@ -5,10 +5,7 @@ import { useMenuContext } from '../MenuProvider';
 
 export const MenuToolbar: FC = () => {
 	const theme = useTheme();
-	const {
-		isDesktopMenuExtended,
-		narrowDesktopMenu
-	} = useMenuContext();
+	const { isDesktopMenuExtended, narrowDesktopMenu } = useMenuContext();
 
 	return (
 		<Toolbar
@@ -16,7 +13,7 @@ export const MenuToolbar: FC = () => {
 				alignItems: 'center',
 				justifyContent: 'flex-end',
 				paddingRight: {
-					xs: theme.spacing(1)
+					xs: theme.spacing(1),
 				},
 			}}
 		>
@@ -30,7 +27,6 @@ export const MenuToolbar: FC = () => {
 					<ChevronLeftIcon />
 				</IconButton>
 			)}
-
 		</Toolbar>
 	);
 };

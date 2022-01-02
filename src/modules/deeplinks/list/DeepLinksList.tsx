@@ -10,12 +10,8 @@ import { DeeplinksListTable } from './components/DeeplinksListTable';
 import { DeeplinksListSidebar } from './components/DeeplinksListSidebar';
 
 export const DeepLinksList: FC = () => {
-
 	return (
-		<ListProviders
-			url={DEEPLINKS_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={DEEPLINKS_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<AddDeeplinkModalProvider>
 				<ListLayout>
 					<DeeplinksListHeader />

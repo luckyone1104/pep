@@ -19,19 +19,34 @@ const formatValues = (values: DeeplinksListFilterValues) => {
 
 	return {
 		...values,
-		[DeeplinksListQueryParam.ExpiresAtFrom]: expiresAtFromDate === '' ? '' : formatISO(expiresAtFromDate),
-		[DeeplinksListQueryParam.ExpiresAtTo]: expiresAtToDate === '' ? '' : formatISO(expiresAtToDate),
+		[DeeplinksListQueryParam.ExpiresAtFrom]:
+			expiresAtFromDate === '' ? '' : formatISO(expiresAtFromDate),
+		[DeeplinksListQueryParam.ExpiresAtTo]:
+			expiresAtToDate === '' ? '' : formatISO(expiresAtToDate),
 	};
 };
 
 export const DeeplinksListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useDeeplinksFilterInitialValues();
-	const { data: users, isLoading: isUsersQueryLoading, error: usersQueryError } = useDeeplinksUsers();
-	const { data: states, isLoading: isStatesQueryLoading, error: statesQueryError } = useDeeplinksStates();
-	const usersSelectFieldError = !usersQueryError ? null : ErrorMessage.CouldNotLoadItems;
-	const statesSelectFieldError = !statesQueryError ? null : ErrorMessage.CouldNotLoadItems;
+	const {
+		data: users,
+		isLoading: isUsersQueryLoading,
+		error: usersQueryError,
+	} = useDeeplinksUsers();
+	const {
+		data: states,
+		isLoading: isStatesQueryLoading,
+		error: statesQueryError,
+	} = useDeeplinksStates();
+	const usersSelectFieldError = !usersQueryError
+		? null
+		: ErrorMessage.CouldNotLoadItems;
+	const statesSelectFieldError = !statesQueryError
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: DeeplinksListFilterValues) => {
 		setPage(0);
@@ -42,10 +57,7 @@ export const DeeplinksListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: DeeplinksListQueryParam.Search,

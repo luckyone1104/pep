@@ -11,11 +11,14 @@ import { useProjectsFilterInitialValues } from '../hooks/useProjectsFilterInitia
 import { ErrorMessage } from '../../../../const/errors';
 
 export const ProjectsListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useProjectsFilterInitialValues();
 	const { data: coordinators, isLoading, error } = useProjectsCoordinators();
-	const coordinatorsSelectFieldError = !error ? null : ErrorMessage.CouldNotLoadItems;
+	const coordinatorsSelectFieldError = !error
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: ProjectListSidebarFilterValues) => {
 		setPage(0);
@@ -26,10 +29,7 @@ export const ProjectsListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: ProjectsListQueryParam.Search,

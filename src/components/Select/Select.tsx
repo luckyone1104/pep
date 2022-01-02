@@ -5,7 +5,7 @@ import {
 	FormHelperText,
 	InputLabel,
 	MenuItem,
-	Select as MuiSelect
+	Select as MuiSelect,
 } from '@mui/material';
 import { SelectProps as MuiSelectProps } from '@mui/material/Select/Select';
 import { SelectItem } from './types';
@@ -16,40 +16,27 @@ export type SelectProps = Omit<MuiSelectProps, 'label'> & {
 	errors?: string[];
 	isLoading?: boolean;
 	required?: boolean;
-}
+};
 
-export const Select: FC<SelectProps> = (
-	{
-		items,
-		label,
-		errors = [],
-		isLoading,
-		required,
-		...selectProps
-	}
-) => {
+export const Select: FC<SelectProps> = ({
+	items,
+	label,
+	errors = [],
+	isLoading,
+	required,
+	...selectProps
+}) => {
 	const hasError = errors.length > 0;
 	const isItemsEmpty = items.length === 0;
 
 	return (
-		<FormControl
-			fullWidth
-			error={hasError}
-			sx={{ position: 'relative' }}
-		>
+		<FormControl fullWidth error={hasError} sx={{ position: 'relative' }}>
 			{label && (
-				<InputLabel
-					id={label}
-					required={required}
-				>
+				<InputLabel id={label} required={required}>
 					{label}
 				</InputLabel>
 			)}
-			<MuiSelect
-				{...selectProps}
-				labelId={label}
-				label={label}
-			>
+			<MuiSelect {...selectProps} labelId={label} label={label}>
 				{!selectProps.multiple && (
 					<MenuItem value="">
 						<em>None</em>
@@ -61,10 +48,7 @@ export const Select: FC<SelectProps> = (
 					</MenuItem>
 				)}
 				{items.map(({ id, value }) => (
-					<MenuItem
-						key={id}
-						value={id}
-					>
+					<MenuItem key={id} value={id}>
 						{value}
 					</MenuItem>
 				))}

@@ -6,7 +6,7 @@ type AddFieldGroupContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddFieldGroupContext = () => {
 	const context = useContext(AddFieldGroupContext);

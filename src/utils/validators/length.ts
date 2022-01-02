@@ -3,14 +3,9 @@ import { isUndefined } from '../checkers';
 type LengthProps = {
 	min?: number;
 	max?: number;
-}
+};
 
-export const length = (
-	{
-		min,
-		max,
-	}: LengthProps = {},
-) => {
+export const length = ({ min, max }: LengthProps = {}) => {
 	return (value: unknown) => {
 		if (typeof value !== 'string' && !Array.isArray(value)) {
 			return;

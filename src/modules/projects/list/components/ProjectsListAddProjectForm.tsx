@@ -15,7 +15,8 @@ export const ProjectsListAddProjectForm: FC = () => {
 	const { mutate, isLoading } = useAddProjectMutation();
 
 	const handleSubmit = (values: ProjectFormValues) => {
-		const submitData: AddProjectMutationData = formatProjectSubmitValues(values);
+		const submitData: AddProjectMutationData =
+			formatProjectSubmitValues(values);
 
 		mutate(submitData);
 	};
@@ -30,17 +31,11 @@ export const ProjectsListAddProjectForm: FC = () => {
 				<ProjectsFormFields />
 				<Box sx={{ pt: 2 }}>
 					<SimpleModalButtonsLayout>
-						<Button
-							onClick={handleClose}
-							disabled={isLoading}
-						>
+						<Button onClick={handleClose} disabled={isLoading}>
 							Cancel
 						</Button>
 						<Box sx={{ position: 'relative' }}>
-							<Button
-								type="submit"
-								disabled={isLoading}
-							>
+							<Button type="submit" disabled={isLoading}>
 								Create
 							</Button>
 							{isLoading && (

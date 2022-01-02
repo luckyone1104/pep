@@ -7,22 +7,22 @@ import { useListPaginationParamsContext } from '../hooks/useListPaginationParams
 import { useListUrlQueryParamsContext } from '../hooks/useListUrlQueryParamsContext';
 
 type ListSortProviderProps = {
-	sortFieldsPairs?: string[][],
-}
+	sortFieldsPairs?: string[][];
+};
 
-export const ListSortProvider: FC<ListSortProviderProps> = (
-	{
-		sortFieldsPairs = [],
-		children
-	}
-) => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+export const ListSortProvider: FC<ListSortProviderProps> = ({
+	sortFieldsPairs = [],
+	children,
+}) => {
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 
 	const getSortModel = () => {
 		const sortingFields = sortFieldsPairs.map(([, sortField]) => sortField);
-		const currentSortField = Object.keys(urlQueryParams)
-			.find(key => sortingFields.includes(key));
+		const currentSortField = Object.keys(urlQueryParams).find((key) =>
+			sortingFields.includes(key)
+		);
 
 		if (isUndefined(currentSortField)) {
 			return [];
@@ -37,24 +37,30 @@ export const ListSortProvider: FC<ListSortProviderProps> = (
 			return [];
 		}
 
-		return [{
-			field: currentFormField,
-			sort: normalizeSortValue(currentSortFieldValue)
-		}];
+		return [
+			{
+				field: currentFormField,
+				sort: normalizeSortValue(currentSortFieldValue),
+			},
+		];
 	};
 
 	const handleSort = (model: GridSortModel) => {
-		const sortData = sortFieldsPairs.reduce((acc, [columnField, filterField]) => {
-			const isSearchedField = columnField === model[0]?.field;
-			const sortType = model[0] && model[0].sort;
+		const sortData = sortFieldsPairs.reduce(
+			(acc, [columnField, filterField]) => {
+				const isSearchedField = columnField === model[0]?.field;
+				const sortType = model[0] && model[0].sort;
 
-			return {
-				...acc,
-				[filterField]: isSearchedField && sortType
-					? parseSortValue(sortType)
-					: null
-			};
-		}, {});
+				return {
+					...acc,
+					[filterField]:
+						isSearchedField && sortType
+							? parseSortValue(sortType)
+							: null,
+				};
+			},
+			{}
+		);
 
 		setPage(0);
 		setUrlQueryParams({
@@ -64,10 +70,12 @@ export const ListSortProvider: FC<ListSortProviderProps> = (
 	};
 
 	return (
-		<ListSortContext.Provider value={{
-			sortModel: getSortModel(),
-			handleSort
-		}}>
+		<ListSortContext.Provider
+			value={{
+				sortModel: getSortModel(),
+				handleSort,
+			}}
+		>
 			{children}
 		</ListSortContext.Provider>
 	);

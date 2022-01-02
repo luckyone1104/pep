@@ -5,8 +5,8 @@ import { parseMultiSelectFieldInitialValue } from '../../../../components/adapte
 export const useProjectsFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === ProjectsListQueryParam.CoordinatorIds) {
 				acc[key] = parseMultiSelectFieldInitialValue(value);
 			}
@@ -16,5 +16,7 @@ export const useProjectsFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...SIDEBAR_FORM_INITIAL_VALUES });
+		},
+		{ ...SIDEBAR_FORM_INITIAL_VALUES }
+	);
 };

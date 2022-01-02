@@ -15,20 +15,35 @@ import { useSurveysAssignees } from '../../common/hooks/useSurveysAssignees';
 import { useSurveysSupervisors } from '../../common/hooks/useSurveysSupervisors';
 
 export const SurveysListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useSurveysListFilterInitialValues();
-	const { data: states, isLoading: isStatesQueryLoading, error: statesQueryError } = useSurveysStates();
-	const { data: assignees, isLoading: isAssigneesLoading, error: assigneesQueryError } = useSurveysAssignees();
+	const {
+		data: states,
+		isLoading: isStatesQueryLoading,
+		error: statesQueryError,
+	} = useSurveysStates();
+	const {
+		data: assignees,
+		isLoading: isAssigneesLoading,
+		error: assigneesQueryError,
+	} = useSurveysAssignees();
 	const {
 		data: supervisors,
 		isLoading: isSupervisorsQueryLoading,
 		error: supervisorsQueryError,
 	} = useSurveysSupervisors();
 
-	const statesSelectFieldError = statesQueryError ? ErrorMessage.CouldNotLoadItems : null;
-	const assigneesSelectFieldError = assigneesQueryError ? ErrorMessage.CouldNotLoadItems : null;
-	const supervisorsSelectFieldError = supervisorsQueryError ? ErrorMessage.CouldNotLoadItems : null;
+	const statesSelectFieldError = statesQueryError
+		? ErrorMessage.CouldNotLoadItems
+		: null;
+	const assigneesSelectFieldError = assigneesQueryError
+		? ErrorMessage.CouldNotLoadItems
+		: null;
+	const supervisorsSelectFieldError = supervisorsQueryError
+		? ErrorMessage.CouldNotLoadItems
+		: null;
 
 	const handleSubmit = (values: SurveysListSidebarFilterValues) => {
 		const formattedValues = formatFormValues(values);
@@ -41,10 +56,7 @@ export const SurveysListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: SurveysListQueryParam.Search,

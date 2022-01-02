@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { getColumnsWithSkeletons, getEmptyRows, getRowsCountObjFromLocalStorage } from '../utils';
+import {
+	getColumnsWithSkeletons,
+	getEmptyRows,
+	getRowsCountObjFromLocalStorage,
+} from '../utils';
 import { useListSortContext } from './useListSortContext';
 import { useListPaginationParamsContext } from './useListPaginationParamsContext';
 import { useListQueryContext } from './useListQueryContext';
@@ -8,19 +12,9 @@ import { isUndefined } from '../../../utils';
 import { LOCAL_STORAGE_LIST_ROWS_KEY } from '../const';
 import { getActiveModuleNameFromUrl } from '../../../utils/getActiveModuleNameFromUrl';
 
-export const useList = (
-	{
-		columns,
-		rows,
-	}: ListProps
-) => {
-	const {
-		page,
-		setPage,
-		take,
-		setTake,
-		totalItemsCount
-	} = useListPaginationParamsContext();
+export const useList = ({ columns, rows }: ListProps) => {
+	const { page, setPage, take, setTake, totalItemsCount } =
+		useListPaginationParamsContext();
 	const {
 		data,
 		fetchNextPage,
@@ -30,7 +24,7 @@ export const useList = (
 		isFetchingNextPage,
 		isFetchingPreviousPage,
 		isPreviousData,
-		isRefetching
+		isRefetching,
 	} = useListQueryContext();
 
 	const queryError = error && new Error(error as string);
@@ -44,16 +38,27 @@ export const useList = (
 
 	const { sortModel, handleSort } = useListSortContext();
 
-	const loading = isLoading || isFetchingNextPage || isFetchingPreviousPage || isPreviousData || isRefetching;
+	const loading =
+		isLoading ||
+		isFetchingNextPage ||
+		isFetchingPreviousPage ||
+		isPreviousData ||
+		isRefetching;
 
-	const handlePageChange = useCallback((pageIndex: number) => {
-		setPage(pageIndex);
-	}, [setPage]);
+	const handlePageChange = useCallback(
+		(pageIndex: number) => {
+			setPage(pageIndex);
+		},
+		[setPage]
+	);
 
-	const handlePageSizeChange = useCallback((takeSize) => {
-		setPage(0);
-		setTake(takeSize);
-	}, [setPage, setTake]);
+	const handlePageSizeChange = useCallback(
+		(takeSize) => {
+			setPage(0);
+			setTake(takeSize);
+		},
+		[setPage, setTake]
+	);
 
 	useEffect(() => {
 		if (page === data?.pages.length) {
@@ -70,7 +75,8 @@ export const useList = (
 	useEffect(() => {
 		//@ts-ignore
 		const firstPageRowsCountWithOldModel = data?.pages[0]?.length; //todo: deprecate when all lists will be updated
-		const firstPageRowsCount = data?.pages[0]?.items?.length || firstPageRowsCountWithOldModel;
+		const firstPageRowsCount =
+			data?.pages[0]?.items?.length || firstPageRowsCountWithOldModel;
 
 		if (!firstPageRowsCount || firstPageRowsCount === 0) {
 			return;
@@ -79,10 +85,13 @@ export const useList = (
 		const rowsCountObj = getRowsCountObjFromLocalStorage() || {};
 		const activeModuleName = getActiveModuleNameFromUrl();
 
-		window.localStorage.setItem(LOCAL_STORAGE_LIST_ROWS_KEY, JSON.stringify({
-			...rowsCountObj,
-			[activeModuleName]: firstPageRowsCount
-		}));
+		window.localStorage.setItem(
+			LOCAL_STORAGE_LIST_ROWS_KEY,
+			JSON.stringify({
+				...rowsCountObj,
+				[activeModuleName]: firstPageRowsCount,
+			})
+		);
 	}, [data?.pages]);
 
 	return {

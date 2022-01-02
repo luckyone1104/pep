@@ -1,9 +1,5 @@
 import React, { FC } from 'react';
-import {
-	Toolbar,
-	Box,
-	CssBaseline,
-} from '@mui/material';
+import { Toolbar, Box, CssBaseline } from '@mui/material';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { Header } from '../Header';
 import { Menu } from '../Menu';
@@ -15,10 +11,7 @@ export const AppLayout: FC = ({ children }) => {
 			<CssBaseline />
 			<Box sx={{ display: 'flex' }}>
 				<Header />
-				<Box
-					component="nav"
-					aria-label="navigation menu"
-				>
+				<Box component="nav" aria-label="navigation menu">
 					<Menu />
 				</Box>
 				<Box
@@ -31,9 +24,7 @@ export const AppLayout: FC = ({ children }) => {
 					}}
 				>
 					<Toolbar />
-					<ErrorBoundary>
-						{children}
-					</ErrorBoundary>
+					<ErrorBoundary>{children}</ErrorBoundary>
 				</Box>
 			</Box>
 		</>

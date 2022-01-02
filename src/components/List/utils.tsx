@@ -6,14 +6,16 @@ import { CustomObject } from '../../types';
 import { DEFAULT_EMPTY_ROWS_COUNT, LOCAL_STORAGE_LIST_ROWS_KEY } from './const';
 import { getActiveModuleNameFromUrl } from '../../utils/getActiveModuleNameFromUrl';
 
-export const renderCellWIthSkeleton = ({ formattedValue }: GridRenderCellParams) => {
-	return isEmpty(formattedValue)
-		? (
-			<Typography sx={{ width: '100%' }}>
-				<Skeleton />
-			</Typography>
-		)
-		: (formattedValue as string);
+export const renderCellWIthSkeleton = ({
+	formattedValue,
+}: GridRenderCellParams) => {
+	return isEmpty(formattedValue) ? (
+		<Typography sx={{ width: '100%' }}>
+			<Skeleton />
+		</Typography>
+	) : (
+		(formattedValue as string)
+	);
 };
 
 export const getColumnsWithSkeletons = (columns: GridColumns) => {
@@ -26,7 +28,9 @@ export const getColumnsWithSkeletons = (columns: GridColumns) => {
 };
 
 export const getRowsCountObjFromLocalStorage = () => {
-	const localStorageItem = window.localStorage.getItem(LOCAL_STORAGE_LIST_ROWS_KEY);
+	const localStorageItem = window.localStorage.getItem(
+		LOCAL_STORAGE_LIST_ROWS_KEY
+	);
 
 	if (isNull(localStorageItem)) {
 		return {};
@@ -49,7 +53,8 @@ const getListRowsCountFromLocalStorage = () => {
 
 export const getEmptyRows = (columns: GridColumns) => {
 	const fields = columns.map(({ field }) => field);
-	const emptyRowsCount = getListRowsCountFromLocalStorage() || DEFAULT_EMPTY_ROWS_COUNT;
+	const emptyRowsCount =
+		getListRowsCountFromLocalStorage() || DEFAULT_EMPTY_ROWS_COUNT;
 
 	return Array(emptyRowsCount)
 		.fill(null)

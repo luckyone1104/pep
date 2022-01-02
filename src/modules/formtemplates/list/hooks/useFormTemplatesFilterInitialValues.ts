@@ -5,8 +5,8 @@ import { parseMultiSelectFieldInitialValue } from '../../../../components/adapte
 export const useFormTemplatesFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === FormTemplatesQueryParam.Search) {
 				acc[key] = value as string;
 			}
@@ -16,5 +16,7 @@ export const useFormTemplatesFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...SIDEBAR_FORM_INITIAL_VALUES });
+		},
+		{ ...SIDEBAR_FORM_INITIAL_VALUES }
+	);
 };

@@ -6,15 +6,15 @@ export type ProjectsListData = {
 	[ProjectsListDataField.Id]: number;
 	[ProjectsListDataField.StartDate]: string;
 	[ProjectsListDataField.Title]: string;
-}
+};
 
 export type AddProjectMutationData = {
-	[ProjectsListDataField.Title]: string,
-	[ProjectsListDataField.StartDate]: string,
-	[ProjectsListDataField.CoordinatorId]: '' | number,
-}
+	[ProjectsListDataField.Title]: string;
+	[ProjectsListDataField.StartDate]: string;
+	[ProjectsListDataField.CoordinatorId]: '' | number;
+};
 
 export type ProjectListSidebarFilterValues = {
-	[ProjectsListQueryParam.Search]: string,
-	[ProjectsListQueryParam.CoordinatorIds]: number[],
-}
+	[ProjectsListQueryParam.Search]: string;
+	[ProjectsListQueryParam.CoordinatorIds]: number[];
+};

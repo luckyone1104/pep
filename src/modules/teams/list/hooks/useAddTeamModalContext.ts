@@ -6,7 +6,7 @@ type AddTeamModalContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddTeamModalContext = () => {
 	const context = useContext(AddTeamModalContext);

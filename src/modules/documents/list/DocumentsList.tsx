@@ -11,10 +11,7 @@ import { DocumentsListSidebar } from './components/DocumentsListSidebar';
 
 export const DocumentsList: FC = () => {
 	return (
-		<ListProviders
-			url={DOCUMENTS_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={DOCUMENTS_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<AddDocumentModalProvider>
 				<ListLayout>
 					<DocumentsListHeader />
@@ -24,6 +21,5 @@ export const DocumentsList: FC = () => {
 			</AddDocumentModalProvider>
 			<DocumentsListSidebar />
 		</ListProviders>
-
 	);
 };

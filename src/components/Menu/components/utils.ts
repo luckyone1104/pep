@@ -6,4 +6,3 @@ export const checkIfMenuItemSelected = (pathname: string, name: string) => {
 
 	return moduleFromUrl === joinedAndLowerCaseModuleName;
 };
-

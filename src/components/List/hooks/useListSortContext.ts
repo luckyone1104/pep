@@ -6,7 +6,7 @@ import { ListSortContext } from '../providers/const';
 export type ListSortContextType = {
 	sortModel: GridSortModel;
 	handleSort: (model: GridSortModel) => void;
-}
+};
 
 export const useListSortContext = () => {
 	const context = useContext(ListSortContext);

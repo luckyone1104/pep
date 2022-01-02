@@ -13,11 +13,18 @@ import { formatFormValues } from '../utils';
 import { ErrorMessage } from '../../../../const/errors';
 
 export const UsersListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useUsersListFilterInitialValues();
-	const { data: roles, isLoading: isRolesQueryLoading, error } = useRolesDropdownItems();
-	const rolesSelectFieldError = !error ? null : ErrorMessage.CouldNotLoadItems;
+	const {
+		data: roles,
+		isLoading: isRolesQueryLoading,
+		error,
+	} = useRolesDropdownItems();
+	const rolesSelectFieldError = !error
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: UsersListFilterValues) => {
 		const formattedValues = formatFormValues(values);
@@ -30,10 +37,7 @@ export const UsersListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: UsersListQueryParam.Search,

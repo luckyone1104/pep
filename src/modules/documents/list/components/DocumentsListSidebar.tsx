@@ -12,10 +12,12 @@ import { DatePickerField } from '../../../../components/adapters/DatePickerField
 import { useDocumentsTypes } from '../../common/hooks/useDocumentsTypes';
 
 export const DocumentsListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useDocumentsListFilterInitialValues();
-	const { data: typeIds, isLoading: isTypeIdsQueryLoading } = useDocumentsTypes();
+	const { data: typeIds, isLoading: isTypeIdsQueryLoading } =
+		useDocumentsTypes();
 
 	const handleSubmit = (values: DocumentsListFilterValues) => {
 		const formattedValues = formatFormValues(values);
@@ -28,27 +30,24 @@ export const DocumentsListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
-					name: DocumentsListQueryParam.Search
+					name: DocumentsListQueryParam.Search,
 				}}
 				label="Search by file name"
 			/>
 			<SelectField
 				fieldProps={{
-					name: DocumentsListQueryParam.UserIds
+					name: DocumentsListQueryParam.UserIds,
 				}}
-				items={[]/*add endpoint for users*/}
+				items={[] /*add endpoint for users*/}
 				label="User"
 				multiple
 			/>
 			<SelectField
 				fieldProps={{
-					name: DocumentsListQueryParam.TypeIds
+					name: DocumentsListQueryParam.TypeIds,
 				}}
 				items={typeIds}
 				label="Document type"

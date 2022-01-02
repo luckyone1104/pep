@@ -26,12 +26,15 @@ export enum UsersListQueryParam {
 	UserNameSortOrder = 'userNameSortOrder',
 	UserPreviousPESortOrder = 'userPreviousPESortOrder',
 	UserNextPESortOrder = 'userNextPESortOrder',
-	Search = 'search'
+	Search = 'search',
 }
 
 export const SORT_FIELD_PAIRS = [
 	[FORMATTED_NAME_FIELD, UsersListQueryParam.UserNameSortOrder],
-	[UsersListDataField.PreviousPEDate, UsersListQueryParam.UserPreviousPESortOrder],
+	[
+		UsersListDataField.PreviousPEDate,
+		UsersListQueryParam.UserPreviousPESortOrder,
+	],
 	[UsersListDataField.NextPEDate, UsersListQueryParam.UserNextPESortOrder],
 ];
 

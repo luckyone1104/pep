@@ -15,13 +15,12 @@ const getEmptyValueOfProperType = (value: unknown) => {
 export const getCleanFormValues = (values: CustomObject) => {
 	const cleanValues = {};
 
-	Object.entries(values)
-		.forEach(([key, value]) => {
-			if (Object.prototype.hasOwnProperty.call(values, key)) {
-				// @ts-ignore
-				cleanValues[key] = getEmptyValueOfProperType(value);
-			}
-		});
+	Object.entries(values).forEach(([key, value]) => {
+		if (Object.prototype.hasOwnProperty.call(values, key)) {
+			// @ts-ignore
+			cleanValues[key] = getEmptyValueOfProperType(value);
+		}
+	});
 
 	return cleanValues;
 };

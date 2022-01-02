@@ -1,12 +1,15 @@
 import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/useListUrlQueryParamsContext';
-import { FIELD_GROUPS_FILTER_INITIAL_VALUES, FieldGroupListQueryParam } from '../const';
+import {
+	FIELD_GROUPS_FILTER_INITIAL_VALUES,
+	FieldGroupListQueryParam,
+} from '../const';
 import { parseTrueOrFalseSelectFieldInitialValue } from '../../../../components/adapters/SelectField/utils';
 
 export const useFieldGroupsListFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (
 				key === FieldGroupListQueryParam.Search ||
 				key === FieldGroupListQueryParam.CountFrom ||
@@ -16,9 +19,13 @@ export const useFieldGroupsListFilterInitialValues = () => {
 			}
 
 			if (key === FieldGroupListQueryParam.IsNotEmpty) {
-				acc[key] = parseTrueOrFalseSelectFieldInitialValue(value as string);
+				acc[key] = parseTrueOrFalseSelectFieldInitialValue(
+					value as string
+				);
 			}
 
 			return acc;
-		}, { ...FIELD_GROUPS_FILTER_INITIAL_VALUES });
+		},
+		{ ...FIELD_GROUPS_FILTER_INITIAL_VALUES }
+	);
 };

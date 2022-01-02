@@ -5,7 +5,10 @@ import { ProjectsDetailData } from '../types';
 import { isUndefined } from '../../../../utils';
 import { ProjectsFormFields } from '../../common/components/ProjectsFormFields';
 import { SkeletonFields } from '../../../../components/SkeletonFields';
-import { PROJECT_FORM_DEFAULT_VALUES, ProjectFormField } from '../../common/const';
+import {
+	PROJECT_FORM_DEFAULT_VALUES,
+	ProjectFormField,
+} from '../../common/const';
 import { ProjectFormValues } from '../../common/types';
 import { ProjectsDetailFormButtons } from './ProjectsDetailFormButtons';
 import { formatProjectSubmitValues } from '../../common/utils';
@@ -15,7 +18,11 @@ import { RouteIdParamOnly } from '../../../../types';
 
 export const ProjectsDetailForm: FC = () => {
 	const { id } = useParams<RouteIdParamOnly>();
-	const { data, isLoading: isProjectDataLoading, isSuccess } = useDetailQueryContext<ProjectsDetailData>();
+	const {
+		data,
+		isLoading: isProjectDataLoading,
+		isSuccess,
+	} = useDetailQueryContext<ProjectsDetailData>();
 	const formattedData = useMemo(() => {
 		if (isUndefined(data)) {
 			return;
@@ -23,15 +30,18 @@ export const ProjectsDetailForm: FC = () => {
 
 		return {
 			...data,
-			[ProjectFormField.StartDate]: new Date(data[ProjectFormField.StartDate]),
+			[ProjectFormField.StartDate]: new Date(
+				data[ProjectFormField.StartDate]
+			),
 		};
 	}, [data]);
-	const { mutate, isLoading: isMutationPending } = useUpdateProjectDataMutation();
+	const { mutate, isLoading: isMutationPending } =
+		useUpdateProjectDataMutation();
 
 	const handleSubmit = (values: ProjectFormValues) => {
 		mutate({
 			id,
-			data: formatProjectSubmitValues(values)
+			data: formatProjectSubmitValues(values),
 		});
 	};
 
@@ -42,13 +52,11 @@ export const ProjectsDetailForm: FC = () => {
 			enableReinitialize
 		>
 			<Form>
-				{isProjectDataLoading && (
-					<SkeletonFields fieldsCount={3} />
-				)}
-				{isSuccess && (
-					<ProjectsFormFields />
-				)}
-				<ProjectsDetailFormButtons isLoading={isMutationPending || isProjectDataLoading} />
+				{isProjectDataLoading && <SkeletonFields fieldsCount={3} />}
+				{isSuccess && <ProjectsFormFields />}
+				<ProjectsDetailFormButtons
+					isLoading={isMutationPending || isProjectDataLoading}
+				/>
 			</Form>
 		</Formik>
 	);

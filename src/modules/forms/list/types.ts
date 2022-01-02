@@ -11,7 +11,7 @@ export type FormsListData = {
 	[FormsDataField.State]: string;
 	[FormsDataField.StateId]: number;
 	[FormsDataField.AppointmentDate]: string;
-}
+};
 
 export type FormsSidebarFilterValues = {
 	[FormsListQueryParam.Search]: string;
@@ -20,4 +20,4 @@ export type FormsSidebarFilterValues = {
 	[FormsListQueryParam.ReviewersIds]: number[];
 	[FormsListQueryParam.AppointmentDateFrom]: '' | Date;
 	[FormsListQueryParam.AppointmentDateTo]: '' | Date;
-}
+};

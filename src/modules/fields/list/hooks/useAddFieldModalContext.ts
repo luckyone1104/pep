@@ -6,7 +6,7 @@ type AddFieldModalContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddFieldModalContext = () => {
 	const context = useContext(AddFieldModalContext);

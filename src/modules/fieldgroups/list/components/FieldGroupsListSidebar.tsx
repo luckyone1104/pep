@@ -10,7 +10,8 @@ import { SelectField } from '../../../../components/adapters/SelectField';
 import { BOOLEAN_SELECT_ITEMS } from '../../../../components/adapters/SelectField/const';
 
 export const FieldGroupsListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useFieldGroupsListFilterInitialValues();
 
@@ -23,10 +24,7 @@ export const FieldGroupsListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: FieldGroupListQueryParam.Search,

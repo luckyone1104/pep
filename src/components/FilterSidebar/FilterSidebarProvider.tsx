@@ -1,4 +1,4 @@
-import { createContext, FC, useContext, useState, } from 'react';
+import { createContext, FC, useContext, useState } from 'react';
 
 type FilterSidebarContextValue = {
 	isSidebarMounted: boolean;
@@ -7,7 +7,7 @@ type FilterSidebarContextValue = {
 	handleSidebarToggle: () => void;
 	openSidebar: () => void;
 	closeSidebar: () => void;
-}
+};
 
 const FilterSidebarContext = createContext(null as unknown);
 
@@ -16,7 +16,7 @@ export const FilterSidebarProvider: FC = ({ children }) => {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 
 	const handleSidebarToggle = () => {
-		setSidebarOpen(prev => !prev);
+		setSidebarOpen((prev) => !prev);
 	};
 
 	const openSidebar = () => {
@@ -28,17 +28,20 @@ export const FilterSidebarProvider: FC = ({ children }) => {
 	};
 
 	return (
-		<FilterSidebarContext.Provider value={{
-			isSidebarMounted,
-			setIsSidebarMounted,
-			sidebarOpen,
-			handleSidebarToggle,
-			openSidebar,
-			closeSidebar
-		}}>
+		<FilterSidebarContext.Provider
+			value={{
+				isSidebarMounted,
+				setIsSidebarMounted,
+				sidebarOpen,
+				handleSidebarToggle,
+				openSidebar,
+				closeSidebar,
+			}}
+		>
 			{children}
 		</FilterSidebarContext.Provider>
 	);
 };
 
-export const useFilterSidebarContext = () => useContext(FilterSidebarContext) as FilterSidebarContextValue;
+export const useFilterSidebarContext = () =>
+	useContext(FilterSidebarContext) as FilterSidebarContextValue;

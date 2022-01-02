@@ -21,8 +21,14 @@ export enum ProjectsListQueryParam {
 
 export const SORT_FIELDS_PAIRS = [
 	[ProjectsListDataField.Title, ProjectsListQueryParam.TitleSortOrder],
-	[ProjectsListDataField.StartDate, ProjectsListQueryParam.StartDateSortOrder],
-	[ProjectsListDataField.Coordinator, ProjectsListQueryParam.CoordinatorSortOrder],
+	[
+		ProjectsListDataField.StartDate,
+		ProjectsListQueryParam.StartDateSortOrder,
+	],
+	[
+		ProjectsListDataField.Coordinator,
+		ProjectsListQueryParam.CoordinatorSortOrder,
+	],
 ];
 
 export const SIDEBAR_FORM_INITIAL_VALUES: ProjectListSidebarFilterValues = {

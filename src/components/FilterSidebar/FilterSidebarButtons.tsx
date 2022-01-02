@@ -24,22 +24,18 @@ export const FilterSidebarButtons: FC = () => {
 	return (
 		<Box>
 			<Divider />
-			<Box sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				pt: 1,
-				pb: 1,
-			}}>
-				<Button
-					size="large"
-					onClick={handleResetForm}
-				>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					pt: 1,
+					pb: 1,
+				}}
+			>
+				<Button size="large" onClick={handleResetForm}>
 					Clean filters
 				</Button>
-				<Button
-					onClick={handleFormSubmit}
-					size="large"
-				>
+				<Button onClick={handleFormSubmit} size="large">
 					Apply filters
 				</Button>
 			</Box>

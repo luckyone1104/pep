@@ -11,10 +11,7 @@ import { TeamsListSidebar } from './components/TeamsListSidebar';
 
 export const TeamsList: FC = () => {
 	return (
-		<ListProviders
-			url={TEAMS_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={TEAMS_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<AddTeamModalProvider>
 				<ListLayout>
 					<TeamsListHeader />
@@ -24,6 +21,5 @@ export const TeamsList: FC = () => {
 			</AddTeamModalProvider>
 			<TeamsListSidebar />
 		</ListProviders>
-
 	);
 };

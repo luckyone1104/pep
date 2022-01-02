@@ -30,13 +30,13 @@ export const useFormsColumns = (): GridColumns => {
 			minWidth: 180,
 			flex: 1,
 			hideSortIcons: true,
-			valueFormatter: (({ value }) => {
+			valueFormatter: ({ value }) => {
 				if (isEmpty(value)) {
 					return;
 				}
 
 				return format(new Date(value as string), 'dd.MM.yyyy');
-			}),
+			},
 		},
 		{
 			field: FormsDataField.State,

@@ -7,10 +7,5 @@ export const UsersListTable: FC = () => {
 	const columns = useUsersListColumns();
 	const rows = useUsersListRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

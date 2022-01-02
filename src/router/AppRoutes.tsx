@@ -13,20 +13,10 @@ export const AppRoutes: FC = () => {
 					component={lazy(() => import('src/modules/dashboard'))}
 				/>
 				{listPages.map(({ path, component }) => (
-					<Route
-						exact
-						key={path}
-						path={path}
-						component={component}
-					/>
+					<Route exact key={path} path={path} component={component} />
 				))}
 				{detailPages.map(({ path, component }) => (
-					<Route
-						exact
-						key={path}
-						path={path}
-						component={component}
-					/>
+					<Route exact key={path} path={path} component={component} />
 				))}
 				<Route
 					path="*"

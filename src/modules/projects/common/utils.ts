@@ -3,10 +3,17 @@ import { ProjectFormValues } from './types';
 import { ProjectFormField } from './const';
 import { ProjectsDetailData } from '../detail/types';
 
-export const formatProjectSubmitValues = (values: ProjectFormValues): ProjectsDetailData => {
+export const formatProjectSubmitValues = (
+	values: ProjectFormValues
+): ProjectsDetailData => {
 	return {
 		...values,
-		[ProjectFormField.StartDate]: formatISO(values[ProjectFormField.StartDate], { representation: 'date' }),
-		[ProjectFormField.CoordinatorId]: Number(values[ProjectFormField.CoordinatorId]),
+		[ProjectFormField.StartDate]: formatISO(
+			values[ProjectFormField.StartDate],
+			{ representation: 'date' }
+		),
+		[ProjectFormField.CoordinatorId]: Number(
+			values[ProjectFormField.CoordinatorId]
+		),
 	};
 };

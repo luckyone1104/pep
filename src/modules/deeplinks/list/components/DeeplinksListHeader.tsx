@@ -11,10 +11,7 @@ export const DeeplinksListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.DeepLinks}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add
 				</Button>
 			}

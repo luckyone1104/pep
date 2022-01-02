@@ -17,6 +17,6 @@ export const useAddProjectMutation = () => {
 		onError: () => {
 			notify('An error has occurred during creating project!', 'error');
 		},
-		onSettled: closeModal
+		onSettled: closeModal,
 	});
 };

@@ -11,10 +11,7 @@ import { FieldsListSidebar } from './components/FieldsListSidebar';
 
 export const FieldsList: FC = () => {
 	return (
-		<ListProviders
-			url={FIELDS_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={FIELDS_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<AddFieldModalProvider>
 				<ListLayout>
 					<FieldsListHeader />

@@ -8,11 +8,13 @@ export const AddFormTemplateModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<AddFormTemplateModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddFormTemplateModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 			<AddFormTemplateModal />
 		</AddFormTemplateModalContext.Provider>

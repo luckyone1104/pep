@@ -10,10 +10,7 @@ import { FormsListSidebar } from './components/FormsListSidebar';
 
 export const FormsList: FC = () => {
 	return (
-		<ListProviders
-			url={FORMS_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={FORMS_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<ListLayout>
 				<FormsHeader />
 				<FilterBreadCrumbs />

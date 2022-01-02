@@ -4,20 +4,17 @@ import { Box, Typography } from '@mui/material';
 type ListHeaderProps = {
 	listTitle: string | JSX.Element;
 	rightSide?: JSX.Element;
-}
+};
 
-export const ListHeader: FC<ListHeaderProps> = (
-	{
-		listTitle,
-		rightSide,
-	},
-) => {
+export const ListHeader: FC<ListHeaderProps> = ({ listTitle, rightSide }) => {
 	return (
-		<Box sx={{
-			display: 'flex',
-			justifyContent: 'space-between',
-			minHeight: '36px',
-		}}>
+		<Box
+			sx={{
+				display: 'flex',
+				justifyContent: 'space-between',
+				minHeight: '36px',
+			}}
+		>
 			<Typography
 				variant="h5"
 				sx={{

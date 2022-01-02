@@ -11,20 +11,18 @@ type ExcludedKeysAlias = 'date' | 'openPicker' | 'rawValue' | 'renderInput';
 type DatePickerFieldProps = {
 	fieldProps: FieldHookConfig<Date>;
 	required?: boolean;
-} & Omit<DatePickerProps<Date>, keyof FieldInputProps<Date> | ExcludedKeysAlias>
-	& React.RefAttributes<HTMLDivElement>;
+} & Omit<
+	DatePickerProps<Date>,
+	keyof FieldInputProps<Date> | ExcludedKeysAlias
+> &
+	React.RefAttributes<HTMLDivElement>;
 
-export const DatePickerField: FC<DatePickerFieldProps> = (
-	{
-		fieldProps,
-		required,
-		...props
-	},
-) => {
-	const [field, {
-		touched,
-		error,
-	}] = useField(fieldProps);
+export const DatePickerField: FC<DatePickerFieldProps> = ({
+	fieldProps,
+	required,
+	...props
+}) => {
+	const [field, { touched, error }] = useField(fieldProps);
 	const { setFieldValue, setFieldTouched } = useFormikContext();
 	const handleChange = (value: Date | null) => {
 		setFieldTouched(field.name, true);

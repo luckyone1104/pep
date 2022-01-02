@@ -9,20 +9,26 @@ export const FilterSidebarFormLayout: FC = ({ children }) => {
 	const { closeSidebar } = useFilterSidebarContext();
 
 	return (
-		<Box sx={{
-			height: '100%',
-			display: 'flex',
-			flexDirection: 'column',
-			justifyContent: 'space-between',
-		}}>
-			<Box sx={{
-				flexGrow: 1,
-				overflow: 'auto',
-			}}>
-				<Toolbar sx={{
-					display: 'flex',
-					justifyContent: 'end',
-				}}>
+		<Box
+			sx={{
+				height: '100%',
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-between',
+			}}
+		>
+			<Box
+				sx={{
+					flexGrow: 1,
+					overflow: 'auto',
+				}}
+			>
+				<Toolbar
+					sx={{
+						display: 'flex',
+						justifyContent: 'end',
+					}}
+				>
 					<IconButton
 						onClick={closeSidebar}
 						sx={{
@@ -33,12 +39,14 @@ export const FilterSidebarFormLayout: FC = ({ children }) => {
 					</IconButton>
 				</Toolbar>
 				<Divider />
-				<Box sx={{
-					p: 2,
-					display: 'flex',
-					flexDirection: 'column',
-					gap: 2,
-				}}>
+				<Box
+					sx={{
+						p: 2,
+						display: 'flex',
+						flexDirection: 'column',
+						gap: 2,
+					}}
+				>
 					{children}
 				</Box>
 			</Box>

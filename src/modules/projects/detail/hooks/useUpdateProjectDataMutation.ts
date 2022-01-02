@@ -13,7 +13,10 @@ export const useUpdateProjectDataMutation = () => {
 			refetch();
 		},
 		onError: () => {
-			notify('An error has occurred during updating the project!', 'error');
+			notify(
+				'An error has occurred during updating the project!',
+				'error'
+			);
 		},
 	});
 };

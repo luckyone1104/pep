@@ -20,7 +20,10 @@ export enum FieldGroupListQueryParam {
 
 export const SORT_FIELD_PAIRS = [
 	[FieldGroupsListDataField.Title, FieldGroupListQueryParam.TitleSetOrder],
-	[FieldGroupsListDataField.FieldCount, FieldGroupListQueryParam.FieldCountSetOrder],
+	[
+		FieldGroupsListDataField.FieldCount,
+		FieldGroupListQueryParam.FieldCountSetOrder,
+	],
 ];
 
 export const FIELD_GROUPS_FILTER_INITIAL_VALUES: FieldGroupsListFilterValues = {

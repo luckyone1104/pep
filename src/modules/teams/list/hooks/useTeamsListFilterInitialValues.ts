@@ -5,8 +5,8 @@ import { parseMultiSelectFieldInitialValue } from '../../../../components/adapte
 export const useTeamsListFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === TeamsListQueryParam.ProjectIds) {
 				acc[key] = parseMultiSelectFieldInitialValue(value);
 			}
@@ -16,5 +16,7 @@ export const useTeamsListFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...TEAMS_FILTER_INITIAL_VALUES });
+		},
+		{ ...TEAMS_FILTER_INITIAL_VALUES }
+	);
 };

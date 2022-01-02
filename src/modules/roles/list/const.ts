@@ -7,7 +7,7 @@ export enum RolesListDataField {
 	Id = 'id',
 	Title = 'title',
 	IsPrimary = 'isPrimary',
-	UsersCount = 'usersCount'
+	UsersCount = 'usersCount',
 }
 
 export enum RolesListQueryParam {
@@ -21,7 +21,7 @@ export enum RolesListQueryParam {
 
 export const SORT_FIELD_PAIRS = [
 	[RolesListDataField.Title, RolesListQueryParam.TitleSortOrder],
-	[RolesListDataField.IsPrimary, RolesListQueryParam.IsPrimarySortOrder]
+	[RolesListDataField.IsPrimary, RolesListQueryParam.IsPrimarySortOrder],
 ];
 
 export const ROLES_FILTER_INITIAL_VALUES: RolesListFilterValues = {

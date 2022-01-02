@@ -11,7 +11,7 @@ export enum DocumentsListDataField {
 	LastName = 'lastName',
 	DocumentTypeName = 'documentTypeName',
 	ValidToDate = 'validToDate',
-	FirstName = 'firstName'
+	FirstName = 'firstName',
 }
 
 export enum DocumentsListQueryParam {
@@ -20,12 +20,15 @@ export enum DocumentsListQueryParam {
 	ValidTo = 'validTo',
 	NameSortOrder = 'nameSortOrder',
 	TypeSortOrder = 'typeSortOrder',
-	Search = 'search'
+	Search = 'search',
 }
 
 export const SORT_FIELD_PAIRS = [
 	[FORMATTED_NAME_FIELD, DocumentsListQueryParam.NameSortOrder],
-	[DocumentsListDataField.DocumentTypeName, DocumentsListQueryParam.TypeSortOrder]
+	[
+		DocumentsListDataField.DocumentTypeName,
+		DocumentsListQueryParam.TypeSortOrder,
+	],
 ];
 
 export const DOCUMENTS_FILTER_INITIAL_VALUES: DocumentsListFilterValues = {

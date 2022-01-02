@@ -4,7 +4,6 @@ import { AppLayout } from './components/AppLayout';
 import { AppRoutes } from './router';
 
 export const App: FC = () => {
-
 	return (
 		<AppProviders>
 			<AppLayout>

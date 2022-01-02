@@ -4,28 +4,30 @@ import { useDetailQueryContext } from '../../../../components/Detail/hooks/useDe
 import { ProjectsDetailData } from '../types';
 
 export const ProjectsDetailHeader: FC = () => {
-	const { data, isSuccess, isLoading } = useDetailQueryContext<ProjectsDetailData>();
+	const { data, isSuccess, isLoading } =
+		useDetailQueryContext<ProjectsDetailData>();
 
 	return (
-		<Box sx={{
-			display: 'flex',
-			justifyContent: 'space-between',
-		}}>
+		<Box
+			sx={{
+				display: 'flex',
+				justifyContent: 'space-between',
+			}}
+		>
 			<Typography
 				variant="h5"
 				sx={{
 					fontWeight: 700,
 				}}
 			>
-
 				{isLoading && (
-					<Skeleton sx={{
-						width: '200px'
-					}}/>
+					<Skeleton
+						sx={{
+							width: '200px',
+						}}
+					/>
 				)}
-				{isSuccess && (
-					data!.title
-				)}
+				{isSuccess && data!.title}
 			</Typography>
 		</Box>
 	);

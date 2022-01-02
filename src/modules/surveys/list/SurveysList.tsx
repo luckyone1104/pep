@@ -11,10 +11,7 @@ import { SurveysListSidebar } from './components/SurveysListSidebar';
 
 export const SurveysList: FC = () => {
 	return (
-		<ListProviders
-			url={SURVEYS_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={SURVEYS_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<AddSurveyModalProvider>
 				<ListLayout>
 					<SurveysListHeader />

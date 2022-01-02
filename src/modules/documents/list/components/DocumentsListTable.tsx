@@ -7,10 +7,5 @@ export const DocumentsListTable: FC = () => {
 	const columns = useDocumentsListColumns();
 	const rows = useDocumentsListRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

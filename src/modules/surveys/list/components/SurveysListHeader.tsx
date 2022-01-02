@@ -11,10 +11,7 @@ export const SurveysListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.Surveys}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add
 				</Button>
 			}

@@ -14,15 +14,19 @@ export const ListUrlQueryParamsProvider: FC = ({ children }) => {
 		const normalizedQueryParams = getNormalizedQueryParams(params);
 
 		history.push({
-			search: qs.stringify(normalizedQueryParams, { arrayFormat: 'repeat' }),
+			search: qs.stringify(normalizedQueryParams, {
+				arrayFormat: 'repeat',
+			}),
 		});
 	};
 
 	return (
-		<ListUrlQueryParamsContext.Provider value={{
-			urlQueryParams,
-			setUrlQueryParams,
-		}}>
+		<ListUrlQueryParamsContext.Provider
+			value={{
+				urlQueryParams,
+				setUrlQueryParams,
+			}}
+		>
 			{children}
 		</ListUrlQueryParamsContext.Provider>
 	);

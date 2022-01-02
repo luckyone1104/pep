@@ -11,10 +11,7 @@ export const FieldGroupsListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.FieldGroups}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add
 				</Button>
 			}

@@ -7,11 +7,13 @@ export const AddDeeplinkModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<AddDeeplinkModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddDeeplinkModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 		</AddDeeplinkModalContext.Provider>
 	);

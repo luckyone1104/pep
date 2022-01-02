@@ -16,13 +16,13 @@ export const useDeeplinksColumns = (): GridColumns => {
 			headerName: 'Expires at',
 			minWidth: 180,
 			flex: 1,
-			valueFormatter: (({ value }) => {
+			valueFormatter: ({ value }) => {
 				if (isEmpty(value)) {
 					return;
 				}
 
 				return format(new Date(value as string), 'dd.MM.yyyy');
-			}),
+			},
 		},
 		{
 			field: DeeplinksListDataField.State,

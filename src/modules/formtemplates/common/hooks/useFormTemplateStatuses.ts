@@ -4,10 +4,13 @@ import { getFormTemplatesStatuses } from '../api';
 import { DropdownItem } from '../../../../types';
 
 export const useFormTemplatesStatuses = () => {
-	const query = useQuery<DropdownItem[]>(FORM_TEMPLATES_STATUSES_URL, getFormTemplatesStatuses);
+	const query = useQuery<DropdownItem[]>(
+		FORM_TEMPLATES_STATUSES_URL,
+		getFormTemplatesStatuses
+	);
 
 	return {
 		...query,
-		data: query.data || []
+		data: query.data || [],
 	};
 };

@@ -7,7 +7,7 @@ const flattenChildren = (children: React.ReactNode): ReactChildArray => {
 	return childrenArray.reduce((flatChildren: ReactChildArray, child) => {
 		if ((child as React.ReactElement<unknown>).type === React.Fragment) {
 			return flatChildren.concat(
-				flattenChildren((child as React.ReactElement).props.children),
+				flattenChildren((child as React.ReactElement).props.children)
 			);
 		}
 
@@ -24,7 +24,10 @@ export const balancer = (items: React.ReactNode, maxColumns: number) => {
 		(acc, item) => {
 			const lastAccIndex = acc.length - 1;
 
-			if (acc[lastAccIndex].length === itemsPerColumns + (balanceSize && 1)) {
+			if (
+				acc[lastAccIndex].length ===
+				itemsPerColumns + (balanceSize && 1)
+			) {
 				if (balanceSize > 0) {
 					balanceSize -= 1;
 				}
@@ -36,6 +39,6 @@ export const balancer = (items: React.ReactNode, maxColumns: number) => {
 
 			return acc;
 		},
-		[[]],
+		[[]]
 	);
 };

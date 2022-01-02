@@ -12,7 +12,7 @@ export type SurveysListData = {
 	[SurveysListDataField.State]: string;
 	[SurveysListDataField.StateId]: number;
 	[SurveysListDataField.ProgressInPercenteges]: number;
-}
+};
 
 export type SurveysListSidebarFilterValues = {
 	[SurveysListQueryParam.Search]: string;
@@ -21,4 +21,4 @@ export type SurveysListSidebarFilterValues = {
 	[SurveysListQueryParam.SupervisorIds]: number[];
 	[SurveysListQueryParam.AppointmentDateFrom]: '' | Date;
 	[SurveysListQueryParam.AppointmentDateTo]: '' | Date;
-}
+};

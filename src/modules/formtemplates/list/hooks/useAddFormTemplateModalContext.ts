@@ -6,7 +6,7 @@ type AddFormTemplateModalContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddFormTemplateModalContext = () => {
 	const context = useContext(AddFormTemplateModalContext);

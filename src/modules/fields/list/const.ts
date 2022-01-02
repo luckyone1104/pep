@@ -29,4 +29,3 @@ export const FIELD_FILTER_INITIAL_VALUES: FieldsListFilterValues = {
 	[FieldsListQueryParam.TypeIds]: [],
 	[FieldsListQueryParam.AssesmentGroupIds]: [],
 };
-

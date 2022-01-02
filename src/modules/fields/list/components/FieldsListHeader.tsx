@@ -11,10 +11,7 @@ export const FieldsListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.Fields}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add
 				</Button>
 			}

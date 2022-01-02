@@ -6,11 +6,8 @@ import { useMenuContext } from './MenuProvider';
 import { MenuDesktopDrawer } from './components/MenuDesktopDrawer';
 
 export const Menu: FC = () => {
-	const {
-		isMobileMenuOpened,
-		isDesktopMenuExtended,
-		toggleMobileMenu,
-	} = useMenuContext();
+	const { isMobileMenuOpened, isDesktopMenuExtended, toggleMobileMenu } =
+		useMenuContext();
 
 	return (
 		<>
@@ -23,7 +20,10 @@ export const Menu: FC = () => {
 				}}
 				sx={{
 					display: { xs: 'block', sm: 'none' },
-					'& .MuiDrawer-paper': { boxSizing: 'border-box', width: MENU_WIDTH },
+					'& .MuiDrawer-paper': {
+						boxSizing: 'border-box',
+						width: MENU_WIDTH,
+					},
 				}}
 			>
 				<MenuContent />

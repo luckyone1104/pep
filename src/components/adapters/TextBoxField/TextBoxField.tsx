@@ -5,19 +5,14 @@ import { FieldHookConfig } from 'formik/dist/Field';
 import { FieldInputProps } from 'formik/dist/types';
 
 type TextBoxFieldProps = {
-	fieldProps: FieldHookConfig<string>,
+	fieldProps: FieldHookConfig<string>;
 } & Omit<TextFieldProps, keyof FieldInputProps<string>>;
 
-export const TextBoxField: FC<TextBoxFieldProps> = (
-	{
-		fieldProps,
-		...props
-	},
-) => {
-	const [field, {
-		error,
-		touched,
-	}] = useField(fieldProps);
+export const TextBoxField: FC<TextBoxFieldProps> = ({
+	fieldProps,
+	...props
+}) => {
+	const [field, { error, touched }] = useField(fieldProps);
 	const showValidationError = touched && !!error;
 
 	return (

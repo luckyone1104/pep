@@ -11,10 +11,7 @@ import { UsersListSidebar } from './components/UsersListSidebar';
 
 export const UsersList: FC = () => {
 	return (
-		<ListProviders
-			url={USERS_URL}
-			sortFieldsPairs={SORT_FIELD_PAIRS}
-		>
+		<ListProviders url={USERS_URL} sortFieldsPairs={SORT_FIELD_PAIRS}>
 			<AddUserModalProvider>
 				<ListLayout>
 					<UsersListHeader />

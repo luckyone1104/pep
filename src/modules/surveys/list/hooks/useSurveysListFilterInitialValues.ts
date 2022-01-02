@@ -1,12 +1,15 @@
 import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/useListUrlQueryParamsContext';
-import { SURVEYS_LIST_FILTER_INITIAL_VALUES, SurveysListQueryParam } from '../const';
+import {
+	SURVEYS_LIST_FILTER_INITIAL_VALUES,
+	SurveysListQueryParam,
+} from '../const';
 import { parseMultiSelectFieldInitialValue } from '../../../../components/adapters/SelectField/utils';
 
 export const useSurveysListFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === SurveysListQueryParam.Search) {
 				acc[key] = value as string;
 			}
@@ -27,5 +30,7 @@ export const useSurveysListFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...SURVEYS_LIST_FILTER_INITIAL_VALUES });
+		},
+		{ ...SURVEYS_LIST_FILTER_INITIAL_VALUES }
+	);
 };

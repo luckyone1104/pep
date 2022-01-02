@@ -30,13 +30,13 @@ export const useFieldsListColumns = (): GridColumns => {
 			minWidth: 140,
 			flex: 1,
 			hideSortIcons: true,
-			valueFormatter: (({ value }) => {
+			valueFormatter: ({ value }) => {
 				if (!isBoolean(value)) {
 					return;
 				}
 
 				return value ? 'Yes' : 'No';
-			})
+			},
 		},
 	];
 };

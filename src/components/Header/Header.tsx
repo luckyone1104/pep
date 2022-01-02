@@ -7,9 +7,7 @@ import { headerExtendedMixin, headerMixin } from './styles/mixins';
 
 export const Header: FC = () => {
 	const theme = useTheme();
-	const {
-		isDesktopMenuExtended,
-	} = useMenuContext();
+	const { isDesktopMenuExtended } = useMenuContext();
 
 	return (
 		<AppBar
@@ -19,9 +17,11 @@ export const Header: FC = () => {
 				...(isDesktopMenuExtended && headerExtendedMixin(theme)),
 			}}
 		>
-			<Toolbar sx={{
-				justifyContent: 'space-between',
-			}}>
+			<Toolbar
+				sx={{
+					justifyContent: 'space-between',
+				}}
+			>
 				<HeaderLeftSide />
 				<HeaderRightSide />
 			</Toolbar>

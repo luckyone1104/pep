@@ -11,10 +11,7 @@ export const FormTemplateHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.FormTemplates}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add form template
 				</Button>
 			}

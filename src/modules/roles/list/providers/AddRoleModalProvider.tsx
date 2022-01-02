@@ -7,11 +7,13 @@ export const AddRoleModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<AddRoleModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddRoleModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 		</AddRoleModalContext.Provider>
 	);

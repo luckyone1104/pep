@@ -1,5 +1,9 @@
 import { get } from '../../../api';
-import { SURVEYS_ASSIGNEES_URL, SURVEYS_STATES_URL, SURVEYS_SUPERVISORS_URL } from './const';
+import {
+	SURVEYS_ASSIGNEES_URL,
+	SURVEYS_STATES_URL,
+	SURVEYS_SUPERVISORS_URL,
+} from './const';
 import { DropdownItem } from '../../../types';
 
 export const getSurveysStates = async () => {

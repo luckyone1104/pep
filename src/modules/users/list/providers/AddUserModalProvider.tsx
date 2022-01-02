@@ -6,11 +6,13 @@ export const AddUserModalProvider: FC = ({ children }) => {
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	return (
-		<AddUserModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddUserModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 		</AddUserModalContext.Provider>
 	);

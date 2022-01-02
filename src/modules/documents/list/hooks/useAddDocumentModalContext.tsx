@@ -6,7 +6,7 @@ type AddDocumentModalContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddDocumentModalContext = () => {
 	const context = useContext(AddDocumentModalContext);

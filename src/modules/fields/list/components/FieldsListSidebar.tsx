@@ -12,18 +12,26 @@ import { useAssessmentGroups } from '../../common/hooks/useAssessmentGroups';
 import { ErrorMessage } from '../../../../const/errors';
 
 export const FieldsListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useFieldsListFilterInitialValues();
-	const { data: types, isLoading: isTypesQueryLoading, error: fieldsQueryError } = useFieldsTypes();
+	const {
+		data: types,
+		isLoading: isTypesQueryLoading,
+		error: fieldsQueryError,
+	} = useFieldsTypes();
 	const {
 		data: assessmentGroups,
 		isLoading: isGroupsQueryLoading,
 		error: assessmentGroupsQueryError,
 	} = useAssessmentGroups();
-	const typesSelectFieldError = !fieldsQueryError ? null : ErrorMessage.CouldNotLoadItems;
+	const typesSelectFieldError = !fieldsQueryError
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 	const assessmentGroupsSelectFieldError = !assessmentGroupsQueryError
-		? null : ErrorMessage.CouldNotLoadItems;
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: FieldsListFilterValues) => {
 		setPage(0);
@@ -34,10 +42,7 @@ export const FieldsListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: FieldsListQueryParam.Search,

@@ -4,7 +4,8 @@ import { DocumentsListQueryParam } from './const';
 
 export const formatFormValues = (values: DocumentsListFilterValues) => {
 	const date = values[DocumentsListQueryParam.ValidTo];
-	const formattedDate = date === '' ? '' : formatISO(date, { representation: 'date' });
+	const formattedDate =
+		date === '' ? '' : formatISO(date, { representation: 'date' });
 
 	return {
 		...values,

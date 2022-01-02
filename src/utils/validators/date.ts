@@ -2,16 +2,11 @@ import { isDateType, isNull, isValidDate } from '../checkers';
 import { format } from 'date-fns';
 
 type DateProps = {
-	min?: Date,
-	max?: Date,
-}
+	min?: Date;
+	max?: Date;
+};
 
-export const date = (
-	{
-		min,
-		max,
-	}: DateProps = {},
-) => {
+export const date = ({ min, max }: DateProps = {}) => {
 	return (value: unknown) => {
 		if (isNull(value)) {
 			return;

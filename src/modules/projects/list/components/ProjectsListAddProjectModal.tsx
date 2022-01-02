@@ -7,11 +7,7 @@ export const ProjectsListAddProjectModal: FC = () => {
 	const { open, handleClose } = useProjectsListAddProjectModalContext();
 
 	return (
-		<SimpleModal
-			title="Add project"
-			open={open}
-			onClose={handleClose}
-		>
+		<SimpleModal title="Add project" open={open} onClose={handleClose}>
 			<ProjectsListAddProjectForm />
 		</SimpleModal>
 	);

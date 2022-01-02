@@ -2,12 +2,11 @@ import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/
 import { USERS_FILTER_INITIAL_VALUES, UsersListQueryParam } from '../const';
 import { parseMultiSelectFieldInitialValue } from '../../../../components/adapters/SelectField/utils';
 
-
 export const useUsersListFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === UsersListQueryParam.RoleIds) {
 				acc[key] = parseMultiSelectFieldInitialValue(value);
 			}
@@ -21,5 +20,7 @@ export const useUsersListFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...USERS_FILTER_INITIAL_VALUES });
+		},
+		{ ...USERS_FILTER_INITIAL_VALUES }
+	);
 };

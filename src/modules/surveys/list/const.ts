@@ -42,11 +42,12 @@ export const SORT_FIELD_PAIRS = [
 	[SurveysListDataField.Assignee, SurveysListQueryParam.AssigneeSortOrder],
 ];
 
-export const SURVEYS_LIST_FILTER_INITIAL_VALUES: SurveysListSidebarFilterValues = {
-	[SurveysListQueryParam.Search]: '',
-	[SurveysListQueryParam.StateIds]: [],
-	[SurveysListQueryParam.AssigneeIds]: [],
-	[SurveysListQueryParam.SupervisorIds]: [],
-	[SurveysListQueryParam.AppointmentDateFrom]: new Date(),
-	[SurveysListQueryParam.AppointmentDateTo]: new Date(),
-};
+export const SURVEYS_LIST_FILTER_INITIAL_VALUES: SurveysListSidebarFilterValues =
+	{
+		[SurveysListQueryParam.Search]: '',
+		[SurveysListQueryParam.StateIds]: [],
+		[SurveysListQueryParam.AssigneeIds]: [],
+		[SurveysListQueryParam.SupervisorIds]: [],
+		[SurveysListQueryParam.AppointmentDateFrom]: new Date(),
+		[SurveysListQueryParam.AppointmentDateTo]: new Date(),
+	};

@@ -7,9 +7,9 @@ type ListPaginationParamsType = {
 	setPage: (pageIndex: number) => void;
 	take: number;
 	setTake: (take: number) => void;
-	totalItemsCount: number,
+	totalItemsCount: number;
 	tryToSetTotalItemsCount: (totalCount: undefined | number) => void;
-}
+};
 
 export const useListPaginationParamsContext = () => {
 	const context = useContext(ListPaginationParamsContext);

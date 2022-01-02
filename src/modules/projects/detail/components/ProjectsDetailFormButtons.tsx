@@ -5,21 +5,21 @@ import { useFormikContext } from 'formik';
 
 type ProjectsDetailFormButtonsProps = {
 	isLoading: boolean;
-}
+};
 
-export const ProjectsDetailFormButtons: FC<ProjectsDetailFormButtonsProps> = (
-	{
-		isLoading
-	}
-) => {
+export const ProjectsDetailFormButtons: FC<ProjectsDetailFormButtonsProps> = ({
+	isLoading,
+}) => {
 	const { dirty } = useFormikContext();
 
 	return (
-		<Box sx={{
-			pt: 3,
-			display: 'flex',
-			justifyContent: 'flex-end'
-		}}>
+		<Box
+			sx={{
+				pt: 3,
+				display: 'flex',
+				justifyContent: 'flex-end',
+			}}
+		>
 			<Box sx={{ m: 1, position: 'relative' }}>
 				<Button
 					type="submit"

@@ -11,7 +11,10 @@ export const useUsersListColumns = (): GridColumns => {
 			minWidth: 240,
 			flex: 1,
 			valueGetter: (params) => {
-				if (isUndefined(params.row.firstName) || isUndefined(params.row.lastName)) {
+				if (
+					isUndefined(params.row.firstName) ||
+					isUndefined(params.row.lastName)
+				) {
 					return;
 				}
 
@@ -51,26 +54,26 @@ export const useUsersListColumns = (): GridColumns => {
 			headerName: 'Previous PE date',
 			minWidth: 140,
 			flex: 1,
-			valueFormatter: (({ value }) => {
+			valueFormatter: ({ value }) => {
 				if (isEmpty(value)) {
 					return;
 				}
 
 				return format(new Date(value as string), 'dd.MM.yyyy');
-			}),
+			},
 		},
 		{
 			field: UsersListDataField.NextPEDate,
 			headerName: 'Next PE date',
 			minWidth: 140,
 			flex: 1,
-			valueFormatter: (({ value }) => {
+			valueFormatter: ({ value }) => {
 				if (isEmpty(value)) {
 					return;
 				}
 
 				return format(new Date(value as string), 'dd.MM.yyyy');
-			}),
+			},
 		},
 		{
 			field: UsersListDataField.StateName,

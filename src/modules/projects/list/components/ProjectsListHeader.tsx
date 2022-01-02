@@ -11,10 +11,7 @@ export const ProjectsListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.Projects}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add project
 				</Button>
 			}

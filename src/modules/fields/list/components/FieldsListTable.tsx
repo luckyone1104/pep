@@ -7,10 +7,5 @@ export const FieldsListTable: FC = () => {
 	const columns = useFieldsListColumns();
 	const rows = useFieldsListRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

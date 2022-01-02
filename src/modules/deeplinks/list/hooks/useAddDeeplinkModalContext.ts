@@ -6,7 +6,7 @@ type AddDeeplinkModalContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddDeeplinkModalContext = () => {
 	const context = useContext(AddDeeplinkModalContext);

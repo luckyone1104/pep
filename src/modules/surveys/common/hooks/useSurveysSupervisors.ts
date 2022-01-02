@@ -4,7 +4,10 @@ import { SURVEYS_SUPERVISORS_URL } from '../const';
 import { getSurveysSupervisors } from '../api';
 
 export const useSurveysSupervisors = () => {
-	const query = useQuery<DropdownItem[]>(SURVEYS_SUPERVISORS_URL, getSurveysSupervisors);
+	const query = useQuery<DropdownItem[]>(
+		SURVEYS_SUPERVISORS_URL,
+		getSurveysSupervisors
+	);
 
 	return {
 		...query,

@@ -4,14 +4,12 @@ import { useDetailQuery } from '../hooks/useDetailQuery';
 import { DetailProvidersProps } from '../DetailProviders';
 import Alert from '@mui/material/Alert';
 
-type DetailQueryProviderProps = Pick<DetailProvidersProps, 'url'>
+type DetailQueryProviderProps = Pick<DetailProvidersProps, 'url'>;
 
-export const DetailQueryProvider: FC<DetailQueryProviderProps> = (
-	{
-		url,
-		children
-	}
-) => {
+export const DetailQueryProvider: FC<DetailQueryProviderProps> = ({
+	url,
+	children,
+}) => {
 	const query = useDetailQuery(url);
 
 	if (query.isError) {

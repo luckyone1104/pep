@@ -6,7 +6,7 @@ type MenuContextValue = {
 	toggleMobileMenu: () => void;
 	extendDesktopMenu: () => void;
 	narrowDesktopMenu: () => void;
-}
+};
 
 const MenuContext = createContext(null as unknown);
 
@@ -15,7 +15,7 @@ export const MenuProvider: FC = ({ children }) => {
 	const [isDesktopMenuExtended, setIsDesktopMenuExtended] = useState(true);
 
 	const toggleMobileMenu = () => {
-		setIsMobileMenuOpened(prev => !prev);
+		setIsMobileMenuOpened((prev) => !prev);
 	};
 
 	const extendDesktopMenu = () => {
@@ -27,13 +27,15 @@ export const MenuProvider: FC = ({ children }) => {
 	};
 
 	return (
-		<MenuContext.Provider value={{
-			isMobileMenuOpened,
-			isDesktopMenuExtended,
-			toggleMobileMenu,
-			extendDesktopMenu,
-			narrowDesktopMenu,
-		}}>
+		<MenuContext.Provider
+			value={{
+				isMobileMenuOpened,
+				isDesktopMenuExtended,
+				toggleMobileMenu,
+				extendDesktopMenu,
+				narrowDesktopMenu,
+			}}
+		>
 			{children}
 		</MenuContext.Provider>
 	);

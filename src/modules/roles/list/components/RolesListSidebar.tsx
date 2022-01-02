@@ -9,7 +9,8 @@ import { SelectField } from '../../../../components/adapters/SelectField';
 import { RolesListQueryParam } from '../const';
 
 export const RolesListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useRolesListFilterSidebarInitialValues();
 
@@ -19,35 +20,32 @@ export const RolesListSidebar: FC = () => {
 			...urlQueryParams,
 			...values,
 		});
-	}
+	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
-					name: RolesListQueryParam.Search
+					name: RolesListQueryParam.Search,
 				}}
 				label="Search by title"
 			/>
 			<SelectField
 				fieldProps={{
-					name: RolesListQueryParam.IsPrimary
+					name: RolesListQueryParam.IsPrimary,
 				}}
-				items={[]/*todo: add*/}
+				items={[] /*todo: add*/}
 				label="Primary only"
 			/>
 			<TextBoxField
 				fieldProps={{
-					name: RolesListQueryParam.UsersCountFrom
+					name: RolesListQueryParam.UsersCountFrom,
 				}}
 				label="Count from"
 			/>
 			<TextBoxField
 				fieldProps={{
-					name: RolesListQueryParam.UsersCountTo
+					name: RolesListQueryParam.UsersCountTo,
 				}}
 				label="Count to"
 			/>

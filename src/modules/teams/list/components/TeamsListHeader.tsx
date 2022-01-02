@@ -11,10 +11,7 @@ export const TeamsListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.Teams}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add team
 				</Button>
 			}

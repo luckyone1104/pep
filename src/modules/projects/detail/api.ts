@@ -4,12 +4,8 @@ import { PROJECTS_URL } from '../common/const';
 
 type UpdateProjectDataProps = {
 	id: string;
-	data: ProjectsDetailData
-}
+	data: ProjectsDetailData;
+};
 
-export const updateProjectData = async (
-	{
-		id,
-		data
-	}: UpdateProjectDataProps
-) => put(`${PROJECTS_URL}/${id}`, data);
+export const updateProjectData = async ({ id, data }: UpdateProjectDataProps) =>
+	put(`${PROJECTS_URL}/${id}`, data);

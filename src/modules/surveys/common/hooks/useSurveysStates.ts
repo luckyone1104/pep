@@ -4,7 +4,10 @@ import { getSurveysStates } from '../api';
 import { DropdownItem } from '../../../../types';
 
 export const useSurveysStates = () => {
-	const query = useQuery<DropdownItem[]>(SURVEYS_STATES_URL, getSurveysStates);
+	const query = useQuery<DropdownItem[]>(
+		SURVEYS_STATES_URL,
+		getSurveysStates
+	);
 
 	return {
 		...query,

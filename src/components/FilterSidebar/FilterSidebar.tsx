@@ -9,26 +9,21 @@ import { ErrorBoundary } from '../ErrorBoundary';
 import classes from './styles/form.module.scss';
 
 type FilterSidebarProps<T> = {
-	initialValues: T,
-	onSubmit: (values: T) => void,
-}
+	initialValues: T;
+	onSubmit: (values: T) => void;
+};
 type FilterSidebarComponent = <T extends CustomObject = CustomObject>(
 	props: PropsWithChildren<FilterSidebarProps<T>>
 ) => JSX.Element;
 
-export const FilterSidebar: FilterSidebarComponent = (
-	{
-		initialValues,
-		onSubmit,
-		children,
-	},
-) => {
+export const FilterSidebar: FilterSidebarComponent = ({
+	initialValues,
+	onSubmit,
+	children,
+}) => {
 	const theme = useTheme();
-	const {
-		setIsSidebarMounted,
-		sidebarOpen,
-		handleSidebarToggle,
-	} = useFilterSidebarContext();
+	const { setIsSidebarMounted, sidebarOpen, handleSidebarToggle } =
+		useFilterSidebarContext();
 
 	useEffect(() => {
 		setIsSidebarMounted(true);
@@ -37,7 +32,6 @@ export const FilterSidebar: FilterSidebarComponent = (
 			setIsSidebarMounted(false);
 		};
 	}, [setIsSidebarMounted]);
-
 
 	return (
 		<Drawer
@@ -64,9 +58,7 @@ export const FilterSidebar: FilterSidebarComponent = (
 			>
 				<Form className={classes.form}>
 					<FilterSidebarFormLayout>
-						<ErrorBoundary>
-							{children}
-						</ErrorBoundary>
+						<ErrorBoundary>{children}</ErrorBoundary>
 					</FilterSidebarFormLayout>
 				</Form>
 			</Formik>

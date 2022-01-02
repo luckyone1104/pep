@@ -15,15 +15,34 @@ import { useFormsAssignees } from '../../common/hooks/useFormsAssignees';
 import { useFormsReviewers } from '../../common/hooks/useFormsReviewers';
 
 export const FormsListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useFormsListFilterInitialValues();
-	const { data: states, isLoading: isStatesQueryLoading, error: statesQueryError } = useFormsStates();
-	const { data: assignees, isLoading: isAssigneesQueryLoading, error: assigneesQueryError } = useFormsAssignees();
-	const { data: reviewers, isLoading: isReviewersQueryLoading, error: reviewersQueryError } = useFormsReviewers();
-	const statesSelectFieldError = !statesQueryError ? null : ErrorMessage.CouldNotLoadItems;
-	const assigneesSelectFieldError = !assigneesQueryError ? null : ErrorMessage.CouldNotLoadItems;
-	const reviewersSelectFieldError = !reviewersQueryError ? null : ErrorMessage.CouldNotLoadItems;
+	const {
+		data: states,
+		isLoading: isStatesQueryLoading,
+		error: statesQueryError,
+	} = useFormsStates();
+	const {
+		data: assignees,
+		isLoading: isAssigneesQueryLoading,
+		error: assigneesQueryError,
+	} = useFormsAssignees();
+	const {
+		data: reviewers,
+		isLoading: isReviewersQueryLoading,
+		error: reviewersQueryError,
+	} = useFormsReviewers();
+	const statesSelectFieldError = !statesQueryError
+		? null
+		: ErrorMessage.CouldNotLoadItems;
+	const assigneesSelectFieldError = !assigneesQueryError
+		? null
+		: ErrorMessage.CouldNotLoadItems;
+	const reviewersSelectFieldError = !reviewersQueryError
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: FormsSidebarFilterValues) => {
 		const formattedValues = formatFormValues(values);
@@ -36,10 +55,7 @@ export const FormsListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: FormsListQueryParam.Search,

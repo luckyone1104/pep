@@ -14,5 +14,5 @@ export const style: SxProps<Theme> = {
 	flexDirection: 'column',
 	gap: 2,
 	width: 480,
-	maxWidth: 'calc(100% - 32px)'
+	maxWidth: 'calc(100% - 32px)',
 };

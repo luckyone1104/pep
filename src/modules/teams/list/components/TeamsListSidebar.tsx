@@ -11,11 +11,14 @@ import { useProjectsDropdownItems } from '../../common/hooks/useProjectsDropdown
 import { ErrorMessage } from 'src/const/errors';
 
 export const TeamsListSidebar: FC = () => {
-	const { urlQueryParams, setUrlQueryParams } = useListUrlQueryParamsContext();
+	const { urlQueryParams, setUrlQueryParams } =
+		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useTeamsListFilterInitialValues();
 	const { data: projects, isLoading, error } = useProjectsDropdownItems();
-	const projectsSelectFieldError = !error ? null : ErrorMessage.CouldNotLoadItems;
+	const projectsSelectFieldError = !error
+		? null
+		: ErrorMessage.CouldNotLoadItems;
 
 	const handleSubmit = (values: TeamsListFilterValues) => {
 		setPage(0);
@@ -26,10 +29,7 @@ export const TeamsListSidebar: FC = () => {
 	};
 
 	return (
-		<FilterSidebar
-			initialValues={initialValues}
-			onSubmit={handleSubmit}
-		>
+		<FilterSidebar initialValues={initialValues} onSubmit={handleSubmit}>
 			<TextBoxField
 				fieldProps={{
 					name: TeamsListQueryParam.Search,

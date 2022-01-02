@@ -13,18 +13,19 @@ export const SkeletonListBreadCrumbs: FC = () => {
 	}
 
 	return (
-		<Box sx={{
-			display: 'flex',
-			gap: '8px'
-		}}>
-			{Array(urlQueryParamsCount).fill(null).map((item, index) => (
-				<Skeleton key={index}>
-					<Chip
-						variant="outlined"
-						sx={{ minWidth: '100px' }}
-					/>
-				</Skeleton>
-			))}
+		<Box
+			sx={{
+				display: 'flex',
+				gap: '8px',
+			}}
+		>
+			{Array(urlQueryParamsCount)
+				.fill(null)
+				.map((item, index) => (
+					<Skeleton key={index}>
+						<Chip variant="outlined" sx={{ minWidth: '100px' }} />
+					</Skeleton>
+				))}
 		</Box>
 	);
 };

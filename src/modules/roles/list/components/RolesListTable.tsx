@@ -7,10 +7,5 @@ export const RolesListTable: FC = () => {
 	const columns = useRolesListColumns();
 	const rows = useRolesListRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

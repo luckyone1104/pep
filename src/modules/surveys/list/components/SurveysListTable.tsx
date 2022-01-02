@@ -7,10 +7,5 @@ export const SurveysListTable: FC = () => {
 	const columns = useSurveysListColumns();
 	const rows = useSurveysListRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

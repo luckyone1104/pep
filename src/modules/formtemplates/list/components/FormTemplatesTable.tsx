@@ -7,10 +7,5 @@ export const FormTemplatesTable: FC = () => {
 	const columns = useFormTemplatesColumns();
 	const rows = useFormTemplatesRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

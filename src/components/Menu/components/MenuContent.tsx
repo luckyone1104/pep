@@ -1,7 +1,5 @@
 import { FC } from 'react';
-import {
-	Divider,
-} from '@mui/material';
+import { Divider } from '@mui/material';
 import { MenuToolbar } from './MenuToolbar';
 import { MenuList } from './MenuList';
 

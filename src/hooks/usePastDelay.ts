@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export const usePastDelay = (delay = 200) => {
-	const [ past_delay, setPastDelay ] = useState(false);
+	const [past_delay, setPastDelay] = useState(false);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => setPastDelay(true), delay);

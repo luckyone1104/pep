@@ -15,13 +15,13 @@ export const useRolesListColumns = (): GridColumns => {
 			headerName: 'Is primary',
 			minWidth: 140,
 			flex: 1,
-			valueFormatter: (({ value }) => {
+			valueFormatter: ({ value }) => {
 				if (!isBoolean(value)) {
 					return;
 				}
 
 				return value ? 'Yes' : 'No';
-			})
+			},
 		},
 		{
 			field: RolesListDataField.UsersCount,

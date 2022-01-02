@@ -8,11 +8,13 @@ export const ProjectsListAddProjectModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<ProjectListAddProjectModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<ProjectListAddProjectModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 			<ProjectsListAddProjectModal />
 		</ProjectListAddProjectModalContext.Provider>

@@ -13,7 +13,7 @@ import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
 import AutoAwesomeMotionRoundedIcon from '@mui/icons-material/AutoAwesomeMotionRounded';
 
 export const menuIcons = {
-	'Dashboard': <DashboardCustomizeRoundedIcon />,
+	Dashboard: <DashboardCustomizeRoundedIcon />,
 	[ModuleName.Projects]: <AccountTreeRoundedIcon />,
 	[ModuleName.Teams]: <GroupWorkRoundedIcon />,
 	[ModuleName.Users]: <GroupRoundedIcon />,

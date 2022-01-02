@@ -8,8 +8,7 @@ export const useDetailQuery = (url: string) => {
 	const { id } = useParams<RouteIdParamOnly>();
 	const { pathname } = useLocation();
 
-	return useQuery(
-		[DETAIL_QUERY_KEY, pathname],
-		() => fetchDetailQueryData(`${url}/${id}`),
+	return useQuery([DETAIL_QUERY_KEY, pathname], () =>
+		fetchDetailQueryData(`${url}/${id}`)
 	);
 };

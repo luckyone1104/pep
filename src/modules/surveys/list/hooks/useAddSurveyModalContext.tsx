@@ -6,7 +6,7 @@ type AddSurveyModalContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddSurveyModalContext = () => {
 	const context = useContext(AddSurveyModalContext);

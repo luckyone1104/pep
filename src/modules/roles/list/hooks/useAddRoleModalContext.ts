@@ -6,7 +6,7 @@ type AddRoleModalContextType = {
 	open: boolean;
 	handleOpen: () => void;
 	handleClose: () => void;
-}
+};
 
 export const useAddRoleModalContext = () => {
 	const context = useContext(AddRoleModalContext);

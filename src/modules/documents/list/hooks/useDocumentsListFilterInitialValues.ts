@@ -1,12 +1,15 @@
 import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/useListUrlQueryParamsContext';
-import { DOCUMENTS_FILTER_INITIAL_VALUES, DocumentsListQueryParam } from '../const';
+import {
+	DOCUMENTS_FILTER_INITIAL_VALUES,
+	DocumentsListQueryParam,
+} from '../const';
 import { parseMultiSelectFieldInitialValue } from '../../../../components/adapters/SelectField/utils';
 
 export const useDocumentsListFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === DocumentsListQueryParam.Search) {
 				acc[key] = value as string;
 			}
@@ -24,5 +27,7 @@ export const useDocumentsListFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...DOCUMENTS_FILTER_INITIAL_VALUES });
+		},
+		{ ...DOCUMENTS_FILTER_INITIAL_VALUES }
+	);
 };

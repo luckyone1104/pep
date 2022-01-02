@@ -9,9 +9,10 @@ export const useRolesDropdownItems = () => {
 
 	return {
 		...query,
-		data: query.data?.map(({ id, name }) => ({
-			id,
-			value: name,
-		})) || [],
+		data:
+			query.data?.map(({ id, name }) => ({
+				id,
+				value: name,
+			})) || [],
 	};
 };

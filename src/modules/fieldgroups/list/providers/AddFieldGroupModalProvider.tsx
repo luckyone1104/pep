@@ -7,11 +7,13 @@ export const AddFieldGroupModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<AddFieldGroupContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddFieldGroupContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 		</AddFieldGroupContext.Provider>
 	);

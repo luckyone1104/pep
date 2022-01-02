@@ -7,11 +7,13 @@ export const AddTeamModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<AddTeamModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddTeamModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 		</AddTeamModalContext.Provider>
 	);

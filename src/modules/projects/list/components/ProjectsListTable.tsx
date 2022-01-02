@@ -14,11 +14,5 @@ export const ProjectsListTable: FC = () => {
 		push(`detail/${id}`);
 	};
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-			onRowClick={handleRowClick}
-		/>
-	);
+	return <List columns={columns} rows={rows} onRowClick={handleRowClick} />;
 };

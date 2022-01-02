@@ -1,22 +1,28 @@
 import React, { FC } from 'react';
 import { TextBoxField } from '../../../../components/adapters/TextBoxField';
-import { combineValidators, date, length, required } from '../../../../utils/validators';
+import {
+	combineValidators,
+	date,
+	length,
+	required,
+} from '../../../../utils/validators';
 import { DatePickerField } from '../../../../components/adapters/DatePickerField';
-import { DEFAULT_MAX_DATE, DEFAULT_MIN_DATE } from '../../../../components/adapters/DatePickerField/const';
+import {
+	DEFAULT_MAX_DATE,
+	DEFAULT_MIN_DATE,
+} from '../../../../components/adapters/DatePickerField/const';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { ProjectFormField } from '../const';
 import { useProjectsCoordinators } from '../hooks/useProjectsCoordinators';
 import { ColumnBalancer } from '../../../../components/ColumnBalancer';
 
 type ProjectsFormFieldsProps = {
-	disabled?: boolean
-}
+	disabled?: boolean;
+};
 
-export const ProjectsFormFields: FC<ProjectsFormFieldsProps> = (
-	{
-		disabled
-	}
-) => {
+export const ProjectsFormFields: FC<ProjectsFormFieldsProps> = ({
+	disabled,
+}) => {
 	const { data: coordinators, isLoading } = useProjectsCoordinators();
 
 	return (
@@ -28,7 +34,7 @@ export const ProjectsFormFields: FC<ProjectsFormFieldsProps> = (
 						required(),
 						length({
 							max: 128,
-						}),
+						})
 					),
 				}}
 				label="Title"
@@ -43,7 +49,7 @@ export const ProjectsFormFields: FC<ProjectsFormFieldsProps> = (
 						date({
 							min: DEFAULT_MIN_DATE,
 							max: DEFAULT_MAX_DATE,
-						}),
+						})
 					),
 				}}
 				label="Start date"
@@ -53,7 +59,7 @@ export const ProjectsFormFields: FC<ProjectsFormFieldsProps> = (
 			<SelectField
 				fieldProps={{
 					name: ProjectFormField.CoordinatorId,
-					validate: required()
+					validate: required(),
 				}}
 				label="Coordinator"
 				items={coordinators}

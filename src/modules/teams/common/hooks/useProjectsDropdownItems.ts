@@ -5,12 +5,16 @@ import { useNotificationsContext } from '../../../../providers/NotificationsProv
 
 export const useProjectsDropdownItems = () => {
 	const { notify } = useNotificationsContext();
-	const query = useQuery(PROJECTS_DROPDOWN_ITEMS_URL, getProjectsDropdownItems, {
-		refetchOnMount: false,
-		onError: () => {
-			notify('Could not load projects', 'error');
-		},
-	});
+	const query = useQuery(
+		PROJECTS_DROPDOWN_ITEMS_URL,
+		getProjectsDropdownItems,
+		{
+			refetchOnMount: false,
+			onError: () => {
+				notify('Could not load projects', 'error');
+			},
+		}
+	);
 
 	return {
 		...query,

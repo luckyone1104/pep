@@ -11,10 +11,7 @@ import { FilterBreadCrumbs } from '../../../components/FilterBreadCrumbs';
 
 export const ProjectsList: FC = () => {
 	return (
-		<ListProviders
-			url={PROJECTS_URL}
-			sortFieldsPairs={SORT_FIELDS_PAIRS}
-		>
+		<ListProviders url={PROJECTS_URL} sortFieldsPairs={SORT_FIELDS_PAIRS}>
 			<ProjectsListAddProjectModalProvider>
 				<ListLayout>
 					<ProjectsListHeader />

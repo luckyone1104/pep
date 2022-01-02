@@ -1,12 +1,15 @@
 import { useListUrlQueryParamsContext } from '../../../../components/List/hooks/useListUrlQueryParamsContext';
-import { DEEPLINKS_FILTER_INITIAL_VALUES, DeeplinksListQueryParam } from '../const';
+import {
+	DEEPLINKS_FILTER_INITIAL_VALUES,
+	DeeplinksListQueryParam,
+} from '../const';
 import { parseMultiSelectFieldInitialValue } from '../../../../components/adapters/SelectField/utils';
 
 export const useDeeplinksFilterInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === DeeplinksListQueryParam.Search) {
 				acc[key] = value as string;
 			}
@@ -27,5 +30,7 @@ export const useDeeplinksFilterInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...DEEPLINKS_FILTER_INITIAL_VALUES });
+		},
+		{ ...DEEPLINKS_FILTER_INITIAL_VALUES }
+	);
 };

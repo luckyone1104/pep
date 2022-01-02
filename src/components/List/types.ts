@@ -7,11 +7,17 @@ import { ListSortContextType } from './hooks/useListSortContext';
 export type ListData<ListItem = CustomObject> = {
 	totalItemsCount?: number;
 	items: ListItem[];
-}
+};
 
-export type ListQueryContextType<ListItemType> = UseInfiniteQueryResult<ListData<ListItemType>>;
+export type ListQueryContextType<ListItemType> = UseInfiniteQueryResult<
+	ListData<ListItemType>
+>;
 
-export type HandleRowClickFunction = (params: GridRowParams, event: MuiEvent<React$1.SyntheticEvent>, details: GridCallbackDetails) => void;
+export type HandleRowClickFunction = (
+	params: GridRowParams,
+	event: MuiEvent<React$1.SyntheticEvent>,
+	details: GridCallbackDetails
+) => void;
 export type GetFormattedColumnsOptions = {
 	sortFields: Pick<ListSortContextType, 'sortFields'>;
-}
+};

@@ -1,5 +1,11 @@
 import React, { FC, SyntheticEvent } from 'react';
-import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import {
+	Divider,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+} from '@mui/material';
 import { menuIcons } from '../menuIcons';
 import { listPages } from '../../../const';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -8,15 +14,13 @@ import { checkIfMenuItemSelected } from './utils';
 
 export const MenuList: FC = () => {
 	const history = useHistory();
-	const {
-		toggleMobileMenu,
-	} = useMenuContext();
+	const { toggleMobileMenu } = useMenuContext();
 	const { pathname } = useLocation();
-	const handleLinkButtonClick = ((e: SyntheticEvent, path: string) => {
+	const handleLinkButtonClick = (e: SyntheticEvent, path: string) => {
 		e.preventDefault();
 		history.push(path);
 		toggleMobileMenu();
-	});
+	};
 
 	return (
 		<List>
@@ -29,9 +33,7 @@ export const MenuList: FC = () => {
 				}}
 				selected={pathname === '/'}
 			>
-				<ListItemIcon>
-					{menuIcons['Dashboard']}
-				</ListItemIcon>
+				<ListItemIcon>{menuIcons['Dashboard']}</ListItemIcon>
 				<ListItemText primary={'Dashboard'} />
 			</ListItem>
 			<Divider />
@@ -46,9 +48,7 @@ export const MenuList: FC = () => {
 					}}
 					selected={checkIfMenuItemSelected(pathname, name)}
 				>
-					<ListItemIcon>
-						{menuIcons[name]}
-					</ListItemIcon>
+					<ListItemIcon>{menuIcons[name]}</ListItemIcon>
 					<ListItemText primary={name} />
 				</ListItem>
 			))}

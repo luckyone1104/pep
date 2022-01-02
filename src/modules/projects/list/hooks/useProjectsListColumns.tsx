@@ -16,14 +16,13 @@ export const useProjectsListColumns = (): GridColumns => {
 			headerName: 'Start date',
 			minWidth: 120,
 			flex: 1,
-			valueFormatter: (({ value }) => {
+			valueFormatter: ({ value }) => {
 				if (isEmpty(value)) {
 					return;
 				}
 
 				return format(new Date(value as string), 'dd.MM.yyyy');
-			}),
-
+			},
 		},
 		{
 			field: ProjectsListDataField.Coordinator,

@@ -7,11 +7,11 @@ export type DocumentsListData = {
 	[DocumentsListDataField.DocumentTypeName]: string;
 	[DocumentsListDataField.ValidToDate]: string;
 	[DocumentsListDataField.FirstName]: string;
-}
+};
 
 export type DocumentsListFilterValues = {
-	[DocumentsListQueryParam.Search]: string,
-	[DocumentsListQueryParam.UserIds]: number[],
-	[DocumentsListQueryParam.TypeIds]: number[],
-	[DocumentsListQueryParam.ValidTo]: '' | Date,
-}
+	[DocumentsListQueryParam.Search]: string;
+	[DocumentsListQueryParam.UserIds]: number[];
+	[DocumentsListQueryParam.TypeIds]: number[];
+	[DocumentsListQueryParam.ValidTo]: '' | Date;
+};

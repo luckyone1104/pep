@@ -7,10 +7,5 @@ export const DeeplinksListTable: FC = () => {
 	const columns = useDeeplinksColumns();
 	const rows = useDeeplinksListRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

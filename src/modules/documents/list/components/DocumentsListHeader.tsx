@@ -11,10 +11,7 @@ export const DocumentsListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.Documents}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add
 				</Button>
 			}

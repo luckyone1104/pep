@@ -7,32 +7,26 @@ import { Select } from '../../Select';
 import { isNullOrUndefined } from '../../../utils';
 import { SelectProps } from '../../Select/Select';
 
-type DropdownFieldProps = Omit<SelectProps, keyof Omit<FieldInputProps<SelectFormValue>, 'multiple'>> & {
+type DropdownFieldProps = Omit<
+	SelectProps,
+	keyof Omit<FieldInputProps<SelectFormValue>, 'multiple'>
+> & {
 	fieldProps: FieldHookConfig<SelectFormValue>;
 	customError?: string | null;
 };
 
-export const SelectField: FC<DropdownFieldProps> = (
-	{
-		fieldProps,
-		required,
-		isLoading,
-		customError,
-		label,
-		items,
-		disabled,
-		multiple
-	},
-) => {
-	const [{
-		name,
-		onBlur,
-		onChange,
-		value
-	}, {
-		error,
-		touched,
-	}] = useField(fieldProps);
+export const SelectField: FC<DropdownFieldProps> = ({
+	fieldProps,
+	required,
+	isLoading,
+	customError,
+	label,
+	items,
+	disabled,
+	multiple,
+}) => {
+	const [{ name, onBlur, onChange, value }, { error, touched }] =
+		useField(fieldProps);
 	const hasValidationError = touched && !!error;
 	const isDisabled = isLoading || Boolean(customError) || disabled;
 

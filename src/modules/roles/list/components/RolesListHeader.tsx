@@ -11,10 +11,7 @@ export const RolesListHeader: FC = () => {
 		<ListHeader
 			listTitle={ModuleName.Roles}
 			rightSide={
-				<Button
-					variant="outlined"
-					onClick={handleOpen}
-				>
+				<Button variant="outlined" onClick={handleOpen}>
 					Add
 				</Button>
 			}

@@ -4,8 +4,8 @@ import { ROLES_FILTER_INITIAL_VALUES, RolesListQueryParam } from '../const';
 export const useRolesListFilterSidebarInitialValues = () => {
 	const { urlQueryParams } = useListUrlQueryParamsContext();
 
-	return Object.entries(urlQueryParams)
-		.reduce((acc, [key, value]) => {
+	return Object.entries(urlQueryParams).reduce(
+		(acc, [key, value]) => {
 			if (key === RolesListQueryParam.IsPrimary) {
 				acc[key] = value as string; //todo: boolean?
 			}
@@ -23,5 +23,7 @@ export const useRolesListFilterSidebarInitialValues = () => {
 			}
 
 			return acc;
-		}, { ...ROLES_FILTER_INITIAL_VALUES });
+		},
+		{ ...ROLES_FILTER_INITIAL_VALUES }
+	);
 };

@@ -6,11 +6,6 @@ import { List } from '../../../../components/List';
 export const TeamsListTable: FC = () => {
 	const columns = useTeamsListColumns();
 	const rows = useTeamsListRows();
-		
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+
+	return <List columns={columns} rows={rows} />;
 };

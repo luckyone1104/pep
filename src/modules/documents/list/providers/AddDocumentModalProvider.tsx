@@ -7,11 +7,13 @@ export const AddDocumentModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<AddDocumentModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddDocumentModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 		</AddDocumentModalContext.Provider>
 	);

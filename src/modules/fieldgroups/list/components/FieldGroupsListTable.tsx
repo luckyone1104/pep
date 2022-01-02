@@ -7,10 +7,5 @@ export const FieldGroupsListTable: FC = () => {
 	const columns = useFieldGroupsListColumns();
 	const rows = useFieldGroupsListRows();
 
-	return (
-		<List
-			columns={columns}
-			rows={rows}
-		/>
-	);
+	return <List columns={columns} rows={rows} />;
 };

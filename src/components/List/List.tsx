@@ -13,14 +13,9 @@ export type ListProps = {
 	columns: GridColumns;
 	rows: undefined | CustomObject[];
 	onRowClick?: HandleRowClickFunction;
-}
+};
 
-const ListInner: FC<ListProps> = (
-	{
-		onRowClick,
-		...props
-	}
-) => {
+const ListInner: FC<ListProps> = ({ onRowClick, ...props }) => {
 	const {
 		loading,
 		sortModel,
@@ -68,4 +63,4 @@ const ListWithErrorBoundary: FC<ListProps> = (props) => {
 	);
 };
 
-export { ListWithErrorBoundary as List } ;
+export { ListWithErrorBoundary as List };

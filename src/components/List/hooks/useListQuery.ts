@@ -10,19 +10,17 @@ import { fetchListQueryData } from '../api';
 export const useListQuery = (url: string): UseInfiniteQueryResult<ListData> => {
 	const { notify } = useNotificationsContext();
 	const { urlQueryParams } = useListUrlQueryParamsContext();
-	const { take, totalItemsCount, tryToSetTotalItemsCount } = useListPaginationParamsContext();
+	const { take, totalItemsCount, tryToSetTotalItemsCount } =
+		useListPaginationParamsContext();
 
 	return useInfiniteQuery<ListData, AxiosError>(
 		[url, { ...urlQueryParams, take }],
 		({ pageParam }) => {
-			return fetchListQueryData(
-				url,
-				{
-					...urlQueryParams,
-					take,
-					skip: pageParam
-				}
-			);
+			return fetchListQueryData(url, {
+				...urlQueryParams,
+				take,
+				skip: pageParam,
+			});
 		},
 		{
 			getNextPageParam: (page, pages) => {
@@ -35,7 +33,9 @@ export const useListQuery = (url: string): UseInfiniteQueryResult<ListData> => {
 				return take * pages.length;
 			},
 			onSuccess: ({ pages }) => {
-				tryToSetTotalItemsCount(pages[pages.length - 1]?.totalItemsCount);
+				tryToSetTotalItemsCount(
+					pages[pages.length - 1]?.totalItemsCount
+				);
 			},
 			onError: () => {
 				notify('An error has occurred while fetching', 'error');

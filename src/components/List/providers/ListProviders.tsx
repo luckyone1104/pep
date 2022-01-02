@@ -5,24 +5,20 @@ import { ListSortProvider } from './ListSortProvider';
 import { ListQueryProvider } from './ListQueryProvider';
 
 type ListProvidersProps = {
-	url: string,
-	sortFieldsPairs?: string[][],
-}
+	url: string;
+	sortFieldsPairs?: string[][];
+};
 
-export const ListProviders: FC<ListProvidersProps> = (
-	{
-		url,
-		sortFieldsPairs = [],
-		children
-	}
-) => {
+export const ListProviders: FC<ListProvidersProps> = ({
+	url,
+	sortFieldsPairs = [],
+	children,
+}) => {
 	return (
 		<ListPaginationParamsProvider>
 			<ListUrlQueryParamsProvider>
 				<ListSortProvider sortFieldsPairs={sortFieldsPairs}>
-					<ListQueryProvider url={url}>
-						{children}
-					</ListQueryProvider>
+					<ListQueryProvider url={url}>{children}</ListQueryProvider>
 				</ListSortProvider>
 			</ListUrlQueryParamsProvider>
 		</ListPaginationParamsProvider>

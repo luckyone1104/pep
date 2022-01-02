@@ -19,14 +19,16 @@ export const ListPaginationParamsProvider: FC = ({ children }) => {
 	}, [take]);
 
 	return (
-		<ListPaginationParamsContext.Provider value={{
-			page,
-			setPage,
-			take,
-			setTake,
-			totalItemsCount,
-			tryToSetTotalItemsCount
-		}}>
+		<ListPaginationParamsContext.Provider
+			value={{
+				page,
+				setPage,
+				take,
+				setTake,
+				totalItemsCount,
+				tryToSetTotalItemsCount,
+			}}
+		>
 			{children}
 		</ListPaginationParamsContext.Provider>
 	);

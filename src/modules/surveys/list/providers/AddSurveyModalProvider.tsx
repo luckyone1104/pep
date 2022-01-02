@@ -7,11 +7,13 @@ export const AddSurveyModalProvider: FC = ({ children }) => {
 	const handleClose = () => setOpen(false);
 
 	return (
-		<AddSurveyModalContext.Provider value={{
-			open,
-			handleOpen,
-			handleClose
-		}}>
+		<AddSurveyModalContext.Provider
+			value={{
+				open,
+				handleOpen,
+				handleClose,
+			}}
+		>
 			{children}
 		</AddSurveyModalContext.Provider>
 	);
