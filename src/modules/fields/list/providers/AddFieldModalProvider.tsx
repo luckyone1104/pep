@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { AddFieldModalContext } from '../const';
+import { FieldsListAddFieldModal } from '../components/FieldsListAddFieldModal';
 
 export const AddFieldModalProvider: FC = ({ children }) => {
 	const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ export const AddFieldModalProvider: FC = ({ children }) => {
 			}}
 		>
 			{children}
+			<FieldsListAddFieldModal />
 		</AddFieldModalContext.Provider>
 	);
 };
