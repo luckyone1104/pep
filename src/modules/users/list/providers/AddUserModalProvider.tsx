@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { AddUserModalContext } from '../const';
+import { UsersListAddUserModal } from '../components/UsersListAddUserModal';
 
 export const AddUserModalProvider: FC = ({ children }) => {
 	const [open, setOpen] = useState(false);
@@ -14,6 +15,7 @@ export const AddUserModalProvider: FC = ({ children }) => {
 			}}
 		>
 			{children}
+			<UsersListAddUserModal />
 		</AddUserModalContext.Provider>
 	);
 };
