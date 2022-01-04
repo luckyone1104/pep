@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { AddTeamModalContext } from '../const';
+import { TeamsListAddTeamModal } from '../components/TeamsListAddTeamModal';
 
 export const AddTeamModalProvider: FC = ({ children }) => {
 	const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ export const AddTeamModalProvider: FC = ({ children }) => {
 			}}
 		>
 			{children}
+			<TeamsListAddTeamModal />
 		</AddTeamModalContext.Provider>
 	);
 };
