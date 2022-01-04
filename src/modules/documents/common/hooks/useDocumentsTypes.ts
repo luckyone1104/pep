@@ -15,6 +15,10 @@ export const useDocumentsTypes = () => {
 
 	return {
 		...query,
-		data: query.data || [],
+		data:
+			query.data?.map(({ id, name }) => ({
+				id,
+				value: name,
+			})) || [],
 	};
 };

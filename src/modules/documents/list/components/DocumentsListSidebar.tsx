@@ -10,14 +10,30 @@ import { TextBoxField } from '../../../../components/adapters/TextBoxField';
 import { SelectField } from '../../../../components/adapters/SelectField';
 import { DatePickerField } from '../../../../components/adapters/DatePickerField';
 import { useDocumentsTypes } from '../../common/hooks/useDocumentsTypes';
+import { ErrorMessage } from '../../../../const/errors';
+import { useDocumentsUsers } from '../../common/hooks/useDocumentsUsers';
 
 export const DocumentsListSidebar: FC = () => {
 	const { urlQueryParams, setUrlQueryParams } =
 		useListUrlQueryParamsContext();
 	const { setPage } = useListPaginationParamsContext();
 	const initialValues = useDocumentsListFilterInitialValues();
-	const { data: typeIds, isLoading: isTypeIdsQueryLoading } =
-		useDocumentsTypes();
+	const {
+		data: users,
+		isLoading: isUsersQueryLoading,
+		error: usersQueryError,
+	} = useDocumentsUsers();
+	const userIdsSelectFieldError = usersQueryError
+		? ErrorMessage.CouldNotLoadItems
+		: null;
+	const {
+		data: documentsTypes,
+		isLoading: isDocumentTypesQueryLoading,
+		error: documentsTypesQueryError,
+	} = useDocumentsTypes();
+	const typeIdsSelectFieldError = documentsTypesQueryError
+		? ErrorMessage.CouldNotLoadItems
+		: null;
 
 	const handleSubmit = (values: DocumentsListFilterValues) => {
 		const formattedValues = formatFormValues(values);
@@ -41,18 +57,21 @@ export const DocumentsListSidebar: FC = () => {
 				fieldProps={{
 					name: DocumentsListQueryParam.UserIds,
 				}}
-				items={[] /*add endpoint for users*/}
+				items={users}
 				label="User"
 				multiple
+				isLoading={isUsersQueryLoading}
+				customError={userIdsSelectFieldError}
 			/>
 			<SelectField
 				fieldProps={{
 					name: DocumentsListQueryParam.TypeIds,
 				}}
-				items={typeIds}
+				items={documentsTypes}
 				label="Document type"
 				multiple
-				isLoading={isTypeIdsQueryLoading}
+				isLoading={isDocumentTypesQueryLoading}
+				customError={typeIdsSelectFieldError}
 			/>
 			<DatePickerField
 				fieldProps={{

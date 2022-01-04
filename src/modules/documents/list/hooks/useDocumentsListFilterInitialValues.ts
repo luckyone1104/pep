@@ -14,11 +14,10 @@ export const useDocumentsListFilterInitialValues = () => {
 				acc[key] = value as string;
 			}
 
-			if (key === DocumentsListQueryParam.UserIds) {
-				acc[key] = parseMultiSelectFieldInitialValue(value);
-			}
-
-			if (key === DocumentsListQueryParam.TypeIds) {
+			if (
+				key === DocumentsListQueryParam.UserIds ||
+				key === DocumentsListQueryParam.TypeIds
+			) {
 				acc[key] = parseMultiSelectFieldInitialValue(value);
 			}
 
