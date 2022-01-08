@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { AddRoleModalContext } from '../const';
+import { RolesListAddRoleModal } from '../components/RolesListAddRoleModal';
 
 export const AddRoleModalProvider: FC = ({ children }) => {
 	const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ export const AddRoleModalProvider: FC = ({ children }) => {
 			}}
 		>
 			{children}
+			<RolesListAddRoleModal />
 		</AddRoleModalContext.Provider>
 	);
 };
