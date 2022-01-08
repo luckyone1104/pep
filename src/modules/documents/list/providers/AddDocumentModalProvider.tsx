@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { AddDocumentModalContext } from '../const';
+import { DocumentsListAddDocumentModal } from '../components/DocumentsListAddDocumentModal';
 
 export const AddDocumentModalProvider: FC = ({ children }) => {
 	const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ export const AddDocumentModalProvider: FC = ({ children }) => {
 			}}
 		>
 			{children}
+			<DocumentsListAddDocumentModal />
 		</AddDocumentModalContext.Provider>
 	);
 };
